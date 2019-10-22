@@ -7,6 +7,7 @@ const validationText = (props) => {
     }
     return (
         <div className='Validation'>
+            <h4>Task-2 Validation and Char Components</h4>
             <input type="text" onChange={props.changed} />
             <p>The entered text is:  {props.enteredText} </p>
             <p>The length of entered text is:  {props.lengthText} </p>
