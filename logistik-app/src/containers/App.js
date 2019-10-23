@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import styles from './App.css';
-import UserInput from '../components/UserInput/UserInput';
-import UserOutput from '../components/UserOutput/UserOutput';
-import Validation from '../components/Validation/Validation';
-import Char from '../components/Char/Char';
+import UserInput from '../components/userInput/UserInput';
+import UserOutput from '../components/userOutput/UserOutput';
+import Validation from '../components/validation/Validation';
+import Char from '../components/char/Char';
 //import Radium, { StyleRoot } from 'radium';
 import Persons from '../components/Persons/Persons';
-import Cockpit from '../components/Cockpit/Cockpit';
+import Cockpit from '../components/cockpit/Cockpit';
 import Hoc from '../components/hoc/Hoc';
 import withClass from '../components/hoc/withClass';
+import AuthContext from '../components/context/Auth-context';
 
 
 class App extends Component {
@@ -28,7 +29,8 @@ class App extends Component {
             maxLengthString: '5',
             minLengthString: '1',
             showCockpit: true,
-            changeCounter: 0
+            changeCounter: 0,
+            authenticated: false
         };
     }
  
@@ -36,25 +38,25 @@ class App extends Component {
         console.log('[App.js] getDerivedStateFromProps', props);
         return state;
     }
+    
     shouldComponentUpdate(nextProps, nextState, nextContext) {
         console.log('[App.js] shouldComponentUpdate');
         //Continutie update true /not update false
         return true;
-    }
+    };
+    
     componentDidUpdate(prevProps, prevState, snapshot) {
         console.log('[App.js] componentDidUpdate => ', snapshot);
         return null;
-    }
+    };
     
     componentWillMount() {
         console.log('[App.js] componentWillMount');
-    }
+    };
     
     componentDidMount() {
         console.log('[App.js] componentDidMount');
-    }
-    
-    
+    };
     
     switchNameHandler = (newName) => {
         console.log('wurde button geklick -> switchNameHandler');
@@ -93,36 +95,40 @@ class App extends Component {
     animalAddHandler = (event) => {
         console.log('animalAddHandler = ', event.target.value);
         this.setState({username: event.target.value})
-    }
+    };
     
     deletePersonHandler = (index) => {
         //const persons = this.state.persons;
         const persons = [...this.state.persons];
         persons.splice(index, 1);
         this.setState({persons: persons});
-    }
+    };
     
     togglePersonsHandler = () => {
         const doesShow = this.state.showPersons;
         this.setState({showPersons: !doesShow });
-    }
+    };
     
     toggleUserHandler = () => {
         const displayuser = this.state.showUser;
         this.setState({showUser: !displayuser });
-    }
+    };
     
     validationInput = (event) => {
         console.log('hier is validationInput', event.target.value,  event.target.value.length);
         this.setState({ enteredText: event.target.value});
-    }
+    };
     
     deleteLetter = (index) => {
         const text = this.state.enteredText.split('');
         text.splice(index,1);
         const updatedText = text.join('');
         this.setState({enteredText: updatedText})
-    }
+    };
+    
+    loginHandler = () => {
+        this.setState({authenticated: true});
+    };
     
     
     render() {
@@ -131,10 +137,16 @@ class App extends Component {
         
         //diese loesung ist besser
         if (this.state.showPersons) {
-            togglePersons = <Persons
-                    persons={this.state.persons}
-                    clicked={this.deletePersonHandler}
-                    changed={this.nameChangedHandler} />
+            togglePersons = (
+                <div>
+                    <Persons
+                        persons={this.state.persons}
+                        clicked={this.deletePersonHandler}
+                        changed={this.nameChangedHandler}
+                    />
+                </div>
+               
+            );
         }
         
         let infoText = null;
@@ -163,6 +175,7 @@ class App extends Component {
                 >
                     return emove Cockpit
                 </button>
+                <AuthContext.Provider value={{authenticated: this.state.authenticated, login: this.loginHandler}}>
                 {
                     this.state.showCockpit ? (
                         <Cockpit
@@ -170,10 +183,13 @@ class App extends Component {
                             showPersons={this.state.showPersons}
                             persons={this.state.persons}
                             personsLength={this.state.persons.length}
-                            clicked={this.togglePersonsHandler}/>
+                            clicked={this.togglePersonsHandler}
+                            login={this.loginHandler}/>
                     ): null
                 }
                 {togglePersons}
+                </AuthContext.Provider>
+                
                 <hr/>
                 <button onClick={this.toggleUserHandler} > Toggle Input/Output</button>
                 {

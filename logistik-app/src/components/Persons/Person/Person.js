@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import styles from './Person.css';
 import PropTypes from 'prop-types';
+import AuthContext from '../../context/Auth-context';
 
 class Person extends Component {
     constructor(props){
@@ -9,8 +10,11 @@ class Person extends Component {
         this.inputElementRef = React.createRef();
     }
     
+    static  contextType = AuthContext;
+    
     componentDidMount() {
-        this.inputElementRef.current.focus();
+        this.inputElementRef.current.focus();  // this.inputElement.focus()
+        console.log('AuthContext', this.context.authenticated);
     }
     
     render() {
@@ -18,6 +22,9 @@ class Person extends Component {
        return (
            <Fragment>
                <div className={styles.Person} >
+          
+                   {this.context.authenticated ? <p>Authenticated!</p> : <p>Please Log In!</p>}
+                   
                    <p>First Container</p>
                    <p onClick={this.props.click} >Ich bin {this. props.name } und { this.props.age } Jahre alt</p>
                    <p> {this.props.children } </p>
@@ -25,7 +32,7 @@ class Person extends Component {
                        type="text"
                        onChange={this.props.changed}
                        value={this.props.name}
-                       ref={this.inputElementRef}
+                       ref={this.inputElementRef}  // also possible is:  ref={(inputEl) => {this.inputElement = inputEl}}
                    />
                </div>,
                <div>
