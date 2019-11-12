@@ -1,0 +1,32 @@
+@import "../../../hoc/Layout/Variables.scss";
+
+.Footer {
+    background: $primaryColor;
+    p {
+        margin: 0;
+        font-size: small;
+    }
+    h4 {
+        text-transform: uppercase;
+        margin: 0;
+    }
+}
+
+.Contact {
+    margin-left: 50px;
+    float: right;
+    width: 300px;
+}
+
+.Address {
+
+}
+
+.Contact_Daten {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+

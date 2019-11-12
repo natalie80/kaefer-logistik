@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import style from './App.scss';
+import Layout from './hoc/Layout/Layout';
+import Home from './containers/Home/Home';
+import Services from './containers/Services/Services';
+import Contact from './containers/Contact/ContactPersons/Contact';
+import LegalNotice from './containers/LegalNotice/LegalNotice';
+import DataProtection from './containers/DataProtection/DataProtection';
+import ContactForm  from './containers/Contact/ContactForm/ContactForm';
+
+class App extends Component {
+    render() {
+        return (
+            <div>
+                <Layout>
+                    <Switch>
+                        <Route path="/" exact component={ Home } />
+                        <Route path="/services" component={ Services } />
+                        <Route path="/contact" component={ Contact } />
+                        <Route path="/contactForm" component={ ContactForm } />
+                        <Route path="/legal" component={ LegalNotice } />
+                        <Route path="/protection" component={ DataProtection } />
+                    </Switch>
+                </Layout>
+            </div>
+        );
+    }
 }
 
 export default App;
