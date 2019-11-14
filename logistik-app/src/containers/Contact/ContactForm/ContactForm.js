@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from "@material-ui/core/Button";
-import  Nodemailer   from 'nodemailer';
+import  nodemailer   from 'nodemailer';
 import axios from 'axios';
 
 import styles from './ContactForm.scss';
@@ -8,85 +8,93 @@ import Input from '../../../components/atoms/Form/Input/Input'
 import config from '../../../config/config';
 
 class ContactForm extends Component {
-    state = {
-        contactForm: {
-            name: {
-                elType: 'input',
-                elConfig: {
-                    type: 'text',
-                    placeholder: 'name'
+    constructor() {
+        super();
+        
+        this.state = {
+            contactForm: {
+                name: {
+                    elType: 'input',
+                    elConfig: {
+                        type: 'text',
+                        placeholder: 'name'
+                    },
+                    value: '',
+                    validation: {
+                        required: true
+                    },
+                    valid: false
                 },
-                value: '',
-                validation: {
-                    required: true
+                email: {
+                    elType: 'input',
+                    elConfig: {
+                        type: 'text',
+                        placeholder: 'Email'
+                    },
+                    value: '',
+                    validation: {
+                        required: true
+                    },
+                    valid: false
                 },
-                valid: false
+                company: {
+                    elType: 'input',
+                    elConfig: {
+                        type: 'text',
+                        placeholder: 'company'
+                    },
+                    value: '',
+                    validation: {
+                        required: false
+                    },
+                    valid: false
+                },
+                phone: {
+                    elType: 'input',
+                    elConfig: {
+                        type: 'text',
+                        placeholder: 'phone number'
+                    },
+                    value: '',
+                    validation: {
+                        required: false,
+                        minLength: 6,
+                        maxLength: 9
+                    },
+                    valid: false
+                },
+                subject: {
+                    elType: 'input',
+                    elConfig: {
+                        type: 'text',
+                        placeholder: 'subject'
+                    },
+                    value: '',
+                    validation: {
+                        required: true
+                    },
+                    valid: false
+                },
+                message: {
+                    elType: 'textarea',
+                    elConfig: {
+                        type: 'text',
+                        placeholder: 'Message'
+                    },
+                    value: '',
+                    validation: {
+                        required: true
+                    },
+                    valid: false,
+                }
             },
-            email: {
-                elType: 'input',
-                elConfig: {
-                    type: 'text',
-                    placeholder: 'Email'
-                },
-                value: '',
-                validation: {
-                    required: true
-                },
-                valid: false
-            },
-            company: {
-                elType: 'input',
-                elConfig: {
-                    type: 'text',
-                    placeholder: 'company'
-                },
-                value: '',
-                validation: {
-                    required: false
-                },
-                valid: false
-            },
-            phone: {
-                elType: 'input',
-                elConfig: {
-                    type: 'text',
-                    placeholder: 'phone number'
-                },
-                value: '',
-                validation: {
-                    required: false,
-                    minLength: 6,
-                    maxLength: 9
-                },
-                valid: false
-            },
-            subject: {
-                elType: 'input',
-                elConfig: {
-                    type: 'text',
-                    placeholder: 'subject'
-                },
-                value: '',
-                validation: {
-                    required: true
-                },
-                valid: false
-            },
-            message: {
-                elType: 'textarea',
-                elConfig: {
-                    type: 'text',
-                    placeholder: 'Message'
-                },
-                value: '',
-                validation: {
-                    required: true
-                },
-                valid: false,
-            }
-        },
-        formIsValid: false
-    };
+            formIsValid: false
+        };
+        
+        this.onSubmitHandler = this.onSubmitHandler.bind(this);
+        this.onChangedHandler = this.onChangedHandler.bind(this);
+    }
+    
     
     onChangedHandler = (ev, inputIdentifier) => {
         console.log('onChangedHandler  -> inputIdentifier', inputIdentifier);
@@ -103,6 +111,17 @@ class ContactForm extends Component {
     
     sendEmail = (formData) => {
         console.log('sendEmail', formData);
+    /**
+        host: 'ssh.natalie-kaefer.de',
+            port: 22,
+            secure: false,
+            auth: {
+            user: 'natalie-kaefer.de',
+                pass: 'nkl!0407'
+        },
+        tls: {
+            rejectUnauthorized: false
+        }**/
         const mailConfig = {
             host: 'ssh.natalie-kaefer.de',
             port: 22,
@@ -122,8 +141,8 @@ class ContactForm extends Component {
             attachments: ''
         };
         
-        Nodemailer.createTestAccount( (err, account) => {
-            let transporter = Nodemailer.createTransport(mailConfig);
+        nodemailer.createTestAccount( (err, account) => {
+            let transporter = nodemailer.createTransport(mailConfig);
         
             // verify connection configuration
             transporter.verify(function(error, success) {
@@ -141,23 +160,29 @@ class ContactForm extends Component {
                     console.log('Message sent', info.messageId);
                 }
                 transporter.close();
-                console.log('Preview URL', Nodemailer.getTestMessageUrl(info));
+                console.log('Preview URL', nodemailer.getTestMessageUrl(info));
                
             });
         });
     };
     
-    onSubmitHandler = async(ev) => {
+    async onSubmitHandler(ev) {
         console.log('--onSubmitHandler--');
+        ev.preventDefault();
         const formData = {};
+        
         for (let formEl in this.state.contactForm) {
             if (this.state.contactForm.hasOwnProperty(formEl)) {
                 formData[formEl] = this.state.contactForm[formEl].value;
             }
         }
+        const form = await axios.post('/api/send_email', {
+            formData
+        });
+        
         console.log('---formData---', formData);
-         ev.preventDefault();
-        this.sendEmail(formData);
+        
+        //this.sendEmail(formData);
         
     };
     
