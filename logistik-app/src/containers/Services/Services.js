@@ -30,9 +30,13 @@ class Services extends Component {
                         <li> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>moderne Multifunktionschassis für jeden Seecontainer</p> </li>
                         <li> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>moderne Fahrzeugausstattung</p> </li>
                     </ul>
-                    <p>und vieles mehr...</p>
+                    <ul>
+                        <li>
+                            und vieles mehr...
+                        </li>
+                    </ul>
                     
-                    <h4>Wir freuen uns auf Ihre Kontaktaufnahme.</h4>
+                    <h4 className={styles.Subheadline_Red}>Wir freuen uns auf Ihre Kontaktaufnahme.</h4>
                 </div>
             </div>
         );

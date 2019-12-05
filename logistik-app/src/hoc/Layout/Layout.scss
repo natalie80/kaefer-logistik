@@ -1,13 +1,24 @@
 .Content {
     display: grid;
     border: 1px solid grey;
-   /* grid-template-rows: 30% auto 20%;*/
-
-   /* background: url("https://static.wixstatic.com/media/c879fd_49abba32d27c47428434d368dc5f71a2~mv2_d_3000_1708_s_2.jpg/v1/fill/w_640,h_1138,al_b,q_85,usm_0.66_1.00_0.01/c879fd_49abba32d27c47428434d368dc5f71a2~mv2_d_3000_1708_s_2.webp"); */
+    background-image: url("https://static.wixstatic.com/media/c879fd_49abba32d27c47428434d368dc5f71a2~mv2_d_3000_1708_s_2.jpg/v1/fill/w_1920,h_1093,al_b,q_85,usm_0.66_1.00_0.01/c879fd_49abba32d27c47428434d368dc5f71a2~mv2_d_3000_1708_s_2.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100%;
+    height: auto;
 }
 
 .Header {
-    background: cornflowerblue;
+    min-height: 80px;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    z-index: 100;
 }
 
 .Logo {
@@ -15,16 +26,22 @@
     float: left;
 }
 
-.Navigation {
-    width: 60%;
-    float: right;
-}
-
 .Main {
-    margin: auto 20%;
-    border: 1px solid grey;
+    margin: 80px  auto 30px  auto;
+    width: 60%;
+    border: 1px solid gray;
+    background: rgba(245, 245 ,255, 0.85);
+    color: #000;
+}
+.Main_Mobile {
+    margin: 80px  0 0  0;
+    background: rgba(245, 245 ,255, 0.85);
+    color: #000;
 }
 
 .Footer {
+   /* background: rgba(175, 42, 0, 0.4);  rgba(54, 25, 25, .00004);
+    opacity: 0.75; */
     background: #AF2A00;
+    filter: alpha(opacity=60);
 }

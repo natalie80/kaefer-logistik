@@ -10,18 +10,47 @@
 
     img {
         height: auto;
-        box-shadow: 1px 2px 1px 0px grey;
+        box-shadow: 1px 2px 1px 0 grey;
         width: 150px;
     }
-  }
+
+}
+
+.Staff_Container_Mobile {
+    border: 1px solid gray;
+    height: auto;
+    box-sizing: border-box;
+    box-shadow:  0 2px 3px #AC9980;
+    border-radius: 5px;
+    margin: 20px;
+    position: relative;
+    display: flex;
+    padding-bottom: 15px;
+    padding-top: 15px;
+
+    img {
+        width: 100px;
+        height: auto;
+        box-shadow: 1px 2px 1px 0 grey;
+    }
+
+    p {
+        margin-top: 5px;
+        margin-bottom: 0;
+
+    }
+
+    .Staff_Contact {
+        margin-left: 5px;
+    }
+}
 
 .Staff_Image {
-    width: 30%;
     padding: 10px;
 }
 
-
-
 .Staff_Contact {
-
+    float: right;
+    width: 80%;
+    margin-left: 30px;
 }

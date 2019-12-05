@@ -1,0 +1,73 @@
+.SideDrawer {
+  position: fixed;
+  width: 280px;
+  height: 100%;
+  right: 0;
+  top: 0;
+  z-index: 200;
+  background-color: white;
+  padding: 32px 16px;
+  box-sizing: border-box;
+  transition: tranform 0.3s ease-out;
+
+  a {
+    color: #282c34;
+  }
+
+  nav {
+    margin-top: 35px;
+    border-top: 1px solid #f5f3f3;
+  }
+}
+
+.NavigationMobile {
+   ul {
+      display: block;
+
+       li {
+         padding-bottom: 10px;
+         padding-top: 10px;
+         border-bottom: 1px solid #f5f3f3;
+         line-height: 1.5rem;
+       }
+   }
+}
+
+@media (min-width: 500px) {
+  .SideDrawer {
+    display: none;
+  }
+}
+
+.Open {
+  animation: movedrawer normal  1s;
+  animation-fill-mode: both;
+  
+  @keyframes movedrawer {
+    from {
+      transform: translateX(100%) ;
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+}
+
+.Close {
+  transform: translateX(200%);
+
+  @keyframes closedrawer {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateX(50%);
+      opacity: 0.4;
+    }
+    100% {
+      transform: translateX(200%);
+      opacity: 0;
+    }
+  }
+}

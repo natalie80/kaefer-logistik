@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import style from './App.scss';
 import Layout from './hoc/Layout/Layout';
 import Home from './containers/Home/Home';
 import Services from './containers/Services/Services';
@@ -9,6 +8,9 @@ import Contact from './containers/Contact/ContactPersons/Contact';
 import LegalNotice from './containers/LegalNotice/LegalNotice';
 import DataProtection from './containers/DataProtection/DataProtection';
 import ContactForm  from './containers/Contact/ContactForm/ContactForm';
+import DashboardInfos from "./containers/DashboardInfos/DashboardInfos";
+import Login from './components/molecules/Login/Authentication'
+import Logout from "./containers/Logout/Log_out";
 
 class App extends Component {
     render() {
@@ -22,6 +24,9 @@ class App extends Component {
                         <Route path="/contactForm" component={ ContactForm } />
                         <Route path="/legal" component={ LegalNotice } />
                         <Route path="/protection" component={ DataProtection } />
+                        <Route path="/login" component={ Login } />
+                        <Route path="/logout" component={ Logout } />
+                        <Route path="/dashboard" component={ DashboardInfos } />
                     </Switch>
                 </Layout>
             </div>

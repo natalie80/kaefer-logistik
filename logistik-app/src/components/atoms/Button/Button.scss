@@ -1,0 +1,32 @@
+.Button {
+  background-color: #AF2A00;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  padding: 10px;
+  margin: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  float: right;
+}
+
+.Primary {
+  background-color: #5C9210;
+}
+
+.Success {
+  color: #5C9210;
+}
+
+.Cancel {
+  color: #944317;
+}
+
+.Danger {
+  background-color: #944317;
+}

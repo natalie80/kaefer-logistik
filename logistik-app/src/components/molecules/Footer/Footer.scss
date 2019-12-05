@@ -1,0 +1,51 @@
+@import "../../../hoc/Layout/Variables";
+
+.Footer {
+  /*  background: $primaryColor;*/
+    p {
+        margin: 0;
+        font-size: small;
+    }
+    h4 {
+        text-transform: uppercase;
+        margin: 0;
+    }
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+}
+
+.Info_Section {
+    margin-left: 50px;
+}
+
+.Info_Section_Tablet {
+    margin-left: 30px;
+}
+
+.Info_Section_Mobile {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+.Info_Section_Mobile:first-child {
+    padding-top: 20px;
+}
+
+.Contact_Daten {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.Contact_Daten_Mobile {
+    display: block;
+}
+
+.Copyright {
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+

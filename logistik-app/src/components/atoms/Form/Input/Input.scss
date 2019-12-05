@@ -18,4 +18,18 @@
   display: block;
   width: 100%;
   box-sizing: border-box;
+  border-radius: 3px;
+}
+
+.InputEl:focus {
+  border-color: dimgray;
+}
+
+.Invalid {
+  border: 1px solid red;
+  background: #FDA49A;
+}
+
+.Error {
+  color: red;
 }

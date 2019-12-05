@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from '../../../axios-instance';
+import axios from '../../../store/axios-instance';
 
 import Staff from '../../../components/molecules/Staff/Staff';
 import Hoc from '../../../hoc/hoc';

@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import Button from "@material-ui/core/Button";
 import  nodemailer   from 'nodemailer';
 import axios from 'axios';
+import Media from "react-media";
 
 import styles from './ContactForm.scss';
 import Input from '../../../components/atoms/Form/Input/Input'
-import config from '../../../config/config';
+import CompanyAddress from '../../../components/molecules/CompanyAddress/CompanyAddress'
+import {faArrowAltCircleRight} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+
 
 class ContactForm extends Component {
     constructor() {
@@ -17,7 +21,7 @@ class ContactForm extends Component {
                     elType: 'input',
                     elConfig: {
                         type: 'text',
-                        placeholder: 'name'
+                        placeholder: 'Name*'
                     },
                     value: '',
                     validation: {
@@ -29,7 +33,7 @@ class ContactForm extends Component {
                     elType: 'input',
                     elConfig: {
                         type: 'text',
-                        placeholder: 'Email'
+                        placeholder: 'E-Mail*'
                     },
                     value: '',
                     validation: {
@@ -41,7 +45,7 @@ class ContactForm extends Component {
                     elType: 'input',
                     elConfig: {
                         type: 'text',
-                        placeholder: 'company'
+                        placeholder: 'Unternehmen'
                     },
                     value: '',
                     validation: {
@@ -53,7 +57,7 @@ class ContactForm extends Component {
                     elType: 'input',
                     elConfig: {
                         type: 'text',
-                        placeholder: 'phone number'
+                        placeholder: 'Telefonnummer'
                     },
                     value: '',
                     validation: {
@@ -67,7 +71,7 @@ class ContactForm extends Component {
                     elType: 'input',
                     elConfig: {
                         type: 'text',
-                        placeholder: 'subject'
+                        placeholder: 'Betreff'
                     },
                     value: '',
                     validation: {
@@ -79,7 +83,7 @@ class ContactForm extends Component {
                     elType: 'textarea',
                     elConfig: {
                         type: 'text',
-                        placeholder: 'Message'
+                        placeholder: 'Ihre Nachricht an uns*'
                     },
                     value: '',
                     validation: {
@@ -100,28 +104,49 @@ class ContactForm extends Component {
         console.log('onChangedHandler  -> inputIdentifier', inputIdentifier);
         
         const updatedForm = {
-            ...this.state.contactForm
+            ...this.state.contactForm,
+            [inputIdentifier]: {
+                ...this.state.contactForm[inputIdentifier],
+                value: ev.target.value,
+                valid: this.checkValidation(ev.target.value, this.state.contactForm[inputIdentifier].validation),
+                touched: true
+            }
         };
-        updatedForm[inputIdentifier].value = ev.target.value;
         
         console.log('updatedForm', updatedForm);
         this.setState({contactForm: updatedForm})
         
     };
-    
+    checkValidation(value, rules) {
+        let isValid = true;
+        
+        if (!rules) {
+            return true;
+        }
+        
+        if(rules.required) {
+            isValid = value.trim() !== '' && isValid;
+        }
+        if(rules.minLength) {
+            isValid = value.length >= rules.minLength && isValid
+        }
+        if(rules.maxLength) {
+            isValid = value.length <= rules.maxLength &&  isValid
+        }
+        if (rules.isEmail) {
+            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+            isValid = pattern.test(value) && isValid
+        }
+        if (rules.isNumeric) {
+            const pattern = /^\d+$/;
+            isValid = pattern.test(value) && isValid
+        }
+        
+        return isValid;
+    }
     sendEmail = (formData) => {
         console.log('sendEmail', formData);
-    /**
-        host: 'ssh.natalie-kaefer.de',
-            port: 22,
-            secure: false,
-            auth: {
-            user: 'natalie-kaefer.de',
-                pass: 'nkl!0407'
-        },
-        tls: {
-            rejectUnauthorized: false
-        }**/
+        
         const mailConfig = {
             host: 'ssh.natalie-kaefer.de',
             port: 22,
@@ -141,7 +166,7 @@ class ContactForm extends Component {
             attachments: ''
         };
         
-        nodemailer.createTestAccount( (err, account) => {
+        nodemailer.createTestAccount( ( ) => {
             let transporter = nodemailer.createTransport(mailConfig);
         
             // verify connection configuration
@@ -211,21 +236,34 @@ class ContactForm extends Component {
                         />
                     ))
                 }
-                <Button
-                    className={styles.Button}
-                    variant="contained"
-                    color="primary"
-                    type="submit"
-                    onClick={this.onSubmitHandler}
-                >Absenden</Button>
+                <div  className={styles.Button}>
+                    <p> * Markierte Pflichtfelder bitte unbedingt ausfüllen </p>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        type="submit"
+                        onClick={this.onSubmitHandler}
+                    >Absenden  <FontAwesomeIcon icon={faArrowAltCircleRight} color="weith"  /></Button>
+                </div>
             </form>
         );
-        
+
         return (
-            <div className={styles.ContactForm}>
-               <h3>Kontaktformular</h3>
-                {form}
-            </div>
+            <Media queries={{
+                small: "(max-width: 599px)",
+                medium: "(min-width: 600px) and (max-width: 1199px)",
+                large: "(min-width: 1200px)"
+            }}>
+                { matches => (
+                    <div className={ matches.large ? styles.ContactForm : (matches.medium || matches.small) ? styles.ContactForm_Mobile : null }>
+                       <h3>Kontaktformular</h3>
+                        <div className={styles.Form}>
+                            {form}
+                        </div>
+                        <CompanyAddress/>
+                    </div>
+                )}
+            </Media>
         );
     }
 }

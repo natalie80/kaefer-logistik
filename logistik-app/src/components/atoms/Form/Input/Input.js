@@ -4,13 +4,18 @@ import styles from './Input.scss';
 
 const input = (props) => {
     let inputEl = null;
-    const inputStyle = [styles.InputEl]
+    const inputStyle = [styles.InputEl];
+    let validationError = null;
     
+    if(props.invalid && props.shouldValidate && props.touched) {
+        inputStyle.push(styles.Invalid);
+        validationError = <p className={styles.Error}>Please enter a valid value!</p>;
+    }
     
     switch (props.elType) {
         case ('input') :
             inputEl = <input
-                className={inputStyle.join('')}
+                className={inputStyle.join(' ')}
                 onChange={props.changed}
                 {...props.elConfig}
             />;
@@ -18,7 +23,7 @@ const input = (props) => {
         case ('select') :
             inputEl = (
                 <select
-                    className={inputStyle.join('')}
+                    className={inputStyle.join(' ')}
                     onChange={props.changed}
                 >
                     <option value="">
@@ -29,7 +34,7 @@ const input = (props) => {
             break;
         case ('textarea') :
             inputEl = <textarea
-                className={inputStyle.join('')}
+                className={inputStyle.join(' ')}
                 onChange={props.changed}
                 {...props.elConfig}
                 cols="30"
@@ -38,7 +43,7 @@ const input = (props) => {
             break;
         default:
             inputEl = <input
-                className={inputStyle.join('')}
+                className={inputStyle.join(' ')}
                 onChange={props.changed}
                 {...props.elConfig}
             />
@@ -48,6 +53,7 @@ const input = (props) => {
         <div>
             <label className={styles.Label} htmlFor="">{props.label}</label>
             {inputEl}
+             {validationError}
         </div>
     );
 };

@@ -9,13 +9,23 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.post('/api/send_email', (req, res) => {
    // console.log('index file', req.body);
-    
-    //req.headers['Access-Control-Allow-Origin'] = '*';
-    //res.set("Content-Type", "application/json");
+
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Content-Type");
     
-    nodemailer.createTestAccount((err, account) => {
+    /**
+     host: 'ssh.natalie-kaefer.de',
+     port: 22,
+     secure: false,
+     auth: {
+            user: 'natalie-kaefer.de',
+                pass: 'nkl!0407'
+        },
+     tls: {
+            rejectUnauthorized: false
+        }**/
+    
+    nodemailer.createTestAccount(( ) => {
         const htmlEmail = `
             <h3>Contact Details </h3>
             <ul>
@@ -25,26 +35,41 @@ app.post('/api/send_email', (req, res) => {
             </ul>
             <h6>Message</h6>
             <p>${req.body.formData.message}</p>
-        `
-    
-        let transporter = nodemailer.createTransport({
+        `;
+        
+        const mailConfig = {
             host: 'smtp.ethereal.email',
             port: 587,
             secure: false,
             auth: {
-                user: 'tyshawn.beahan@ethereal.email',
-                pass: 'NwfyW5GhGwSmtnGh7b'
+                user: 'vernon51@ethereal.email',
+                pass: 'qnUpzAcD4583ZC2wMw'
             }
-        });
+        };
+    
+        let transporter = nodemailer.createTransport(mailConfig);
         
         let mailOptions = {
             from: req.body.formData.email,
-            to: 'info@natalie-kaefer.de',
+            to: 'vernon51@ethereal.email',
             sender: 'adem@web.de',
             subject: req.body.formData.subject,
             text: req.body.formData.message,
             html: htmlEmail
         };
+    
+        /**
+         *   let mailOptions = {
+            from: 'Adem',
+            to: 'info@natalie-kaefer.de',
+            sender: 'adem@web.de',
+            subject: 'Adem React  Email',
+            text: 'Hallo hier ist meine erste EMail!!',
+            html: `<h4> HTML version Halli Halllo </h4>`,
+            attachments: ''
+        };
+         */
+
         transporter.sendMail(mailOptions, (err, info) => {
             if(err){
               return  console.log('ERROR', err);
