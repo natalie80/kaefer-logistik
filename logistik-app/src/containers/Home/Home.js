@@ -6,9 +6,6 @@ import Backdrop from '../../components/atoms/Backdrop/Backdrop'
 import Modal from '../../components/atoms/ModalSecond/ModalSecond';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import {Carousel} from "react-responsive-carousel";
-import Background_2 from "../../assets/carousel/background_4.JPG";
-import Background_3 from "../../assets/carousel/background_5.JPG";
 
 
 class Home extends Component {
@@ -29,26 +26,13 @@ class Home extends Component {
     render() {
         return (
             <div className={styles.Home}>
-                <Typography variant="h6"> Here is HOMEPAGE und CArousel!!</Typography>
-                <Carousel   showThumbs={false}
-                          showStatus={false}
-                        >
-                        <div className="my-slide secondary">
-                            <h2>
-                                It's just a couple of new styles...
-                            </h2>
-                            <img src={Background_2} width="200px" alt="Background_2" />
-                        </div>
-                        
-                        <div className="my-slide content">
-                            <img src={Background_3} width="200px" alt="Background_3" />
-                        </div>
-                    
-                </Carousel>
+                <Typography variant="h6"> Container-Logistik von ihrer besten Seite</Typography>
+               
+                
+                
     
                  <Modal show={this.state.modalIsOpen} closed={this.closeModal}/>
                 { this.state.modalIsOpen ? <Backdrop show={this.state.modalIsOpen} />  : null }
-              
                 
             </div>
         );
