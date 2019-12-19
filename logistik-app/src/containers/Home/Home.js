@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-
+import Media from "react-media";
 import { Typography } from '@material-ui/core';
-import styles from './Home.scss';
+
+import './Home.scss';
 import Backdrop from '../../components/atoms/Backdrop/Backdrop'
 import Modal from '../../components/atoms/ModalSecond/ModalSecond';
-
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-
+import MyCarousel from "../../components/molecules/Carousel/MyCarousel";
 
 class Home extends Component {
     state = {
@@ -25,16 +24,28 @@ class Home extends Component {
     
     render() {
         return (
-            <div className={styles.Home}>
-                <Typography variant="h6"> Container-Logistik von ihrer besten Seite</Typography>
-               
-                
-                
-    
-                 <Modal show={this.state.modalIsOpen} closed={this.closeModal}/>
-                { this.state.modalIsOpen ? <Backdrop show={this.state.modalIsOpen} />  : null }
-                
-            </div>
+            <Media
+                queries={{
+                    small: "(max-width: 599px)",
+                    medium: "(min-width: 600px) and (max-width: 1199px)",
+                    large: "(min-width: 1200px)"
+                }}
+            >
+                { matches => (
+                    <div className="Home">
+                        <h2  className= {matches.large ? "Headline" : (matches.medium || matches.small) ?  "Headline_Mobile" : null } >
+                            Container-Logistik von ihrer besten Seite
+                        </h2>
+            
+            
+                        <MyCarousel/>
+            
+                        <Modal show={this.state.modalIsOpen} closed={this.closeModal}/>
+                        { this.state.modalIsOpen ? <Backdrop show={this.state.modalIsOpen} />  : null }
+        
+                    </div>
+                )}
+            </Media>
         );
     }
 }

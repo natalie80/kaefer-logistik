@@ -1,6 +1,6 @@
 .SideDrawer {
   position: fixed;
-  width: 280px;
+  width: 200px;
   height: 100%;
   right: 0;
   top: 0;
@@ -41,7 +41,7 @@
 
 .Open {
   animation: movedrawer normal  1s;
-  animation-fill-mode: both;
+  animation-fill-mode: forwards;
   
   @keyframes movedrawer {
     from {
@@ -54,20 +54,17 @@
 }
 
 .Close {
-  transform: translateX(200%);
+  transform: translateX(100%);
+  animation: closedrawer  normal  0.8s;
+  animation-fill-mode: backwards;
 
   @keyframes closedrawer {
-    0% {
+   from {
       transform: translateX(0);
-      opacity: 1;
     }
-    50% {
-      transform: translateX(50%);
-      opacity: 0.4;
-    }
-    100% {
-      transform: translateX(200%);
-      opacity: 0;
+
+   to {
+      transform: translateX(100%);
     }
   }
 }

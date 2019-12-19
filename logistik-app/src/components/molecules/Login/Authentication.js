@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {connect} from "react-redux";
 import {Redirect} from 'react-router-dom';
 
-import styles from './Authentication.scss';
+import  './Authentication.scss';
 import Input from '../../atoms/Form/Input/Input'
 import Button from '../../atoms/Button/Button';
 import Spinner from '../../atoms/Spinner/Spinner'
@@ -159,7 +159,7 @@ class Authentication extends Component {
        }
       
         return (
-            <div className={styles.Auth}>
+            <div className="Auth">
                 {authRedirect}
                 <h3>Login </h3>
                 {errorMessage}

@@ -1,34 +1,12 @@
 import React from 'react';
-import {GoogleMap, Marker, withScriptjs, withGoogleMap}  from 'react-google-maps';
 
-import styles from './CompanyAddress.scss';
+import  './CompanyAddress.scss';
+import GoogleMaps from '../GoogleMaps/GoogleMaps';
 
 
 const companyAddress = (props) => {
-    const defaultProps = {
-        center: {
-            lat: 53.0198123,
-            lng: 8.6497334
-        },
-        key: 'AIzaSyCwlm6UBxrN5-ZWHM4XB_NRb4aLjAYe8mA',
-        zoom: '8',
-        styles: {
-            width: '100%',
-            height: '100%'
-        }
-    };
-    
-    const MyMapComponent = withScriptjs(withGoogleMap((props) =>
-        <GoogleMap
-            defaultZoom={8}
-            defaultCenter={{ lat: 53.0198123, lng: 8.6497334 }}
-        >
-            <Marker position={{ lat: 53.0198123, lng: 8.6497334}} />
-        </GoogleMap>
-    ));
-    
     return (
-        <div className={styles.CompanyAddress}>
+        <div className="CompanyAddress">
             <div>
                 <h3>Anfahrt</h3>
                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, ut laoreet dolore magna aliquam erat volutpat.
@@ -43,22 +21,11 @@ const companyAddress = (props) => {
             </div>
             <div>
                 <h3>Google Maps</h3>
-                <div style={{ height: '100%', width: '100%' }}>
-    
-                    <MyMapComponent
-                        isMarkerShown
-                        googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwlm6UBxrN5-ZWHM4XB_NRb4aLjAYe8mA&v=3"
-                        loadingElement={<div style={{ height: '100%' }} />}
-                        containerElement={<div style={{ height: '400px' }} />}
-                        mapElement={<div style={{ height: '100%' }} />}
-                    />
-                </div>
+                <GoogleMaps></GoogleMaps>
             </div>
     
     </div>
     )
 };
-
-
 
 export default companyAddress;

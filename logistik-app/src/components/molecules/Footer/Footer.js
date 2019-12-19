@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Media from "react-media";
 
-import styles from './Footer.scss';
+import  './Footer.scss';
 import Modal from "../Modal/Modal";
 import Authentication from '../Login/Authentication'
-import * as actions from "../../../store/actions";
 import {connect} from "react-redux";
 
 class Footer extends Component {
@@ -18,18 +17,18 @@ class Footer extends Component {
     
     render() {
         return (
-            <div className={styles.Footer}>
+            <div className="Footer">
                 <Media queries={{
                     small: "(max-width: 599px)",
                     medium: "(min-width: 600px) and (max-width: 1199px)",
                     large: "(min-width: 1200px)"
                 }}>
                     { matches => (
-                        <section className={(matches.large || matches.medium) ? styles.Contact_Daten : styles.Contact_Daten_Mobile}>
+                        <section className={(matches.large || matches.medium) ? 'Contact_Daten' : 'Contact_Daten_Mobile' }>
                             <div className={
-                                 matches.large ? styles.Info_Section
-                                 : matches.medium ? styles.Info_Section_Tablet
-                                 : styles.Info_Section_Mobile }
+                                 matches.large ? 'Info_Section'
+                                 : matches.medium ? 'Info_Section_Tablet'
+                                 : 'Info_Section_Mobile' }
                             >
                                 <h4>Adresse</h4>
                                 <p> Käfer Logistik GmbH </p>
@@ -38,9 +37,9 @@ class Footer extends Component {
                             </div>
                             
                             <div className={
-                                matches.large ? styles.Info_Section
-                                : matches.medium ? styles.Info_Section_Tablet
-                                : styles.Info_Section_Mobile}
+                                matches.large ? 'Info_Section'
+                                : matches.medium ? 'Info_Section_Tablet'
+                                : 'Info_Section_Mobile' }
                             >
                                 <h4>Kontakt</h4>
                                 <p>Telefon: +49 (4221) 288 40 50</p>
@@ -49,9 +48,9 @@ class Footer extends Component {
                             </div>
                             
                             <div className={
-                                matches.large ? styles.Info_Section
-                                : matches.medium ? styles.Info_Section_Tablet
-                                : styles.Info_Section_Mobile}
+                                matches.large ?  'Info_Section'
+                                : matches.medium ?  'Info_Section_Tablet'
+                                : 'Info_Section_Mobile' }
                             >
                                 
                                 <h4>Das Unternehmen</h4>
@@ -68,7 +67,7 @@ class Footer extends Component {
                      )}
                 </Media>
                 <hr/>
-                <div><p className={styles.Copyright}>© 2017 Käfer Logistik GmbH</p></div>
+                <div><p className="Copyright">© 2017 Käfer Logistik GmbH</p></div>
             </div>
         );
     }

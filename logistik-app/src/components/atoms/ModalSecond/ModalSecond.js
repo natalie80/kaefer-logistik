@@ -1,6 +1,6 @@
 import React from "react";
 
-import styles from  "./ModalSecond.css";
+import   "./ModalSecond.css";
 import { Transition } from "react-transition-group";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faWindowClose} from "@fortawesome/free-solid-svg-icons";
@@ -22,11 +22,11 @@ const modalSecond = props => {
       >
           { state => {
               const cssClasses = [
-                  styles.Modal,
+                  "Modal",
                   state === "entering"
-                      ? styles.ModalOpen
+                      ? 'ModalOpen'
                       : state === "exiting"
-                      ? styles.ModalClosed : null
+                      ? 'ModalClosed' : null
               ];
              return (
                  <div className={cssClasses.join(' ')}>
@@ -34,11 +34,11 @@ const modalSecond = props => {
                      <div>
                      
                      </div>
-                    <button className={styles.Button} onClick={props.closed}>
+                    <button className="Button" onClick={props.closed}>
                       Dismiss
                     </button>
                      <button
-                         className={styles.CloseButton}
+                         className="ModalCloseButton"
                          onClick={props.closed}
                      >
                          <FontAwesomeIcon icon={faWindowClose} color="gray"  className="fa-2x"/>

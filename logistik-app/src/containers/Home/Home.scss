@@ -1,7 +1,6 @@
 .Home {
     margin: 20px;
     padding-bottom: 30px;
-    height: 500px;
 }
 
 .Button {
@@ -17,4 +16,19 @@
 .Button:hover,
 .Button:active {
     background-color: #fa923f;
+}
+
+.Headline {
+    color: #AF2A00;
+    text-align: center;
+    font-weight: 600;
+    color: #AF2A00;
+    font-weight: 600;
+}
+
+.Headline_Mobile {
+    font-size: 1.15rem;
+    text-align: initial;
+    padding-left: 0;
+    color: #AF2A00;
 }

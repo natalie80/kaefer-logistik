@@ -1,7 +1,8 @@
 .Content {
     display: grid;
     border: 1px solid grey;
-    background-image: url("https://static.wixstatic.com/media/c879fd_49abba32d27c47428434d368dc5f71a2~mv2_d_3000_1708_s_2.jpg/v1/fill/w_1920,h_1093,al_b,q_85,usm_0.66_1.00_0.01/c879fd_49abba32d27c47428434d368dc5f71a2~mv2_d_3000_1708_s_2.webp");
+    //background-image: url("https://static.wixstatic.com/media/c879fd_49abba32d27c47428434d368dc5f71a2~mv2_d_3000_1708_s_2.jpg/v1/fill/w_1920,h_1093,al_b,q_85,usm_0.66_1.00_0.01/c879fd_49abba32d27c47428434d368dc5f71a2~mv2_d_3000_1708_s_2.webp");
+    background-image: url("https://static.wixstatic.com/media/c879fd_6eab8d37869d4af585f80583f9be181d~mv2_d_3000_1708_s_2.jpg/v1/fill/w_1920,h_1093,al_c,q_85,usm_0.66_1.00_0.01/c879fd_6eab8d37869d4af585f80583f9be181d~mv2_d_3000_1708_s_2.webp");
     background-repeat: no-repeat;
     background-size: cover;
     max-width: 100%;
@@ -9,7 +10,7 @@
 }
 
 .Header {
-    min-height: 80px;
+    min-height: 120px;
     position: relative;
     top: 0;
     left: 0;
@@ -27,21 +28,23 @@
 }
 
 .Main {
-    margin: 80px  auto 30px  auto;
+    margin: 50px  auto 30px  auto;
     width: 60%;
     border: 1px solid gray;
-    background: rgba(245, 245 ,255, 0.85);
+    background: rgba(245, 245 ,255, 0.90);
+    border-radius: 2px;
     color: #000;
 }
 .Main_Mobile {
-    margin: 80px  0 0  0;
-    background: rgba(245, 245 ,255, 0.85);
+    margin: 0  0 0  0;
+    background: rgba(245, 245 ,255, 0.90);
     color: #000;
 }
 
 .Footer {
    /* background: rgba(175, 42, 0, 0.4);  rgba(54, 25, 25, .00004);
     opacity: 0.75; */
-    background: #AF2A00;
+    // 547593
+    background: #39476B;
     filter: alpha(opacity=60);
 }

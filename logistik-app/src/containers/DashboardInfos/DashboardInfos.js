@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions';
 import Spinner from '../../components/atoms/Spinner/Spinner'
 import Dashboard from "../../components/molecules/Dashboard/Dashboard";
-import styles from "../../components/molecules/Dashboard/Dashboard.scss";
+import  "../../components/molecules/Dashboard/Dashboard.scss";
 
 
 class DashboardInfos extends Component {
@@ -22,7 +22,7 @@ class DashboardInfos extends Component {
         let dashboard_text = this.props.dashboardInfos.info_text;
         
         return (
-          <div className={styles.Dashboard}>
+          <div className="Dashboard">
               <div>
                   <h3>Herzlich Willkommen zur euren Dashboard</h3>
                   <p>Lorem ipsum dolor sit ametat, sed diam voluptua.

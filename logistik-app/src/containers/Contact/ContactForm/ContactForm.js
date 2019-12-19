@@ -4,7 +4,7 @@ import  nodemailer   from 'nodemailer';
 import axios from 'axios';
 import Media from "react-media";
 
-import styles from './ContactForm.scss';
+import  './ContactForm.scss';
 import Input from '../../../components/atoms/Form/Input/Input'
 import CompanyAddress from '../../../components/molecules/CompanyAddress/CompanyAddress'
 import {faArrowAltCircleRight} from "@fortawesome/free-solid-svg-icons";
@@ -12,8 +12,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
 class ContactForm extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         
         this.state = {
             contactForm: {
@@ -92,7 +92,8 @@ class ContactForm extends Component {
                     valid: false,
                 }
             },
-            formIsValid: false
+            formIsValid: false,
+            isClicked: false
         };
         
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
@@ -236,7 +237,7 @@ class ContactForm extends Component {
                         />
                     ))
                 }
-                <div  className={styles.Button}>
+                <div>
                     <p> * Markierte Pflichtfelder bitte unbedingt ausfüllen </p>
                     <Button
                         variant="contained"
@@ -244,6 +245,7 @@ class ContactForm extends Component {
                         type="submit"
                         onClick={this.onSubmitHandler}
                     >Absenden  <FontAwesomeIcon icon={faArrowAltCircleRight} color="weith"  /></Button>
+    
                 </div>
             </form>
         );
@@ -255,9 +257,9 @@ class ContactForm extends Component {
                 large: "(min-width: 1200px)"
             }}>
                 { matches => (
-                    <div className={ matches.large ? styles.ContactForm : (matches.medium || matches.small) ? styles.ContactForm_Mobile : null }>
+                    <div className={ matches.large ? "ContactForm" : (matches.medium || matches.small) ? "ContactForm_Mobile" : null }>
                        <h3>Kontaktformular</h3>
-                        <div className={styles.Form}>
+                        <div className="Form">
                             {form}
                         </div>
                         <CompanyAddress/>

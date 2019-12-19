@@ -2,17 +2,15 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Media from "react-media";
 
-import styles from './Layout.scss';
-import NavigationItems from '../../components/molecules/Navigation/NavigationItems/NavigationItems'
+import './Layout.scss';
 import Logo from '../../components/molecules/Logo/Logo'
 import Footer from '../../components/molecules/Footer/Footer';
-import * as actions from "../../store/actions";
 import NavigationDesktop from '../../components/molecules/Navigation/NavigationDesktop/NavigationDesktop';
-import SideDrawerMobile from '../../components/molecules/Navigation/SideDrawerMobile/Sidedrawer';
+import SideDrawer from '../../components/molecules/Navigation/SideDrawerMobile/Sidedrawer';
 
 class Layout extends Component {
     state = {
-      showMobileNavigation: false
+        showMobileNavigation: false
     };
     
     mobileNavigationClosedHandler = () => {
@@ -36,14 +34,14 @@ class Layout extends Component {
                     }}
                 >
                     { matches => (
-                        <div className={styles.Content}>
-                            <header className={styles.Header}>
+                        <div className="Content">
+                            <header className="Header">
                                 <Logo />
                                 <NavigationDesktop toggleHandler={this.mobileNavigationToggleHandler}  isAuth={this.props.isAuthenticated}/>
                             </header>
-                            <SideDrawerMobile closed={this.mobileNavigationClosedHandler} open={this.state.showMobileNavigation} isAuth={this.props.isAuthenticated} />
-                            <main className={matches.large ? styles.Main : (matches.medium || matches.small) ?  styles.Main_Mobile : null } >{this.props.children}</main>
-                            <footer className={styles.Footer}>
+                            <SideDrawer closed={this.mobileNavigationClosedHandler}  open={this.state.showMobileNavigation} isAuth={this.props.isAuthenticated} />
+                            <main className={matches.large ? "Main" : (matches.medium || matches.small) ?  "Main_Mobile" : null } >{this.props.children}</main>
+                            <footer className="Footer">
                                 <Footer isAuth={this.props.isAuthenticated}/>
                             </footer>
                         </div>

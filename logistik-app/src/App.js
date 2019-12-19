@@ -12,23 +12,26 @@ import DashboardInfos from "./containers/DashboardInfos/DashboardInfos";
 import Login from './components/molecules/Login/Authentication'
 import Logout from "./containers/Logout/Log_out";
 
+
+
 class App extends Component {
     render() {
         return (
-            <div>
-                <Layout>
-                    <Switch>
-                        <Route path="/" exact component={ Home } />
-                        <Route path="/services" component={ Services } />
-                        <Route path="/contact" component={ Contact } />
-                        <Route path="/contactForm" component={ ContactForm } />
-                        <Route path="/legal" component={ LegalNotice } />
-                        <Route path="/protection" component={ DataProtection } />
-                        <Route path="/login" component={ Login } />
-                        <Route path="/logout" component={ Logout } />
-                        <Route path="/dashboard" component={ DashboardInfos } />
-                    </Switch>
-                </Layout>
+            <div className="App">
+                <div>
+                    <Layout>
+                        <Switch>
+                            <Route path="/" exact component={ Home } />
+                            <Route path="/services" render={() => <Services/>}/>
+                            <Route path="/contact"  render={() => <Contact/>}/>
+                            <Route path="/contactForm" component={ ContactForm } />
+                            <Route path="/legal" component={ LegalNotice } />
+                            <Route path="/protection" component={ DataProtection } />
+                            <Route path="/login" component={ Login } />
+                            <Route path="/logout" component={ Logout } />
+                        </Switch>
+                    </Layout>
+                </div>
             </div>
         );
     }

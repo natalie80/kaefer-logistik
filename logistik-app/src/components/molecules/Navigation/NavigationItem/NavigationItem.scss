@@ -2,10 +2,11 @@
     box-sizing: border-box;
     height: auto;
     width: 100%;
+    position: relative;
 }
 
 .NavigationItem  a {
-    color: #ffffff;
+    color: #424949;
     text-decoration: none;
     width: 100%;
     box-sizing: border-box;
@@ -23,7 +24,6 @@
         width: auto;
         height: 100%;
         margin: 10px 0;
-
     }
 
     .NavigationItem  a {
@@ -36,9 +36,35 @@
 
     }
 
-    .NavigationItem a:hover,
-    .NavigationItem a:active,
+    .NavigationItem a:before {
+        color: #424949;
+        transition: all .5s ease;
+        position: absolute;
+    }
+
+    .NavigationItem a:before {
+        bottom: 15px;
+        height: 1.5px;
+        width: 0%;
+        content: ' ';
+        background: #424949;
+        border-radius: 2px;
+    }
+
+    .NavigationItem a:hover:before {
+        opacity: 1;
+        width: 80%;
+    }
+
+    .NavigationItem a:hover {
+        color: #424949;
+    }
+
     .NavigationItem a.active {
-        color: white;
+        color: #424949;
+        &:before {
+            opacity: 1;
+            width: 80%;
+        }
     }
 }

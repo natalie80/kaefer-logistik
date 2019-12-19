@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from '../../../store/axios-instance'
 
-import styles from './Dashboard.scss';
+import  './Dashboard.scss';
 
 
 

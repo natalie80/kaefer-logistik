@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 
-
+import  './DataProtection.scss';
 
 class DataProtection extends Component {
     render() {
         return (
-            <div>
-               <h3>Here is Datenschutz</h3>
-                <div>
-                    <h3>Datenschutzhinweis:</h3>
-                        ​
+            <div className="DataProtection">
+                 <h3>Datenschutzhinweis:</h3>​
                     <h5> 1. Datenschutz auf einen Blick</h5>
                         ​
                       <p><b> Allgemeine Hinweise </b></p>
@@ -167,7 +164,6 @@ class DataProtection extends Component {
                         <p>Die von Ihnen an uns per Kontaktanfragen übersandten Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung
                             zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihres Anliegens).
                             Zwingende gesetzliche Bestimmungen – insbesondere gesetzliche Aufbewahrungsfristen – bleiben unberührt. </p>
-                </div>
             </div>
         );
     }

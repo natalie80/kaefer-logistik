@@ -1,21 +1,21 @@
 import React from 'react';
 
-import styles from './Input.scss';
+import   './Input.scss';
 
 const input = (props) => {
     let inputEl = null;
-    const inputStyle = [styles.InputEl];
+    let inputStyle = "InputEl";
     let validationError = null;
     
     if(props.invalid && props.shouldValidate && props.touched) {
-        inputStyle.push(styles.Invalid);
-        validationError = <p className={styles.Error}>Please enter a valid value!</p>;
+        inputStyle = "Invalid";
+        validationError = <p className='Error'>Please enter a valid value!</p>;
     }
     
     switch (props.elType) {
         case ('input') :
             inputEl = <input
-                className={inputStyle.join(' ')}
+                className = {inputStyle}
                 onChange={props.changed}
                 {...props.elConfig}
             />;
@@ -23,7 +23,7 @@ const input = (props) => {
         case ('select') :
             inputEl = (
                 <select
-                    className={inputStyle.join(' ')}
+                    className = {inputStyle}
                     onChange={props.changed}
                 >
                     <option value="">
@@ -34,7 +34,7 @@ const input = (props) => {
             break;
         case ('textarea') :
             inputEl = <textarea
-                className={inputStyle.join(' ')}
+                className = {inputStyle}
                 onChange={props.changed}
                 {...props.elConfig}
                 cols="30"
@@ -43,7 +43,7 @@ const input = (props) => {
             break;
         default:
             inputEl = <input
-                className={inputStyle.join(' ')}
+                className = {inputStyle}
                 onChange={props.changed}
                 {...props.elConfig}
             />
@@ -51,7 +51,7 @@ const input = (props) => {
     
     return (
         <div>
-            <label className={styles.Label} htmlFor="">{props.label}</label>
+            <label className="Label" htmlFor="">{props.label}</label>
             {inputEl}
              {validationError}
         </div>

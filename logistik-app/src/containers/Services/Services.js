@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
-import styles from './Services.scss';
+import './Services.scss';
 
 class Services extends Component {
     render() {
         return (
-            <div className={styles.Services}>
-               
-                <h2  className={styles.Headline}>Container-Logistik –  ein Partner, alle Leistungen</h2>
+            <div className="Services">
+                <h2  className="Headline">Container-Logistik –  ein Partner, alle Leistungen</h2>
                 <div>
-                    <h4 className={styles.Subheadline}>Willkommen beim professionellen und kompetenten Partner für </h4>
+                    <h4 className="Subheadline">Willkommen beim professionellen und kompetenten Partner für </h4>
                     <ul>
                         <li> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>nationale und internationale Containertransporte in ganz Europa (Nah- und Fernverkehr), insbesondere für den Fernverkehr zu/von deutschen Nordhäfen</p></li>
                         <li> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>One Way-Verkehr sowie Rundläufe vom Nordhafen bis zum Westhafen</p></li>
@@ -20,7 +19,7 @@ class Services extends Component {
                         <li> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>mperaturgeführte Reefer-Container/Genset</p></li>
                         <li> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>sichere Zwischenlagerung für Container (auch für temperaturempfindliche Güter)</p></li>
                     </ul>
-                    <h4 className={styles.Subheadline}>Verlassen Sie sich auf </h4>
+                    <h4 className="Subheadline">Verlassen Sie sich auf </h4>
                     <ul>
                         <li> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>zuverlässige Durchführung</p> </li>
                         <li> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>hohe Flexibilität</p> </li>
@@ -35,8 +34,8 @@ class Services extends Component {
                             und vieles mehr...
                         </li>
                     </ul>
-                    
-                    <h4 className={styles.Subheadline_Red}>Wir freuen uns auf Ihre Kontaktaufnahme.</h4>
+                
+                    <h4 className="Subheadline_Red">Wir freuen uns auf Ihre Kontaktaufnahme.</h4>
                 </div>
             </div>
         );

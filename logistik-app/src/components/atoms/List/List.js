@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TransitionGroup from "react-transition-group/TransitionGroup";
 import CSSTransition from "react-transition-group/CSSTransition";
 
-import styles from  './List.css';
+import  './List.css';
 
 class List extends Component {
     state = {
@@ -29,18 +29,18 @@ class List extends Component {
         const listItems = this.state.items.map( (item, index) => (
            <CSSTransition  key={index} timeout={300} classNames="fade">
                <li
-                   className={styles.ListItem}
+                   className="ListItem"
                    onClick={() => this.removeItemHandler(index)}>{item}</li>
            </CSSTransition>
         ));
 
         return (
             <div>
-                <button className={styles.Button} onClick={this.addItemHandler}>Add Item</button>
+                <button className="Button" onClick={this.addItemHandler}>Add Item</button>
                 <p>Click Item to Remove.</p>
                 <TransitionGroup
                     component="ul"
-                    className={styles.List}
+                    className="List"
                 >
                     {listItems}
                 </TransitionGroup>

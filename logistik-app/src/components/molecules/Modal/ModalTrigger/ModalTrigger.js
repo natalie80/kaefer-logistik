@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import styles from './ModalTrigger.scss';
+import  './ModalTrigger.scss';
 
 class ModalTrigger extends  Component {
     render() {
@@ -8,7 +8,7 @@ class ModalTrigger extends  Component {
             <a
                 ref={this.props.buttonRef}
                 onClick={this.props.showModal}
-                className={styles.Link}
+                className="Link"
             >
                 {this.props.triggerText}
             </a>
