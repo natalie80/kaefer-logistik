@@ -8,28 +8,45 @@
   height: 100%;
   transform: translateZ(0);
   background-color: rgba(0, 0, 0, 0.5);
+
+  .Button {
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
+
+  .ModalCloseButton {
+    padding: 0;
+    border: none;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
 }
 
 .ModalArea {
-  padding: 20px;
-  width: 500px;
+   padding: 20px;
+   width: 500px;
+   background: #fff;
+   top: 30%;
+   position: fixed;
+   left: calc(50% - 300px);
+   box-sizing: border-box;
+   box-shadow: 1px 1px 1px #000;
+   border-radius: 2px;
+ }
+
+.ModalArea_Mobile {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  margin-left: -150px;
+  margin-top: -150px;
   background: #fff;
-  top: 30%;
-  position: fixed;
-  left: calc(50% - 300px);
-  box-sizing: border-box;
-  box-shadow: 1px 1px 1px #000;
-  border-radius: 2px;
 }
+
 
 .ModalContent {
   width: 90%;
-}
-
-.ModalCloseButton {
-  padding: 0;
-  border: none;
-  position: absolute;
-  right: 5px;
-  top: 5px;
 }

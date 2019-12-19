@@ -3,7 +3,6 @@ import React from 'react';
 import  './Sidedrawer.scss';
 import NavigationItems from "../NavigationItems/NavigationItems";
 import Backdrop from '../../../atoms/Backdrop/Backdrop';
-import Hoc from '../../../../hoc/hoc';
 import DrawerClose from '../SideDrawerMobile/DrawerClose/DrawerClose';
 
 const sidedrawer = (props) => {

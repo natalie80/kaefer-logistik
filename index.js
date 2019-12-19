@@ -23,7 +23,19 @@ app.post('/api/send_email', (req, res) => {
         },
      tls: {
             rejectUnauthorized: false
-        }**/
+        }
+     ------------------
+     const mailConfig = {
+            host: 'smtp.ethereal.email',
+            port: 587,
+            secure: false,
+            auth: {
+                user: 'vernon51@ethereal.email',
+                pass: 'qnUpzAcD4583ZC2wMw'
+            }
+        };
+     
+     **/
     
     nodemailer.createTestAccount(( ) => {
         const htmlEmail = `
@@ -38,20 +50,20 @@ app.post('/api/send_email', (req, res) => {
         `;
         
         const mailConfig = {
-            host: 'smtp.ethereal.email',
-            port: 587,
+            host: 'smtp.gmail.com',
+            port: 4665,
             secure: false,
             auth: {
-                user: 'vernon51@ethereal.email',
-                pass: 'qnUpzAcD4583ZC2wMw'
+                user: 'natalikaefer@gmail.com',
+                pass: 'adem1301'
             }
         };
     
-        let transporter = nodemailer.createTransport(mailConfig);
+        let transporter = nodemailer.createTransport( "SMTP", mailConfig);
         
         let mailOptions = {
             from: req.body.formData.email,
-            to: 'vernon51@ethereal.email',
+            to: 'natalikaefer@gmail.com',
             sender: 'adem@web.de',
             subject: req.body.formData.subject,
             text: req.body.formData.message,

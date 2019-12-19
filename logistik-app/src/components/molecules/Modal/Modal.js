@@ -48,25 +48,24 @@ export class  Modal extends Component {
     render() {
         return (
             <React.Fragment>
-                <ModalTrigger
-                    showModal={this.showModal}
-                    buttonRef={ev => (this.TriggerButton = ev)}
-                    triggerText={this.props.modalText}
-                />
-                {
-                    this.state.isShown ? (
-                        <ModalContent
-                            modalRef={ev => (this.modal = ev)}
-                            buttonRef={ev => (this.closeButton = ev)}
-                            closeModal={this.closeModal}
-                            content={this.props.modalContent}
-                            onKeyDown={this.onKeyDown}
-                            onClickOutside={this.onClickOutside}
-                        />
-                     ) : null
-                
-                }
-                
+                    <ModalTrigger
+                        showModal={this.showModal}
+                        buttonRef={ev => (this.TriggerButton = ev)}
+                        triggerText={this.props.modalText}
+                    />
+                    {
+                        this.state.isShown ? (
+                            <ModalContent
+                                modalRef={ev => (this.modal = ev)}
+                                buttonRef={ev => (this.closeButton = ev)}
+                                closeModal={this.closeModal}
+                                content={this.props.modalContent}
+                                onKeyDown={this.onKeyDown}
+                                onClickOutside={this.onClickOutside}
+                            />
+                         ) : null
+                    
+                    }
             </React.Fragment>
         );
     }
