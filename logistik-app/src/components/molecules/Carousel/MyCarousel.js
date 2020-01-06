@@ -25,7 +25,7 @@ class MyCarousel extends Component {
                 </div>
                 <div>
                     <img src="https://static.wixstatic.com/media/c879fd_6eab8d37869d4af585f80583f9be181d~mv2_d_3000_1708_s_2.jpg/v1/fill/w_1920,h_1093,al_c,q_85,usm_0.66_1.00_0.01/c879fd_6eab8d37869d4af585f80583f9be181d~mv2_d_3000_1708_s_2.webp" />
-                    <p className="legend">24 Stunden Serviceauskunft 4221/288 40 50 </p>
+                    <p className="legend">24 Stunden Serviceauskunft +49 (4221) 288 40 50 </p>
                 </div>
                 <div>
                     <img src={Digitization} />

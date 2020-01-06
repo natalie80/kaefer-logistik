@@ -12,6 +12,8 @@
   .Button {
     margin-top: 15px;
     margin-bottom: 0;
+    padding: 4px;
+    text-transform: none;
   }
 
   .ModalCloseButton {
@@ -33,6 +35,8 @@
    box-sizing: border-box;
    box-shadow: 1px 1px 1px #000;
    border-radius: 2px;
+  border: 1px solid #000;
+  border-radius: 5px;
  }
 
 .ModalArea_Mobile {
@@ -44,6 +48,8 @@
   margin-left: -150px;
   margin-top: -150px;
   background: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
 }
 
 

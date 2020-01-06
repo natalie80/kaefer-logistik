@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Media from "react-media";
+import Mailto from 'react-protected-mailto';
 
 import  './Footer.scss';
 import Modal from "../Modal/Modal";
 import Authentication from '../Login/Authentication'
 import {connect} from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons'
 
 class Footer extends Component {
     
     state = {
         displayText: "Anmelden",
+        angleDoubleRight: true,
         modalContent:  <Authentication/>
     };
     
@@ -31,9 +35,9 @@ class Footer extends Component {
                                  : 'Info_Section_Mobile' }
                             >
                                 <h4>Adresse</h4>
-                                <p> Käfer Logistik GmbH </p>
-                                <p>StellerStr 30A</p>
-                                <p>27755 Delmenhorst</p>
+                                <p className="Footer-Link-Info"> Käfer Logistik GmbH </p>
+                                <p className="Footer-Link-Info">StellerStr 30A</p>
+                                <p className="Footer-Link-Info">27755 Delmenhorst</p>
                             </div>
                             
                             <div className={
@@ -42,9 +46,9 @@ class Footer extends Component {
                                 : 'Info_Section_Mobile' }
                             >
                                 <h4>Kontakt</h4>
-                                <p>Telefon: +49 (4221) 288 40 50</p>
-                                <p>Telefax: +49 (4221) 288 40 59</p>
-                                <p>Email: info@kaefer-logistik.com</p>
+                                <p className="Footer-Link-Info">Telefon:  <Mailto  tel='+49 )4221( 288 40 50'/> </p>
+                                <p className="Footer-Link-Info">Telefax: +49 (4221) 288 40 59</p>
+                                <p className="Footer-Link-Info">Email: <Mailto  email='info@kaefer-logistik.com'/> </p>
                             </div>
                             
                             <div className={
@@ -54,19 +58,18 @@ class Footer extends Component {
                             >
                                 
                                 <h4>Das Unternehmen</h4>
-                                <p><Link to='/protection'> Datenschutz </Link></p>
-                                <p><Link to="/legal">Impressum</Link></p>
-                                <p><Link to="/agb">AGB</Link></p>
+                                <p className="Footer-Link-Info"><Link to='/protection'> <FontAwesomeIcon icon={faAngleDoubleRight} color="weith" /><span className="FooterLink">Datenschutz</span></Link></p>
+                                <p className="Footer-Link-Info"><Link to="/legal"> <FontAwesomeIcon icon={faAngleDoubleRight} color="weith"/><span className="FooterLink">Impressum</span></Link></p>
             
                                 { !this.props.isAuthenticated
-                                    ? <Modal modalText={this.state.displayText} modalContent={this.state.modalContent}/>
-                                    : <p><Link to="/logout">Logout</Link></p>
+                                    ? <Modal buttonText={this.state.displayText} awesomeIcon={this.state.angleDoubleRight} modalContent={this.state.modalContent}/>
+                                    : <p className="Footer-Link-Info"><Link to="/logout">Logout</Link></p>
                                 }
                             </div>
                         </section>
                      )}
                 </Media>
-                <hr/>
+                <hr className="SeparateLine"/>
                 <div><p className="Copyright">© 2017 Käfer Logistik GmbH</p></div>
             </div>
         );

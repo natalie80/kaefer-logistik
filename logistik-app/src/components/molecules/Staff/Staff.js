@@ -4,7 +4,7 @@ import Media from "react-media";
 import  './Staff.scss';
 import DefaultImage from '../../../assets/staff/Default_Image.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPhoneAlt, faMailBulk, faMobileAlt } from '@fortawesome/free-solid-svg-icons'
+import { faPhoneAlt, faMobileAlt, faAt } from '@fortawesome/free-solid-svg-icons'
 
 const staff = (props) => {
   return (
@@ -19,11 +19,11 @@ const staff = (props) => {
                       <img key={props.key} src={DefaultImage} alt=""/>
                   </div>
                   <div className="Staff_Contact">
-                      <p key={props.key}> <b> {props.person_firstname} {props.person_surname} </b> </p>
-                      <p key={props.key}> <FontAwesomeIcon icon={faPhoneAlt} color="gray"  /> {props.person_telefon}</p>
+                      <p className="StaffName" key={props.key}> <b> {props.person_firstname} {props.person_surname} </b> </p>
+                      <p key={props.key}> <FontAwesomeIcon icon={faPhoneAlt} color="gray"  />+49 {props.person_telefon}</p>
                       
-                      { props.person_mobil && <p key={props.key}> <FontAwesomeIcon icon={faMobileAlt} color="gray" /> {props.person_mobil}</p> }
-                      <p key={props.key}> <FontAwesomeIcon icon={faMailBulk} color="gray"/> {props.person_email}</p>
+                      { props.person_mobil && <p key={props.key}> <FontAwesomeIcon icon={faMobileAlt} color="gray" /> 0 {props.person_mobil}</p> }
+                      <p key={props.key}> <FontAwesomeIcon icon={faAt} color="gray"/> {props.person_email}</p>
                   </div>
               </section>
           )}

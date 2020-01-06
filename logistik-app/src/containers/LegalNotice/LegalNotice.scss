@@ -1,4 +1,4 @@
-.DataProtection {
+.LegalNotice {
   padding: 20px;
 
   .Headline {
@@ -7,15 +7,20 @@
     text-align: left;
     padding: 0;
   }
-  h4 {
-    margin: 0;
+  .Subheadline {
+    font-weight: 600;
+    margin-bottom: 0;
+    padding-left: 0;
   }
 
- .ContactDetails{
+  ul {
     list-style: none;
     padding: 0;
   }
   .Bold {
     font-weight: 600;
+  }
+  .MarginNull {
+    margin: 0;
   }
 }

@@ -1,6 +1,11 @@
 .MyCarousel {
-  .carousel .slide .legend {
-    background: #424949;
-    bottom: 10px;
+  .carousel .slide {
+    .legend {
+      background: lightslategrey;
+      bottom: 15px;
+      opacity: 1;
+      letter-spacing: 0.75px;
+      font-size: 1em;
+    }
   }
 }

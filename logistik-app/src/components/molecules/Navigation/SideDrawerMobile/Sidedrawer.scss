@@ -18,6 +18,24 @@
     margin-top: 35px;
     border-top: 1px solid #f5f3f3;
   }
+
+  .Kaefer_1,
+  .Kaefer_2 {
+    position: absolute;
+    width: 40px;
+  }
+
+  .Kaefer_1 {
+    transform: rotate(35deg);
+    left: 80px;
+    bottom: 260px;
+  }
+
+  .Kaefer_2 {
+    transform: rotate(20deg);
+    left: 55px;
+    bottom: 170px;
+  }
 }
 
 .NavigationMobile {

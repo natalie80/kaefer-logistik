@@ -1,5 +1,4 @@
 .Staff_Container {
-    border: 1px solid gray;
     height: auto;
     box-sizing: border-box;
     box-shadow:  0 2px 3px #AC9980;
@@ -7,6 +6,7 @@
     margin: 20px;
     position: relative;
     display: flex;
+    background: #fff;
 
     img {
         height: auto;
@@ -15,9 +15,11 @@
     }
 
 }
+.StaffName {
+    color: #b41527;
+}
 
 .Staff_Container_Mobile {
-    border: 1px solid gray;
     height: auto;
     box-sizing: border-box;
     box-shadow:  0 2px 3px #AC9980;
@@ -27,6 +29,7 @@
     display: flex;
     padding-bottom: 15px;
     padding-top: 15px;
+    background: #fff;
 
     img {
         width: 100px;

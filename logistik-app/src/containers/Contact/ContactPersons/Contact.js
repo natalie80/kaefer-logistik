@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from '../../../store/axios-instance';
 
 import Staff from '../../../components/molecules/Staff/Staff';
+import ContactForm  from '../ContactForm/ContactForm';
 import Hoc from '../../../hoc/hoc';
 
 class Contact extends Component {
@@ -46,6 +47,8 @@ class Contact extends Component {
                         </Hoc>
                     ))
                 }
+
+                <ContactForm/>
             </div>
         );
     }

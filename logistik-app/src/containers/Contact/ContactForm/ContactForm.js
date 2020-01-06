@@ -6,8 +6,7 @@ import Media from "react-media";
 
 import  './ContactForm.scss';
 import Input from '../../../components/atoms/Form/Input/Input'
-import CompanyAddress from '../../../components/molecules/CompanyAddress/CompanyAddress'
-import {faArrowAltCircleRight} from "@fortawesome/free-solid-svg-icons";
+import {faAngleDoubleRight, faArrowAltCircleRight} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
@@ -238,13 +237,14 @@ class ContactForm extends Component {
                     ))
                 }
                 <div>
-                    <p> * Markierte Pflichtfelder bitte unbedingt ausfüllen </p>
+                    <p className="Hint"> * Markierte Pflichtfelder bitte unbedingt ausfüllen </p>
                     <Button
                         variant="contained"
                         color="primary"
                         type="submit"
+                        className="Button"
                         onClick={this.onSubmitHandler}
-                    >Absenden  <FontAwesomeIcon icon={faArrowAltCircleRight} color="weith"  /></Button>
+                    >Absenden  <FontAwesomeIcon icon={faAngleDoubleRight} color="weith" /> </Button>
     
                 </div>
             </form>
@@ -259,10 +259,10 @@ class ContactForm extends Component {
                 { matches => (
                     <div className={ matches.large ? "ContactForm" : (matches.medium || matches.small) ? "ContactForm_Mobile" : null }>
                        <h3>Kontaktformular</h3>
+                        <p>Haben Sie eine Frage oder möchten Sie aus einem anderem Grund Kontakt mit uns aufnehmen? Dann hinterlassen Sie uns eine Nachricht und wir werden Sie schnellstmöglich antworten.</p>
                         <div className="Form">
                             {form}
                         </div>
-                        <CompanyAddress/>
                     </div>
                 )}
             </Media>

@@ -51,7 +51,8 @@ export class  Modal extends Component {
                     <ModalTrigger
                         showModal={this.showModal}
                         buttonRef={ev => (this.TriggerButton = ev)}
-                        triggerText={this.props.modalText}
+                        triggerText={this.props.buttonText}
+                        awesomeIcon={this.props.awesomeIcon}
                     />
                     {
                         this.state.isShown ? (

@@ -34,7 +34,7 @@ class Layout extends Component {
                     }}
                 >
                     { matches => (
-                        <div className="Content">
+                        <div className={(matches.large || matches.medium) ? "Content" : matches.small ?  "Content_Mobile" : null }>
                             <header className="Header">
                                 <Logo />
                                 <NavigationDesktop toggleHandler={this.mobileNavigationToggleHandler}  isAuth={this.props.isAuthenticated}/>
@@ -57,11 +57,5 @@ const mapStateToProps = state => {
         isAuthenticated: state.auth.tokenId != null
     };
 };
-
-/**
-const mapDispatchToProps = dispatch => {
-    return { };
-};
-**/
 
 export default connect(mapStateToProps, null)(Layout);

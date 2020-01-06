@@ -10,7 +10,7 @@
     padding: 10px;
     box-sizing: border-box;
     width: 100%;
-    border: 1px solid #521751;
+    border: 1px solid #b41527;
     background-color: white;
     text-align: center;
     cursor: pointer;
@@ -22,10 +22,10 @@
 }
 
 .Button {
-    border: 1px solid #521751;
+    border: 1px solid #b41527;
     font: inherit;
     padding: 8px;
-    background-color: #521751;
+    background-color: #b41527;
     color: white;
     cursor: pointer;
 }

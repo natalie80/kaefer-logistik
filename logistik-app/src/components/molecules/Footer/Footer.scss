@@ -1,25 +1,30 @@
 @import "../../../hoc/Layout/Variables";
 
 .Footer {
-  /*  background: $primaryColor;*/
-    p {
-        margin: 0;
+    color: #fff;
+
+    .Footer-Link-Info {
+        margin: 0 0 8px 0;;
         font-size: small;
-        color: #C0C0C0;
     }
     h4 {
         text-transform: uppercase;
-        margin: 0;
-        color: #C0C0C0;
+        margin: 0 0 10px 0;
     }
     a {
         text-decoration: none;
-        color: #C0C0C0;
+        color: #fff;
+    }
+    .FooterLink {
+        margin-left: 5px;
+    }
+    .SeparateLine {
+        border-width: 0.75px;
     }
 }
 
 .Info_Section {
-    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .Info_Section_Tablet {
@@ -36,9 +41,8 @@
 
 .Contact_Daten {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 20px;
+    width: 60%;
+    margin: 40px auto;
 }
 
 .Contact_Daten_Mobile {
@@ -49,5 +53,6 @@
     text-align: center;
     padding-bottom: 20px;
     padding-top: 20px;
+    margin: 0;
 }
 

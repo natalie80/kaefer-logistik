@@ -12,11 +12,11 @@ class Services extends Component {
                 <div>
                     <h4 className="Subheadline">Willkommen beim professionellen und kompetenten Partner für </h4>
                     <ul>
-                        <li> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>nationale und internationale Containertransporte in ganz Europa (Nah- und Fernverkehr), insbesondere für den Fernverkehr zu/von deutschen Nordhäfen</p></li>
+                        <li> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <span>nationale und internationale Containertransporte in ganz Europa (Nah- und Fernverkehr), insbesondere für den Fernverkehr zu/von deutschen Nordhäfen</span></li>
                         <li> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>One Way-Verkehr sowie Rundläufe vom Nordhafen bis zum Westhafen</p></li>
                         <li> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>Standard-Containertransporte (demnächst: Kombi- und ADR-Transporte)</p></li>
                         <li> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>45-Fuß-Containertransporte</p></li>
-                        <li> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>mperaturgeführte Reefer-Container/Genset</p></li>
+                        <li> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>temperaturgeführte Reefer-Container/Genset</p></li>
                         <li> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>sichere Zwischenlagerung für Container (auch für temperaturempfindliche Güter)</p></li>
                     </ul>
                     <h4 className="Subheadline">Verlassen Sie sich auf </h4>
@@ -31,11 +31,11 @@ class Services extends Component {
                     </ul>
                     <ul>
                         <li>
-                            und vieles mehr...
+                            und noch vieles mehr...
                         </li>
                     </ul>
                 
-                    <h4 className="Subheadline_Red">Wir freuen uns auf Ihre Kontaktaufnahme.</h4>
+                    <p><a  className="ContactLink"  href="/contact">Wir freuen uns auf Ihre Kontaktaufnahme.</a></p>
                 </div>
             </div>
         );
