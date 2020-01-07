@@ -5,6 +5,16 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import './Services.scss';
 
 class Services extends Component {
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log('Services Hier is componentDidUpdate: prevProps / prevState', prevProps, prevState);
+
+    }
+
+    componentWillUnmount() {
+        console.log(' Services Hier is componentWillUnmount:');
+    }
+
     render() {
         return (
             <div className="Services">

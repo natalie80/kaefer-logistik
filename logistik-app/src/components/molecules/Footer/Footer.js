@@ -66,6 +66,9 @@ class Footer extends Component {
                                     : <p className="Footer-Link-Info"><Link to="/logout">Logout</Link></p>
                                 }
                             </div>
+                            <div className="Telephone-Number">
+                                <p> 24 Stunden Serviceauskunft <span>+49 (4221) 288 40 50</span> </p>
+                            </div>
                         </section>
                      )}
                 </Media>

@@ -258,7 +258,7 @@ class ContactForm extends Component {
             }}>
                 { matches => (
                     <div className={ matches.large ? "ContactForm" : (matches.medium || matches.small) ? "ContactForm_Mobile" : null }>
-                       <h3>Kontaktformular</h3>
+                       <h3 className="Subheadline">Kontaktformular</h3>
                         <p>Haben Sie eine Frage oder möchten Sie aus einem anderem Grund Kontakt mit uns aufnehmen? Dann hinterlassen Sie uns eine Nachricht und wir werden Sie schnellstmöglich antworten.</p>
                         <div className="Form">
                             {form}

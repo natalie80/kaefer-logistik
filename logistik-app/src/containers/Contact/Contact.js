@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import axios from '../../../store/axios-instance';
+import axios from '../../store/axios-instance';
 
-import Staff from '../../../components/molecules/Staff/Staff';
-import ContactForm  from '../ContactForm/ContactForm';
-import Hoc from '../../../hoc/hoc';
+import './Contact.scss';
+import Staff from '../../components/molecules/Staff/Staff';
+import ContactForm  from './ContactForm/ContactForm';
+import Hoc from '../../hoc/hoc';
 
 class Contact extends Component {
     state = {
@@ -33,6 +34,7 @@ class Contact extends Component {
     render() {
         return (
             <div>
+                <h3 className="Subheadline">Kontakt zur Person</h3>
                 {
                     this.state.persons.map(person => (
                         <Hoc>

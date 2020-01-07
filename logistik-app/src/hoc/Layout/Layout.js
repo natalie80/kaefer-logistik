@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Media from "react-media";
+import { withRouter } from "react-router-dom";
 
 import './Layout.scss';
 import Logo from '../../components/molecules/Logo/Logo'
@@ -24,8 +25,11 @@ class Layout extends Component {
     };
     
     render () {
+        const url = this.props.location.pathname.split('/');
+
         return (
             <React.Fragment>
+
                 <Media
                     queries={{
                         small: "(max-width: 599px)",
@@ -34,7 +38,12 @@ class Layout extends Component {
                     }}
                 >
                     { matches => (
-                        <div className={(matches.large || matches.medium) ? "Content" : matches.small ?  "Content_Mobile" : null }>
+                        <div className={
+                            (url[1] == '' || url[1] == 'protection') ? 'Content_Homepage'
+                                : (matches.large || matches.medium) ? "Content"
+                                : matches.small ?  "Content_Mobile"
+                                    : null
+                        }>
                             <header className="Header">
                                 <Logo />
                                 <NavigationDesktop toggleHandler={this.mobileNavigationToggleHandler}  isAuth={this.props.isAuthenticated}/>
@@ -58,4 +67,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, null)(Layout);
+export default withRouter(connect(mapStateToProps, null)(Layout));

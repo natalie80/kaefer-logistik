@@ -11,7 +11,11 @@
 }
 
 .Content_Mobile {
-    background: #fff;
+    background: #cce5f8;
+}
+
+.Content_Homepage {
+    background: #cce5f8;
 }
 
 .Header {
@@ -44,6 +48,12 @@
     background: rgba(245, 245 ,255, 0.90);
     color: #000;
     padding: 10px 0;
+
+    .Headline {
+        padding-left: 0;
+        text-align: initial;
+        margin-top: 0;
+    }
 }
 
 .Footer {

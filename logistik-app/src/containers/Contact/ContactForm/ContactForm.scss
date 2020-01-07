@@ -1,7 +1,6 @@
 @import "../../../hoc/Layout/Variables.scss";
 
 .ContactForm {
-  width: 80%;
   margin: 10px auto;
   padding: 10px;
   box-sizing: border-box;
@@ -56,15 +55,10 @@
 }
 
 .ContactForm_Mobile {
-  width: 100%;
   text-align: initial;
   padding: 10px;
   box-sizing: border-box;
   margin-bottom: 30px;
-
-  h3 {
-    color: $primaryColor;
-  }
 
   .Hint {
     font-style: italic;
