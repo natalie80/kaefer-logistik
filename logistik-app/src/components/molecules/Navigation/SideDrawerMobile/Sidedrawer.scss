@@ -12,6 +12,9 @@
 
   a {
     color: #282c34;
+    display: block;
+    padding-bottom: 10px;
+    padding-top: 10px;
   }
 
   nav {
@@ -21,46 +24,44 @@
 
   .Kaefer_1,
   .Kaefer_2 {
-    position: absolute;
-    width: 40px;
+      position: absolute;
+      width: 40px;
   }
 
   .Kaefer_1 {
-    transform: rotate(35deg);
-    left: 80px;
-    bottom: 260px;
+     transform: rotate(35deg);
+     left: 80px;
+     bottom: 260px;
   }
 
   .Kaefer_2 {
-    transform: rotate(20deg);
-    left: 55px;
-    bottom: 170px;
+      transform: rotate(20deg);
+      left: 55px;
+      bottom: 170px;
   }
 }
 
 .NavigationMobile {
-   ul {
-      display: block;
+  ul {
+    display: block;
 
-       li {
-         padding-bottom: 10px;
-         padding-top: 10px;
-         border-bottom: 1px solid #f5f3f3;
-         line-height: 1.5rem;
-       }
-   }
+    li {
+       border-bottom: 1px solid #f5f3f3;
+       line-height: 1.5rem;
+    }
+  }
 }
 
 @media (min-width: 500px) {
   .SideDrawer {
-    display: none;
+      display: none;
   }
 }
 
 .Open {
   animation: movedrawer normal  1s;
   animation-fill-mode: forwards;
-  
+
   @keyframes movedrawer {
     from {
       transform: translateX(100%) ;
@@ -77,11 +78,11 @@
   animation-fill-mode: backwards;
 
   @keyframes closedrawer {
-   from {
+    from {
       transform: translateX(0);
     }
 
-   to {
+    to {
       transform: translateX(100%);
     }
   }

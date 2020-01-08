@@ -1,5 +1,6 @@
 import React from 'react';
 import Media from "react-media";
+import Mailto from 'react-protected-mailto';
 
 import  './Staff.scss';
 import DefaultImage from '../../../assets/staff/Default_Image.png'
@@ -20,10 +21,10 @@ const staff = (props) => {
                   </div>
                   <div className="Staff_Contact">
                       <p className="StaffName" key={props.key}> <b> {props.person_firstname} {props.person_surname} </b> </p>
-                      <p key={props.key}> <FontAwesomeIcon icon={faPhoneAlt} color="gray"  />+49 {props.person_telefon}</p>
+                      <p key={props.key} className="Person_Email"> <FontAwesomeIcon icon={faPhoneAlt} color="gray"  /> <Mailto  tel={props.person_telefon}/></p>
                       
-                      { props.person_mobil && <p key={props.key}> <FontAwesomeIcon icon={faMobileAlt} color="gray" /> 0 {props.person_mobil}</p> }
-                      <p key={props.key}> <FontAwesomeIcon icon={faAt} color="gray"/> {props.person_email}</p>
+                      { props.person_mobil && <p key={props.key} className="Person_Email"> <FontAwesomeIcon icon={faMobileAlt} color="gray" />  <Mailto  tel={props.person_mobil}/> </p> }
+                      <p key={props.key} className="Person_Email"> <FontAwesomeIcon icon={faAt} color="gray"/> <Mailto  email={props.person_email} />  </p>
                   </div>
               </section>
           )}

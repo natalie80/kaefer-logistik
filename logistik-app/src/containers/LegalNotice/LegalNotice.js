@@ -3,10 +3,16 @@ import React, { Component } from 'react';
 import "./LegalNotice.scss";
 
 class LegalNotice extends Component {
+
+
+    componentDidMount() {
+        document.title = "Container Logistik – ein Partner und alle Leistungen | Kaefer Logistik";
+    }
+
     render() {
         return (
             <div className="LegalNotice">
-              <h2 className="Headline">Impressum</h2>
+              <h1 className="Headline">Impressum</h1>
                 <div>
                     <ul>
                         <li className="Bold">Angaben gemäß § 5 TMG:</li>

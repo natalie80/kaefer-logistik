@@ -67,7 +67,7 @@ class Footer extends Component {
                                 }
                             </div>
                             <div className="Telephone-Number">
-                                <p> 24 Stunden Serviceauskunft <span>+49 (4221) 288 40 50</span> </p>
+                                <p> 24 Stunden Serviceauskunft <span className="Footer-Hotline"> <Mailto  tel='+49 )4221( 288 40 50'/></span> </p>
                             </div>
                         </section>
                      )}

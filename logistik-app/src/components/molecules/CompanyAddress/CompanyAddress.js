@@ -4,15 +4,13 @@ import  './CompanyAddress.scss';
 import OpenStreetMap from '../OpenStreetMap/OpenStreetMap';
 
 
-const companyAddress = (props) => {
+const companyAddress = () => {
     return (
         <div className="CompanyAddress">
             <div>
-                <h2 className="Headline">Ihr Weg zur Käfer Logistik</h2>
-                <h3>Anfahrt</h3>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, ut laoreet dolore magna aliquam erat volutpat.
-                    Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip
-                    ex ea commodo consequat.</p>
+                <h1 className="Headline">Ihr Weg zur Käfer Logistik</h1>
+
+                <p>Ob Sie mit dem Auto oder Öffentlichen Verkehrsmitteln ankommen, unser Unternehmen <b>Käfer Logistik</b> am StellerStr 30A in Delmenhorst ist einfach zu erreichen. </p>
                 <h3>Adresse</h3>
                 <ul>
                     <li> Käfer Logistik GmbH</li>
@@ -22,7 +20,7 @@ const companyAddress = (props) => {
             </div>
 
             <div>
-                <h3>OpenStreet Maps</h3>
+                <h3>Maps</h3>
                 <OpenStreetMap/>
             </div>
         </div>

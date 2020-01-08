@@ -12,6 +12,8 @@ class Contact extends Component {
     };
     
     componentDidMount() {
+        document.title = "24 Stunden Serviceauskunft | Kaefer Logistik";
+
         axios.get('/persons.json')
             .then(res => {
                 console.log('Here is persons: ', res.data);
@@ -33,8 +35,9 @@ class Contact extends Component {
     
     render() {
         return (
-            <div>
-                <h3 className="Subheadline">Kontakt zur Person</h3>
+            <div className="Contact">
+                <h1 className="Headline">Kontakt</h1>
+                <h2 className="Subheadline">Kontakt zur Person</h2>
                 {
                     this.state.persons.map(person => (
                         <Hoc>

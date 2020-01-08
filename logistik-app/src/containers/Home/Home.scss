@@ -1,5 +1,5 @@
 .Home {
-    padding-bottom: 30px;
+    padding: 20px;
 }
 
 .Button {
@@ -15,18 +15,4 @@
 .Button:hover,
 .Button:active {
     background-color: #fa923f;
-}
-
-.Headline {
-    color: #b41527;
-    text-align: center;
-    font-weight: 600;
-}
-
-.Headline_Mobile {
-    font-size: 1.15rem;
-    padding-left: 0;
-    color: #b41527;
-    text-transform: uppercase;
-    text-align: center;
 }

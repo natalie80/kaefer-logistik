@@ -13,7 +13,6 @@
         box-shadow: 1px 2px 1px 0 grey;
         width: 150px;
     }
-
 }
 .StaffName {
     color: #b41527;
@@ -24,7 +23,7 @@
     box-sizing: border-box;
     box-shadow:  0 2px 3px #AC9980;
     border-radius: 5px;
-    margin: 20px;
+    margin: 20px 0;
     position: relative;
     display: flex;
     padding-bottom: 15px;
@@ -56,4 +55,12 @@
     float: right;
     width: 80%;
     margin-left: 30px;
+}
+
+.Person_Email {
+    a {
+        text-decoration: none;
+        color: #000;
+        margin-left: 5px;
+    }
 }

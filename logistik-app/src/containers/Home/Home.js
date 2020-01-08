@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Media from "react-media";
-import { Typography } from '@material-ui/core';
 
 import './Home.scss';
 import Backdrop from '../../components/atoms/Backdrop/Backdrop'
@@ -12,8 +10,12 @@ class Home extends Component {
         modalIsOpen: false,
         showBlock: false
     };
-    
-    showModal = () => {
+
+    componentDidMount() {
+        document.title = "Logistikdienstleister für Transport in Delmenhorst | Käfer Logistik";
+    }
+
+        showModal = () => {
         this.setState({modalIsOpen: true});
     };
     
@@ -24,28 +26,18 @@ class Home extends Component {
     
     render() {
         return (
-            <Media
-                queries={{
-                    small: "(max-width: 599px)",
-                    medium: "(min-width: 600px) and (max-width: 1199px)",
-                    large: "(min-width: 1200px)"
-                }}
-            >
-                { matches => (
-                    <div className="Home">
-                        <h2  className= {matches.large ? "Headline" : (matches.medium || matches.small) ?  "Headline_Mobile" : null } >
-                            Container-Logistik von ihrer besten Seite
-                        </h2>
-            
-            
-                        <MyCarousel/>
-            
-                        <Modal show={this.state.modalIsOpen} closed={this.closeModal}/>
-                        { this.state.modalIsOpen ? <Backdrop show={this.state.modalIsOpen} />  : null }
-        
-                    </div>
-                )}
-            </Media>
+            <div className="Home">
+                <h1  className="Headline">
+                    Container-Logistik von ihrer besten Seite
+                </h1>
+
+
+                <MyCarousel/>
+
+                <Modal show={this.state.modalIsOpen} closed={this.closeModal}/>
+                { this.state.modalIsOpen ? <Backdrop show={this.state.modalIsOpen} />  : null }
+
+            </div>
         );
     }
 }
