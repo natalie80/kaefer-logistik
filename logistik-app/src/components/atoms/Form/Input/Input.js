@@ -7,9 +7,9 @@ const input = (props) => {
     let inputStyle = "InputEl";
     let validationError = null;
     
-    if(props.invalid && props.shouldValidate && props.touched) {
-        inputStyle = "Invalid";
-        validationError = <p className='Error'>Please enter a valid value!</p>;
+    if(props.invalid) {
+        inputStyle = "InputEl Invalid";
+        validationError = <p className='Error'>{props.errorMessage}</p>;
     }
     
     switch (props.elType) {

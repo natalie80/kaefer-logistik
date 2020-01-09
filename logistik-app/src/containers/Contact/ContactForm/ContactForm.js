@@ -24,9 +24,11 @@ class ContactForm extends Component {
                     },
                     value: '',
                     validation: {
-                        required: true
+                        required: true,
+                        isString: true,
+                        error: 'Invalid name format'
                     },
-                    valid: false
+                    valid: true
                 },
                 email: {
                     elType: 'input',
@@ -36,9 +38,11 @@ class ContactForm extends Component {
                     },
                     value: '',
                     validation: {
-                        required: true
+                        required: true,
+                        isEmail: true,
+                        error: 'Invalid email format'
                     },
-                    valid: false
+                    valid: true
                 },
                 company: {
                     elType: 'input',
@@ -50,7 +54,7 @@ class ContactForm extends Component {
                     validation: {
                         required: false
                     },
-                    valid: false
+                    valid: true
                 },
                 phone: {
                     elType: 'input',
@@ -61,22 +65,21 @@ class ContactForm extends Component {
                     value: '',
                     validation: {
                         required: false,
-                        minLength: 6,
-                        maxLength: 9
+                        isNumeric: true
                     },
-                    valid: false
+                    valid: true
                 },
                 subject: {
                     elType: 'input',
                     elConfig: {
                         type: 'text',
-                        placeholder: 'Betreff'
+                        placeholder: 'Betreff*'
                     },
                     value: '',
                     validation: {
                         required: true
                     },
-                    valid: false
+                    valid: true
                 },
                 message: {
                     elType: 'textarea',
@@ -86,9 +89,10 @@ class ContactForm extends Component {
                     },
                     value: '',
                     validation: {
-                        required: true
+                        required: true,
+                        error: 'Invalid message format'
                     },
-                    valid: false,
+                    valid: true,
                 }
             },
             formIsValid: false,
@@ -119,6 +123,7 @@ class ContactForm extends Component {
     };
 
     checkValidation(value, rules) {
+        console.log('checkValidation value/rules', value, rules);
         let isValid = true;
         
         if (!rules) {
@@ -128,70 +133,27 @@ class ContactForm extends Component {
         if(rules.required) {
             isValid = value.trim() !== '' && isValid;
         }
-        if(rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid
-        }
-        if(rules.maxLength) {
-            isValid = value.length <= rules.maxLength &&  isValid
-        }
+
         if (rules.isEmail) {
+            console.log(' --Mail-- ');
             const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-            isValid = pattern.test(value) && isValid
+            isValid = value.search(pattern) == 0 ? true : false;
         }
         if (rules.isNumeric) {
+            console.log(' --isNumeric-- ');
             const pattern = /^\d+$/;
-            isValid = pattern.test(value) && isValid
+            isValid = value.search(pattern) == 0 ? true : false;
         }
+        if (rules.isString) {
+            console.log(' --isString-- ');
+            const pattern = /^[a-zA-Z]+$/;
+            isValid = value.search(pattern) == 0 ? true : false;
+
+        }
+        console.log('isValid: ',isValid);
         
         return isValid;
     }
-
-    sendEmail = (formData) => {
-        console.log('sendEmail', formData);
-        
-        const mailConfig = {
-            host: 'ssh.natalie-kaefer.de',
-            port: 22,
-            secure: false,
-            auth: {
-                user: 'natalie-kaefer.de',
-                pass: 'nkl!0407'
-            }
-        };
-        let mailOptions = {
-            from: 'Adem',
-            to: 'info@natalie-kaefer.de',
-            sender: 'adem@web.de',
-            subject: 'Adem React  Email',
-            text: 'Hallo hier ist meine erste EMail!!',
-            html: '<h4> HTML version Halli Halllo </h4>',
-            attachments: ''
-        };
-        
-        nodemailer.createTestAccount( ( ) => {
-            let transporter = nodemailer.createTransport(mailConfig);
-        
-            // verify connection configuration
-            transporter.verify(function(error, success) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log("Server is ready to take our messages");
-                }
-            });
-        
-            transporter.sendMail(mailOptions, ( err, info) => {
-                if(err) {
-                    return console.log(err);
-                } else {
-                    console.log('Message sent', info.messageId);
-                }
-                transporter.close();
-                console.log('Preview URL', nodemailer.getTestMessageUrl(info));
-               
-            });
-        });
-    };
     
     async onSubmitHandler(ev) {
         console.log('--onSubmitHandler--');
@@ -234,6 +196,7 @@ class ContactForm extends Component {
                             value={formEl.config.value}
                             invalid={!formEl.config.valid}
                             shouldValidate={formEl.config.validation}
+                            errorMessage={formEl.config.validation.error}
                             changed={ (ev) => this.onChangedHandler(ev,formEl.id)}
                         />
                     ))
