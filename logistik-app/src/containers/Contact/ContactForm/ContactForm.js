@@ -246,7 +246,7 @@ class ContactForm extends Component {
                         type="submit"
                         className="Button"
                         onClick={this.onSubmitHandler}
-                    >Absenden  <FontAwesomeIcon icon={faAngleDoubleRight} color="weith" /> </Button>
+                    >Absenden  <FontAwesomeIcon icon={faAngleDoubleRight}/> </Button>
     
                 </div>
             </form>
@@ -261,7 +261,7 @@ class ContactForm extends Component {
                 { matches => (
                     <div className={ matches.large ? "ContactForm" : (matches.medium || matches.small) ? "ContactForm_Mobile" : null }>
                        <h2 className="Subheadline">Kontaktformular</h2>
-                        <p>Haben Sie eine Frage oder möchten Sie aus einem anderem Grund Kontakt mit uns aufnehmen? Dann hinterlassen Sie uns eine Nachricht und wir werden Sie schnellstmöglich antworten.</p>
+                        <p>Haben Sie eine Frage oder möchten Sie aus einem Grund Kontakt mit uns aufnehmen. Dann hinterlassen Sie uns einfach eine Nachricht. Wir freuen uns auf Sie und werden schnellstmöglich einen Antwort geben.</p>
                         <div className="Form">
                             {form}
                         </div>

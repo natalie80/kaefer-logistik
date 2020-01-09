@@ -1,7 +1,7 @@
 .Services {
     padding: 20px;
     p {
-        display: inline;
+       margin: 0;
     }
     ul {
         list-style: none;
@@ -21,6 +21,11 @@
         text-decoration: none;
         color: #b41527;
         font-weight: bold;
+    }
+
+    .Sentence-More {
+        margin-bottom: 20px;
+        margin-top: 20px;
     }
 
 }

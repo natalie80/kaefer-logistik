@@ -17,7 +17,7 @@ const staff = (props) => {
           { matches => (
               <section key={props.key} className={(matches.large || matches.medium) ? "Staff_Container" : "Staff_Container_Mobile" }>
                   <div className="Staff_Image" key={props.key}>
-                      <img key={props.key} src={DefaultImage} alt=""/>
+                      <img key={props.key} src={DefaultImage} alt={props.person_surname}/>
                   </div>
                   <div className="Staff_Contact">
                       <p className="StaffName" key={props.key}> <b> {props.person_firstname} {props.person_surname} </b> </p>
