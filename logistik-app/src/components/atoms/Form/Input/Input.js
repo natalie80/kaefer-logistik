@@ -5,11 +5,18 @@ import   './Input.scss';
 const input = (props) => {
     let inputEl = null;
     let inputStyle = "InputEl";
+    let radioStyle = props.elConfig.type === 'radio' ? 'CustomerSalutation' : '';
     let validationError = null;
-    
-    if(props.invalid) {
+  //  console.log('hier is invalid validate ',props.invalid, props.shouldValidate);
+    if(!props.invalid && props.value.trim() !== '' && props.shouldValidate.required) {
+        console.log('ADD ERROR');
         inputStyle = "InputEl Invalid";
-        validationError = <p className='Error'>{props.errorMessage}</p>;
+        validationError = <p className='Error'>{props.shouldValidate.error}</p>;
+    }
+
+    if(props.shouldValidate.required && props.value.trim() !== '') {
+        console.log('KEINE ERROR');
+        inputStyle = " InputEl ";
     }
     
     switch (props.elType) {
@@ -37,8 +44,6 @@ const input = (props) => {
                 className = {inputStyle}
                 onChange={props.changed}
                 {...props.elConfig}
-                cols="30"
-                rows="10"
             />;
             break;
         default:
@@ -50,11 +55,13 @@ const input = (props) => {
     }
     
     return (
-        <div>
-            <label className="Label" htmlFor="">{props.label}</label>
-            {inputEl}
-             {validationError}
-        </div>
+        <React.Fragment>
+            <div className={radioStyle}>
+                <label className="Label" htmlFor="">{props.label}</label>
+                {inputEl}
+                 {validationError}
+            </div>
+        </React.Fragment>
     );
 };
 

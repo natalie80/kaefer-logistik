@@ -5,7 +5,7 @@
 }
 
 .Label {
-  display: block;
+  display: inline-block;
   margin-bottom: 8px;
 }
 
@@ -14,22 +14,42 @@
   border: 1px solid #ccc;
   background-color: white;
   font: inherit;
-  padding: 5px 10px;
+  padding: 10px;
   display: block;
   width: 100%;
   box-sizing: border-box;
   border-radius: 3px;
 }
 
+.InputEl[type="radio"] {
+  width: auto;
+  display: inline;
+  margin-left: 12px;
+  transform: scale(1.5);
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+}
+
 .InputEl:focus {
   border-color: dimgray;
 }
 
+.Valid {
+  border: 1px solid #07b03c;
+}
+
 .Invalid {
-  border: 1px solid red;
+  border: 1px solid #e40000;
 }
 
 .Error {
-  color: red;
+  color: #e40000;
   margin: 0;
+}
+
+.CustomerSalutation {
+  display: inline;
+  margin-right: 50px;
+  position: relative;
 }

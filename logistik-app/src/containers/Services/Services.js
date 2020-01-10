@@ -4,7 +4,6 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import axios from '../../store/axios-instance';
 
 import './Services.scss';
-import Hoc from "../Contact/Contact";
 
 class Services extends Component {
 
