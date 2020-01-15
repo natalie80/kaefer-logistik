@@ -7,15 +7,11 @@ const input = (props) => {
     let inputStyle = "InputEl";
     let radioStyle = props.elConfig.type === 'radio' ? 'CustomerSalutation' : '';
     let validationError = null;
-  //  console.log('hier is invalid validate ',props.invalid, props.shouldValidate);
+
     if(!props.invalid && props.value.trim() !== '' && props.shouldValidate.required) {
-        console.log('ADD ERROR');
         inputStyle = "InputEl Invalid";
         validationError = <p className='Error'>{props.shouldValidate.error}</p>;
-    }
-
-    if(props.shouldValidate.required && props.value.trim() !== '') {
-        console.log('KEINE ERROR');
+    } else if(props.shouldValidate.required && props.value.trim() !== '') {
         inputStyle = " InputEl ";
     }
     
@@ -25,6 +21,7 @@ const input = (props) => {
                 className = {inputStyle}
                 onChange={props.changed}
                 {...props.elConfig}
+
             />;
             break;
         case ('select') :
@@ -44,6 +41,15 @@ const input = (props) => {
                 className = {inputStyle}
                 onChange={props.changed}
                 {...props.elConfig}
+            />;
+            break;
+        case ('radio') :
+            inputEl = <input
+                className = {inputStyle}
+                onChange={props.changed}
+                checked={props.checked}
+                {...props.elConfig}
+
             />;
             break;
         default:
