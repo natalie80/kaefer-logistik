@@ -16,32 +16,32 @@ class ContactForm extends Component {
         
         this.state = {
             contactForm: {
-                salutation_1: {
-                    elType: 'input',
-                    elConfig: {
-                        type: 'radio',
-                        name: 'Frau'
+                  /**  salutation_1: {
+                        elType: 'radio',
+                        elConfig: {
+                            type: 'radio',
+                            name: 'Frau'
+                        },
+                        value: 'Frau',
+                        validation: {
+                            required: false
+                        },
+                        valid: '',
+                        label: 'Frau'
                     },
-                    value: '',
-                    validation: {
-                        required: false
-                    },
-                    valid: '',
-                    label: 'Frau'
-                },
-                salutation_2: {
-                    elType: 'input',
-                    elConfig: {
-                        type: 'radio',
-                        name: 'Herr'
-                    },
-                    value: '',
-                    validation: {
-                        required: false
-                    },
-                    valid: '',
-                    label: 'Herr'
-                },
+                    salutation_2: {
+                        elType: 'radio',
+                        elConfig: {
+                            type: 'radio',
+                            name: 'Herr'
+                        },
+                        value: 'Herr',
+                        validation: {
+                            required: false
+                        },
+                        valid: '',
+                        label: 'Herr'
+                    },**/
                 name: {
                     elType: 'input',
                     elConfig: {
@@ -128,8 +128,8 @@ class ContactForm extends Component {
                     valid: '',
                 }
             },
-            formIsValid: false,
-            isClicked: false
+            gender: 'Herr' ,
+            formIsValid: false
         };
         
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
@@ -138,21 +138,27 @@ class ContactForm extends Component {
     
     
     onChangedHandler = (ev, inputIdentifier) => {
-        console.log('onChangedHandler  -> inputIdentifier', inputIdentifier);
-        
+        console.log('onChangedHandler  ->  Field-Name / value/ check ', inputIdentifier, ev.target.value);
+
         const updatedForm = {
-            ...this.state.contactForm,
-            [inputIdentifier]: {
-                ...this.state.contactForm[inputIdentifier],
-                value: ev.target.value,
-                valid: this.checkValidation(ev.target.value, this.state.contactForm[inputIdentifier].validation),
-                touched: true
-            }
+           ...this.state.contactForm,
+           [inputIdentifier]: {
+               ...this.state.contactForm[inputIdentifier],
+               value: ev.target.value,
+               valid: this.checkValidation(ev.target.value, this.state.contactForm[inputIdentifier].validation),
+               touched: true
+           }
         };
         
-        console.log('updatedForm', updatedForm);
+        console.log('---- updatedForm ----', updatedForm);
         this.setState({contactForm: updatedForm})
+
         
+    };
+
+    onChangedHandlerRadio = (ev) => {
+        console.log('radio ev', ev.target.value);
+        this.setState({ gender: ev.target.value });
     };
 
     checkValidation(value, rules) {
@@ -192,7 +198,7 @@ class ContactForm extends Component {
     }
     
     async onSubmitHandler(ev) {
-        console.log('--onSubmitHandler--');
+
         ev.preventDefault();
 
         let formIsValid = false;
@@ -223,7 +229,6 @@ class ContactForm extends Component {
                 }
             }
         }
-        console.log('--- formInValid ---', formInValid);
 
         if(!formInValid) {
             console.log('--- FORM SEND ---');
@@ -231,11 +236,15 @@ class ContactForm extends Component {
             console.log('--- FORM NOT SEND  show error---');
         }
 
+        formData['gender'] = this.state.gender;
+        console.log('---formData---', formData);
+
+        console.log('---Gender---', this.state.gender);
+
         const form = await axios.post('/api/send_email', {
             formData
         });
-        
-        console.log('---formData---', formData);
+
         
         //this.sendEmail(formData);
         
@@ -248,7 +257,7 @@ class ContactForm extends Component {
                 item.setAttribute('class','InputEl Invalid')
             }
         }
-    }
+    };
 
     render() {
         const formElementsArry = [];
@@ -262,10 +271,22 @@ class ContactForm extends Component {
         }
         let form = (
             <form>
+
+                <div className="CustomerSalutation">
+                    <label className="Label" htmlFor="">Frau</label>
+                    <input type='radio' id='salutation_1' className='' name='Gender' value='Frau'
+                           checked={this.state.gender === 'Frau'} onChange = {(ev) => this.onChangedHandlerRadio(ev)} />
+
+                    <label className="Label" htmlFor="">Herr</label>
+                    <input type='radio' id='salutation_2'className=''  name='Gender' value='Herr'
+                           checked={this.state.gender === 'Herr'} onChange = {(ev) => this.onChangedHandlerRadio(ev)} />
+                </div>
+
                 {
                     formElementsArry.map(formEl => (
                         <Input
                             key={formEl.id}
+                            elKey={formEl.id}
                             elType={formEl.config.elType}
                             elConfig={formEl.config.elConfig}
                             value={formEl.config.value}
@@ -273,6 +294,7 @@ class ContactForm extends Component {
                             shouldValidate={formEl.config.validation}
                             changed={ (ev) => this.onChangedHandler(ev,formEl.id)}
                             label={formEl.config.label}
+
                         />
                     ))
                 }

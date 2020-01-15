@@ -40,8 +40,8 @@ class Services extends Component {
                         <h2 className="Subheadline">{this.state.servicesInfo.services && this.state.servicesInfo.services.subheadline_1}</h2>
                         <ul>
                             {
-                                this.state.servicesInfo.services && this.state.servicesInfo.services.services_infos_1.map(value => (
-                                    <li> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>{value}</p></li>
+                                this.state.servicesInfo.services && this.state.servicesInfo.services.services_infos_1.map((value, key) => (
+                                    <li key={'service_info_1_'+key}> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>{value}</p></li>
                                 ))
                             }
 
@@ -49,8 +49,8 @@ class Services extends Component {
                         <h2 className="Subheadline">{this.state.servicesInfo.services && this.state.servicesInfo.services.subheadline_2} </h2>
                         <ul>
                             {
-                                this.state.servicesInfo.services && this.state.servicesInfo.services.services_infos_2.map(value => (
-                                    <li> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>{value}</p></li>
+                                this.state.servicesInfo.services && this.state.servicesInfo.services.services_infos_2.map((value, key)=> (
+                                    <li key={'service_info_2_'+key}> <FontAwesomeIcon icon={faCheck} transform="shrink-3" color="gray" /> <p>{value}</p></li>
                                 ))
                             }
                         </ul>

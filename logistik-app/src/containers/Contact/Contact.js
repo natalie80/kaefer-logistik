@@ -40,7 +40,7 @@ class Contact extends Component {
                 <h2 className="Subheadline">Kontakt zur Person</h2>
                 {
                     this.state.persons.map(person => (
-                        <Hoc>
+                        <React.Fragment key={person.id}>
                             <Staff
                                 key={person.id}
                                 person_email={person.email}
@@ -49,7 +49,7 @@ class Contact extends Component {
                                 person_surname={person.surname}
                                 person_telefon={person.telefon}
                             />
-                        </Hoc>
+                        </React.Fragment>
                     ))
                 }
 

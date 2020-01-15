@@ -15,16 +15,16 @@ const staff = (props) => {
           large: "(min-width: 1200px)"
       }} >
           { matches => (
-              <section key={props.key} className={(matches.large || matches.medium) ? "Staff_Container" : "Staff_Container_Mobile" }>
-                  <div className="Staff_Image" key={props.key}>
-                      <img key={props.key} src={DefaultImage} alt={props.person_surname}/>
+              <section className={(matches.large || matches.medium) ? "Staff_Container" : "Staff_Container_Mobile" }>
+                  <div className="Staff_Image">
+                      <img src={DefaultImage} alt={props.person_surname}/>
                   </div>
                   <div className="Staff_Contact">
-                      <p className="StaffName" key={props.key}> <b> {props.person_firstname} {props.person_surname} </b> </p>
-                      <p key={props.key} className="Person_Email"> <FontAwesomeIcon icon={faPhoneAlt} color="gray"  /> <Mailto  tel={props.person_telefon}/></p>
+                      <p className="StaffName" > <b> {props.person_firstname} {props.person_surname} </b> </p>
+                      <p className="Person_Email"> <FontAwesomeIcon icon={faPhoneAlt} color="gray"  /> <Mailto  tel={props.person_telefon}/></p>
                       
-                      { props.person_mobil && <p key={props.key} className="Person_Email"> <FontAwesomeIcon icon={faMobileAlt} color="gray" />  <Mailto  tel={props.person_mobil}/> </p> }
-                      <p key={props.key} className="Person_Email"> <FontAwesomeIcon icon={faAt} color="gray"/> <Mailto  email={props.person_email} />  </p>
+                      { props.person_mobil && <p className="Person_Email"> <FontAwesomeIcon icon={faMobileAlt} color="gray" />  <Mailto  tel={props.person_mobil}/> </p> }
+                      <p className="Person_Email"> <FontAwesomeIcon icon={faAt} color="gray"/> <Mailto  email={props.person_email} />  </p>
                   </div>
               </section>
           )}

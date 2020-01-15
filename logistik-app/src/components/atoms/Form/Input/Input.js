@@ -5,7 +5,6 @@ import   './Input.scss';
 const input = (props) => {
     let inputEl = null;
     let inputStyle = "InputEl";
-    let radioStyle = props.elConfig.type === 'radio' ? 'CustomerSalutation' : '';
     let validationError = null;
 
     if(!props.invalid && props.value.trim() !== '' && props.shouldValidate.required) {
@@ -18,6 +17,7 @@ const input = (props) => {
     switch (props.elType) {
         case ('input') :
             inputEl = <input
+                key={props.elKey}
                 className = {inputStyle}
                 onChange={props.changed}
                 {...props.elConfig}
@@ -27,6 +27,7 @@ const input = (props) => {
         case ('select') :
             inputEl = (
                 <select
+                    key={props.elKey}
                     className = {inputStyle}
                     onChange={props.changed}
                 >
@@ -43,17 +44,9 @@ const input = (props) => {
                 {...props.elConfig}
             />;
             break;
-        case ('radio') :
-            inputEl = <input
-                className = {inputStyle}
-                onChange={props.changed}
-                checked={props.checked}
-                {...props.elConfig}
-
-            />;
-            break;
         default:
             inputEl = <input
+                key={props.elKey}
                 className = {inputStyle}
                 onChange={props.changed}
                 {...props.elConfig}
@@ -62,8 +55,8 @@ const input = (props) => {
     
     return (
         <React.Fragment>
-            <div className={radioStyle}>
-                <label className="Label" htmlFor="">{props.label}</label>
+            <div>
+                <label className="Label" htmlFor="" >{props.label}</label>
                 {inputEl}
                  {validationError}
             </div>
