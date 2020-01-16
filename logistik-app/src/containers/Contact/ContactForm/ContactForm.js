@@ -237,18 +237,37 @@ class ContactForm extends Component {
         }
 
         formData['gender'] = this.state.gender;
-        console.log('---formData---', formData);
-
-        console.log('---Gender---', this.state.gender);
+        console.log('------ formData ------', formData);
 
         const form = await axios.post('/api/send_email', {
             formData
         });
-
         
         //this.sendEmail(formData);
+        // http://localhost:3002/send
+
+    /**  await  axios({
+          method: "POST",
+          url:"/send",
+          data:  formData,
+          headers: {
+             'Accept': 'application/json',
+             'Content-Type': 'application/json'
+          },
+        }).then((response)=>{
+            if (response.data.status === 'success'){
+                alert("=== Message Sent. ===");
+              // this.resetForm()
+            }else if(response.data.status === 'fail'){
+                alert("=== Message failed to send. ===")
+            }
+        }) **/
         
     };
+
+    resetForm(){
+        document.getElementById('contact-form').reset();
+    }
 
     formInputError(inputEl){
         let inputElement = document.getElementsByClassName('InputEl');
