@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import Button from "@material-ui/core/Button";
-import  nodemailer   from 'nodemailer';
 import axios from 'axios';
 import Media from "react-media";
 
 import  './ContactForm.scss';
 import Input from '../../../components/atoms/Form/Input/Input'
-import {faAngleDoubleRight, faArrowAltCircleRight} from "@fortawesome/free-solid-svg-icons";
+import {faAngleDoubleRight} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 

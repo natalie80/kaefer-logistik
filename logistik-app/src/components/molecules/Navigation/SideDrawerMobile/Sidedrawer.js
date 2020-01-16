@@ -4,7 +4,6 @@ import  './Sidedrawer.scss';
 import NavigationItems from "../NavigationItems/NavigationItems";
 import Backdrop from '../../../atoms/Backdrop/Backdrop';
 import DrawerClose from '../SideDrawerMobile/DrawerClose/DrawerClose';
-import KaeferIcon from "../../../../assets/Icon_Kaefer/Logo2.jpg";
 import KaeferIcon_2 from "../../../../assets/Icon_Kaefer/Logo_3.jpg";
 
 const sidedrawer = (props) => {

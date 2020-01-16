@@ -39,7 +39,7 @@ class Layout extends Component {
                 >
                     { matches => (
                         <div className={
-                            (url[1] == '' || url[1] == 'protection') ? 'Content_Homepage'
+                            (url[1] === '' || url[1] === 'protection') ? 'Content_Homepage'
                                 : (matches.large || matches.medium) ? "Content"
                                 : matches.small ?  "Content_Mobile"
                                     : null

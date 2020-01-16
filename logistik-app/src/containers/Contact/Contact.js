@@ -4,7 +4,6 @@ import axios from '../../store/axios-instance';
 import './Contact.scss';
 import Staff from '../../components/molecules/Staff/Staff';
 import ContactForm  from './ContactForm/ContactForm';
-import Hoc from '../../hoc/hoc';
 
 class Contact extends Component {
     state = {

@@ -1,5 +1,5 @@
 import React  from 'react';
-import { GoogleMap, Marker, withScriptjs, withGoogleMap, InfoWindow }  from 'react-google-maps';
+import { GoogleMap, Marker, withScriptjs, withGoogleMap }  from 'react-google-maps';
 
 const openStreetMap = () => {
    //const [selectedMarker, setSelectedMarker] = useState(null);
