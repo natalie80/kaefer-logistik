@@ -1,34 +1,57 @@
+'use strict';
+//const winston = require('winston');
+//const morgan =  require('morgan');
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const path = require('path');
+const http = require('http');
 const cors = require('cors');
 const router = express.Router();
 
 const app = express();
-
-// Static folder
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, '/')));
 
 // Body Parser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
+const PORT =  process.env.PORT || 3001;
+//const server = http.createServer(app);
+
 
 let mailConfig;
-
+if (process.env.NODE_ENV === 'production' ) {
     mailConfig = {
-        host: '2a02:2350:5:107:fc80:0:8414:7a4e46.30.215.242',
-        port: 465,
-        secure: true,
+        host: 'smtp-mail.outlook.com',
+        port: 587,
+        secure: false,
         auth: {
-            user: 'info@natalie-kaefer.de',
-            pass: 'nkl!0407'
+            user: 'natalikaefer@hotmail.de',
+            pass: 'adem1301'
         }
     };
 
+    } else {
+        mailConfig = {
+            host: 'smtp.ethereal.email',
+            port: 587,
+            auth: {
+                user: 'maida.dickinson78@ethereal.email',
+                pass: 'Meb1DryAnccrKQJ6WD'
+            },
+            tls: {
+                rejectUnauthorized: false
+            }
+        };
+    }
 
-app.post('/api/send_email', (req, res) => {
+app.get("/", function (req, res) {
+    res.render("index");
+});
+
+
+app.post('/api/send_email', (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
 
     console.log('Mail info:', req.body);
@@ -43,16 +66,16 @@ app.post('/api/send_email', (req, res) => {
 
     const mailOptions = {
         from: email,
-        to: 'info@natalie-kaefer.de',
+        to: 'natalikaefer@hotmail.de',
         subject: `New Message from Contact Form' \n ${subject} `,
         text: content
     };
 
-    let transporter = nodemailer.createTransport(mailConfig);
+    let transporter = nodemailer.createTransport("SMTP", mailConfig);
 
     transporter.verify((error, success) => {
         if (error) {
-            console.log('ERROR',error);
+            console.log('ERROR: ',error.message);
         } else {
             console.log('Server is ready to take messages');
         }
@@ -60,28 +83,26 @@ app.post('/api/send_email', (req, res) => {
 
     transporter.sendMail(mailOptions, (error, data) => {
         if (error) {
-            res.json({
-                status: 'fail'
-            });
+            res.status(400).send(error);
+
+
             return console.log(error);
+
         } else {
             console.log('Message sent: %s',data.messageId);
             console.log('Preview URL: %s',nodemailer.getTestMessageUrl(data));
              res.render('logistik-app', {msg: 'Email wurde gesendet'});
 
-            res.json({
-                status: 'success'
-            })
+            res.send('Success');
         }
-    }, function(error, response) {
-
-        //transporter.close();
     });
 });
 
 
-const PORT = process.env.PORT || 3001;
+//app.listen(PORT, () => {
+ //   console.log(`Server listening on port ${PORT}`);
+//});
 
-app.listen(PORT, () => {
+app.listen(PORT, function(){
     console.log(`Server listening on port ${PORT}`);
 });

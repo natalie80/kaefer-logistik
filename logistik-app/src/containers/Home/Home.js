@@ -25,9 +25,10 @@ class Home extends Component {
     
     
     render() {
+
         return (
             <div className="Home">
-                <h1  className="Headline">
+                <h1  className="Headline Animated-Text">
                     Container-Logistik von ihrer besten Seite
                 </h1>
 
