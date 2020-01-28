@@ -20,7 +20,7 @@ const openStreetMap = () => {
   );
 };
 
-const WrappedMap = withScriptjs(withGoogleMap(openStreetMap));
+    withScriptjs(withGoogleMap(openStreetMap));
 
 export default function Map () {
     return (

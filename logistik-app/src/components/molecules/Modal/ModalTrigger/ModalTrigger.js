@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons'
 
 import  './ModalTrigger.scss';
-import {Link} from "react-router-dom";
 
 class ModalTrigger extends  Component {
     render() {
