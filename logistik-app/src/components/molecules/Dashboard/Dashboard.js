@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
-import axios from '../../../store/axios-instance'
+import axios from '../../../store/axios-instance';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import config from '../../../store/firebaseConfig';
 import  './Dashboard.scss';
+import Modal from "../Modal/Modal";
 
 
 
 class Dashboard extends  Component {
     state = {
-        selectedFile: null
+        selectedFile: null,
+        showModal: ''
     };
     
     fileSelectedHandler = (event) => {
@@ -31,6 +35,15 @@ class Dashboard extends  Component {
                 console.log('hier is respons', res);
             });
     
+    };
+
+    logOut = () => {
+        config.auth().signOut();
+        const modalContent = <p> Sie sind ausgeloggt! </p>,
+              displayText= 'Anmelden';
+
+        const showModal = <Modal buttonText={displayText} awesomeIcon={FontAwesomeIcon} modalContent={modalContent} isVisible='true'/>
+        this.setState({showModal: showModal});
     };
     
     
@@ -76,6 +89,7 @@ class Dashboard extends  Component {
     
         return (
             <React.Fragment>
+                <button onClick={ this.logOut }> Logout </button>
                 <div>
                     <h4> Bilder Hochladen</h4>
                     <input type="file" style={{display: 'none'}} onChange={this.fileSelectedHandler} ref={fileInput => this.fileInput = fileInput}/>
@@ -90,6 +104,7 @@ class Dashboard extends  Component {
                     <h4> Text </h4>
                     {infoTextOutput}
                 </div>
+                {this.state.showModal}
             </React.Fragment>
     
         )

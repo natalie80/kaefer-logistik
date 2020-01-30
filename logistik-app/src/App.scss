@@ -35,3 +35,7 @@
 .Button:active {
   background-color: #fa923f;
 }
+
+*:focus {
+  outline: none;
+}

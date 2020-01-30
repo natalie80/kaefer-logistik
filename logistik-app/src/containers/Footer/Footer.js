@@ -1,25 +1,42 @@
-import React, { Component } from 'react';
+import React, {useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Media from "react-media";
 import Mailto from 'react-protected-mailto';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons';
 
-import  './Footer.scss';
-import Modal from "../Modal/Modal";
-import Authentication from '../Login/Authentication'
-import {connect} from "react-redux";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons'
+import './Footer.scss';
+import Modal from "../../components/molecules/Modal/Modal";
+import Authentication from '../../components/molecules/Login/Authentication'
+import configfb from "../../store/firebaseConfig";
 
-class Footer extends Component {
-    
-    state = {
-        displayText: "Anmelden",
-        angleDoubleRight: true,
-        modalContent:  <Authentication/>
+const Footer = () => {
+    const [isVisible, setIsVisible] = useState(true);
+    const [displayText, setDisplayText] = useState('Anmelden');
+
+    useEffect(() => {
+        configfb.auth().onAuthStateChanged(authUser => {
+            console.log('onAuthStateChanged authUser:', authUser);
+
+            if (authUser != null ) {
+                setIsVisible(false);
+                setDisplayText('Logout');
+            } else {
+                setIsVisible(true);
+                setDisplayText('Anmelden');
+            }
+        });
+
+     }, []);
+
+    const logOut = () => {
+        console.log('== logOut ==:');
+        configfb.auth().signOut();
     };
-    
-    
-    render() {
+
+    let angleDoubleRight = true,
+        modalContent = <Authentication />;
+
         return (
             <div className="Footer">
                 <Media queries={{
@@ -58,12 +75,27 @@ class Footer extends Component {
                             >
                                 
                                 <h4>Das Unternehmen</h4>
-                                <p className="Footer-Link-Info"><Link to='/protection'> <FontAwesomeIcon icon={faAngleDoubleRight} color="weith" /><span className="FooterLink">Datenschutz</span></Link></p>
-                                <p className="Footer-Link-Info"><Link to="/legal"> <FontAwesomeIcon icon={faAngleDoubleRight} color="weith"/><span className="FooterLink">Impressum</span></Link></p>
-            
-                                { !this.props.isAuthenticated
-                                    ? <Modal buttonText={this.state.displayText} awesomeIcon={this.state.angleDoubleRight} modalContent={this.state.modalContent}/>
-                                    : <p className="Footer-Link-Info"><Link to="/logout">Logout</Link></p>
+                                <p className="Footer-Link-Info">
+                                        <Link to='/protection'>
+                                            <FontAwesomeIcon icon={faAngleDoubleRight} color="weith" />
+                                            <span className="FooterLink">Datenschutz</span>
+                                        </Link>
+                                </p>
+                                <p className="Footer-Link-Info">
+                                    <Link to="/legal">
+                                        <FontAwesomeIcon icon={faAngleDoubleRight} color="weith"/>
+                                        <span className="FooterLink">Impressum</span>
+                                    </Link>
+                                </p>
+
+                                {
+                                    isVisible
+                                        ? <Modal buttonText={displayText} awesomeIcon={angleDoubleRight} modalContent={modalContent} />
+
+                                        : <Link to="/" onClick={logOut}>
+                                            <FontAwesomeIcon icon={faAngleDoubleRight} color="weith"/>
+                                            <span className="FooterLink">{displayText}</span>
+                                          </Link>
                                 }
                             </div>
                             <div className="Telephone-Number">
@@ -76,21 +108,7 @@ class Footer extends Component {
                 <div><p className="Copyright">© 2017 Käfer Logistik GmbH</p></div>
             </div>
         );
-    }
-}
-
-
-const mapStateToProps = state => {
-    return {
-        isAuthenticated: state.auth.tokenId != null
-    };
 };
 
 
-
-const mapDispatchToProps = dispatch => {
-    return { };
-};
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Footer);
+export default Footer;

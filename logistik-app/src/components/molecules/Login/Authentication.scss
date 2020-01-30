@@ -1,12 +1,39 @@
 .Auth {
    position: relative;
    padding: 10px;
+  color: #000000;
 
   h3 {
       text-align: center;
       margin: 5px;
       color: #b41527;
       font-size: 1.5em;
+  }
+  .ErrorMsg {
+    color: red;
+    font-size: 0.85em;
+  }
+
+  .Button:hover {
+      background-color: #b41527;
+      opacity: 0.85;
+      border: none;
+  }
+
+  .Button {
+    background-color: #b41527;
+    opacity: 1;
+    border: none;
+    margin-bottom: 0;
+    text-transform: none;
+  }
+
+  .Button:focus {
+      outline: none;
+  }
+
+  .AuthForm div:nth-child(2) {
+     margin-top: 20px;
   }
 }
 

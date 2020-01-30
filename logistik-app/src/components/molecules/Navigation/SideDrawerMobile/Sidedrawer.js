@@ -4,7 +4,7 @@ import  './Sidedrawer.scss';
 import NavigationItems from "../NavigationItems/NavigationItems";
 import Backdrop from '../../../atoms/Backdrop/Backdrop';
 import DrawerClose from '../SideDrawerMobile/DrawerClose/DrawerClose';
-import KaeferIcon_2 from "../../../../assets/Icon_Kaefer/Logo_3.jpg";
+import KaeferIcon from "../../../../assets/Icon_Kaefer/Logo_3.jpg";
 
 const sidedrawer = (props) => {
     let attachedClasses = ['SideDrawer', 'Close'];
@@ -23,7 +23,7 @@ const sidedrawer = (props) => {
                 </nav>
                 <div>
                     <div key="kaefer1">
-                        <img className="Kaefer_2" key="kaefer1" src={KaeferIcon_2} alt=""/>
+                        <img className="Kaefer_2" key="kaefer1" src={KaeferIcon} alt=""/>
                     </div>
                 </div>
             </div>

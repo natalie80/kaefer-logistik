@@ -13,7 +13,7 @@ const input = (props) => {
     } else if(props.shouldValidate.required && props.value.trim() !== '') {
         inputStyle = " InputEl ";
     }
-    
+
     switch (props.elType) {
         case ('input') :
             inputEl = <input

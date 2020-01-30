@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 import './Home.scss';
-import Backdrop from '../../components/atoms/Backdrop/Backdrop'
-import Modal from '../../components/atoms/ModalSecond/ModalSecond';
 import MyCarousel from "../../components/molecules/Carousel/MyCarousel";
 
 class Home extends Component {
@@ -34,9 +32,6 @@ class Home extends Component {
 
 
                 <MyCarousel/>
-
-                <Modal show={this.state.modalIsOpen} closed={this.closeModal}/>
-                { this.state.modalIsOpen ? <Backdrop show={this.state.modalIsOpen} />  : null }
 
             </div>
         );

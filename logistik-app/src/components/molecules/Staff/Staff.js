@@ -7,7 +7,7 @@ import DefaultImage from '../../../assets/staff/Default_Image.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhoneAlt, faMobileAlt, faAt } from '@fortawesome/free-solid-svg-icons'
 
-const staff = (props) => {
+const Staff = (props) => {
   return (
       <Media queries={{
           small: "(max-width: 599px)",
@@ -33,4 +33,4 @@ const staff = (props) => {
 };
 
 
-export default  staff;
+export default  Staff;

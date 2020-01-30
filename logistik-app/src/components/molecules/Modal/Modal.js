@@ -11,11 +11,11 @@ export class  Modal extends Component {
             isShown: false
         };
     }
-    
+
     showModal = () => {
         console.log('--showModal--');
-        this.setState({ isShown: true }, () => {
-            this.closeButton.focus();
+        this.setState({isShown: true}, () => {
+            //this.closeButton.focus();
         });
         this.toggleScrollLock();
     };
@@ -29,7 +29,7 @@ export class  Modal extends Component {
     
     onKeyDown = event => {
         console.log('--onKeyDown--');
-        if (event.keyCode === 27) {
+        if (event.key === 'Enter') {
             this.closeModal();
         }
     };
@@ -48,19 +48,20 @@ export class  Modal extends Component {
     render() {
         return (
             <React.Fragment>
+
                     <ModalTrigger
-                        showModal={this.showModal}
+                        showModal={ this.showModal }
                         buttonRef={ev => (this.TriggerButton = ev)}
                         triggerText={this.props.buttonText}
                         awesomeIcon={this.props.awesomeIcon}
                     />
                     {
-                        this.state.isShown ? (
+                        this.state.isShown  ? (
                             <ModalContent
                                 modalRef={ev => (this.modal = ev)}
                                 buttonRef={ev => (this.closeButton = ev)}
                                 closeModal={this.closeModal}
-                                content={this.props.modalContent}
+                                content={ this.props.modalContent  }
                                 onKeyDown={this.onKeyDown}
                                 onClickOutside={this.onClickOutside}
                             />

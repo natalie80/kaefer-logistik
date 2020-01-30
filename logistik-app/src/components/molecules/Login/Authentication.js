@@ -1,69 +1,69 @@
-import React, { Component } from "react";
+import React, { useCallback, useState } from 'react';
+import { withRouter } from 'react-router';
 import {connect} from "react-redux";
-import {Redirect} from 'react-router-dom';
 
 import  './Authentication.scss';
 import Input from '../../atoms/Form/Input/Input'
 import Button from '../../atoms/Button/Button';
-import Spinner from '../../atoms/Spinner/Spinner'
-import * as actions from '../../../store/actions'
+import config from '../../../store/firebaseConfig';
 
 
 
-class Authentication extends Component {
-        
-        state = {
-            loginForm: {
-                email: {
-                    elType: 'input',
-                    elConfig: {
-                        type: 'email',
-                        placeholder: 'E-Mail-Adresse'
-                    },
-                    value: '',
-                    validation: {
-                        required: true,
-                        isEmail: true
-                    },
-                    valid: false,
-                    touched: false
-                    
-                },
-                password: {
-                    elType: 'password',
-                    elConfig: {
-                        type: 'password',
-                        placeholder: 'Passwort'
-                    },
-                    value: '',
-                    validation: {
-                        required: true,
-                        minLength: 6
-                    },
-                    valid: false,
-                    touched: false
-                  
-                }
+const Authentication = ( props) => {
+    console.log('auth props', props );
+
+    const history = props.history;
+
+    const [loginForm, setLoginForm] = useState({
+        email: {
+            elType: 'input',
+            elConfig: {
+                type: 'email',
+                placeholder: 'E-Mail-Adresse'
             },
-            isSignup: true
-        };
-    
-    
-    checkValidation(value, rules) {
+            value: '',
+            validation: {
+                required: true,
+                isEmail: true
+            },
+            valid: false,
+            touched: false
+
+        },
+        password: {
+            elType: 'input',
+            elConfig: {
+                type: 'password',
+                placeholder: 'Passwort'
+            },
+            value: '',
+            validation: {
+                required: true,
+                minLength: 6
+            },
+
+            valid: false,
+            touched: false
+
+        }
+    });
+    const [errorMessage, setErrorMessage] = useState(null);
+
+    const checkValidation = (value, rules) => {
         let isValid = true;
-    
+
         if (!rules) {
             return true;
         }
-    
-        if(rules.required) {
+
+        if (rules.required) {
             isValid = value.trim() !== '' && isValid;
         }
-        if(rules.minLength) {
+        if (rules.minLength) {
             isValid = value.length >= rules.minLength && isValid
         }
-        if(rules.maxLength) {
-            isValid = value.length <= rules.maxLength &&  isValid
+        if (rules.maxLength) {
+            isValid = value.length <= rules.maxLength && isValid
         }
         if (rules.isEmail) {
             const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
@@ -73,114 +73,93 @@ class Authentication extends Component {
             const pattern = /^\d+$/;
             isValid = pattern.test(value) && isValid
         }
-    
+
         return isValid;
-    }
-    
-    inputChangedHandler = (ev, formId) => {
+    };
+
+    const inputChangedHandler = (ev, formId) => {
         console.log("inputChangedHandler value - formId", ev.target.value, formId);
-        
+
         //touched, wenn user etwas eingegeben hat
         const updatedControls = {
-            ...this.state.loginForm,
+            ...loginForm,
             [formId]: {
-                ...this.state.loginForm[formId],
+                ...loginForm[formId],
                 value: ev.target.value,
-                valid: this.checkValidation(ev.target.value, this.state.loginForm[formId].validation),
+                valid: checkValidation(ev.target.value, loginForm[formId].validation),
                 touched: true
             }
         };
-    
-        this.setState({loginForm: updatedControls});
+        console.log('updatedControls::',updatedControls);
+        setLoginForm(updatedControls);
     };
-    
-    onSubmitFormHandler = (ev, props) => {
-        ev.preventDefault();
-        console.log('PROPS :: ',  props);
-        props.onAuth(this.state.loginForm.email.value, this.state.loginForm.password.value, this.state.isSignup);
-        
-   
-    };
-    
-    onClickedHandler() {
-        console.log('onClickedHandler');
-       // this.setState(prevState => {
-        //    return {isSignup: !prevState.isSignup};
-      //  });
-    }
-    
-    switchAuthModeHandler = () => {
-        this.setState(prevState => {
-            return {isSignup: !prevState.isSignup}
-        })
-    };
-   
-    
-    render() {
-        const loginFormEl = [];
-        let errorMessage = null;
-        
-        for (let key in this.state.loginForm) {
-            loginFormEl.push({
-                id: key,
-                config: this.state.loginForm[key]
-            });
-        }
-        
-        
-        let form = loginFormEl.map( formEl => (
-                <Input
-                    elType={formEl.config.elType}
-                    key={formEl.id}
-                    elConfig={formEl.elConfig}
-                    value={formEl.config.value}
-                    invalid={!formEl.config.valid}
-                    shouldValidate={formEl.config.validation}
-                    touched={formEl.config.touched}
-                    label={formEl.config.elConfig.placeholder}
-                    changed={(ev) => this.inputChangedHandler(ev, formEl.id)}
-                />
-            )
-        );
-        
-        if(this.props.loading) {
-            form = <Spinner/>
-        }
-        
-       if(this.props.error){
-           errorMessage = (
-               <p>{this.props.error.message}</p>
-           )
-       }
-       
-       let authRedirect = null;
-       if (this.props.isAuthenticated) {
-            authRedirect = <Redirect to="/"/>
-       }
-      
-        return (
-            <div className="Auth">
-                {authRedirect}
-                <h3>Login </h3>
-                {errorMessage}
-                <form  onSubmit={(ev) => this.onSubmitFormHandler(ev, this.props)}>
-                    {form}
-                    <Button
-                        clicked={this.onClickedHandler}
-                        btnType="Primary"
-                    >Anmelden </Button>
-                </form>
-                
-                <Button
-                    clicked={this.switchAuthModeHandler}
-                    btnType="Danger">
-                    Switch to {this.state.isSignup ? 'SIGN IN' : 'SIGN OUT'}
-                </Button>
-            </div>
-        );
-    }
-}
 
+    const onSubmitFormHandler = useCallback(async event => {
+        event.preventDefault();
+
+        let email = event.target[0].value;
+        let password = event.target[1].value;
+        try {
+            await config
+                .auth()
+                .signInWithEmailAndPassword(email, password);
+
+            setErrorMessage('');
+            history.push('/dashboard');
+        } catch (error) {
+            console.log("ERROR: ", error);
+
+            let errorMsg;
+            if (!email.length || !password.length) {
+                errorMsg = 'Bitte füllen Sie alle Felder vollständig aus';
+            } else {
+                errorMsg = 'EMail Adresse oder Passwort ist falsch.';
+            }
+
+            setErrorMessage(errorMsg);
+        }
+    }, [history]);
+
+
+    const loginFormEl = [];
+    for (let key in loginForm) {
+        loginFormEl.push({
+            id: key,
+            config: loginForm[key]
+        });
+    }
+
+    let form = loginFormEl.map(formEl => (
+        <Input
+            elType={formEl.config.elType}
+            key={formEl.id}
+            elConfig={formEl.config.elConfig}
+            value={formEl.config.value}
+            invalid={!formEl.config.valid}
+            shouldValidate={formEl.config.validation}
+            touched={formEl.config.touched}
+            label={formEl.config.elConfig.placeholder}
+            changed={(ev) => inputChangedHandler(ev, formEl.id)}
+        />)
+    );
+
+    return (
+        <div className="Auth">
+            <h3>Login </h3>
+            <form className="AuthForm" onSubmit={(ev) => onSubmitFormHandler(ev)}>
+                {form}
+                <Button
+                    type="submit"
+                    btnType="Primary"
+
+                >Anmelden </Button>
+            </form>
+           <div className="ErrorMsg"><p>{errorMessage}</p></div>
+        </div>
+    );
+};
+
+/**
 const mapStateToProps = state => {
     return {
         loading: state.auth.loading,
@@ -192,9 +171,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password, isSignup))
+        onAuth: (email, password) => dispatch(actions.auth(email, password))
     };
 };
+**/
 
+//export default connect(mapStateToProps, mapDispatchToProps)(Authentication);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Authentication);
+export default withRouter(Authentication);

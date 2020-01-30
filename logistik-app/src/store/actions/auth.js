@@ -44,7 +44,7 @@ export const setAuthRedirectPath = (path) => {
     }
 };
 
-export const  auth = (email, password, isSignup) => {
+export const  auth = (email, password) => {
     let url = '';
     return dispatch => {
         dispatch(authStart());
@@ -58,9 +58,9 @@ export const  auth = (email, password, isSignup) => {
         //let url = '/login.json';
          url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAmhzVv7rmmeaHvUQTugalEmi1W4OSXjzQ';
          
-        if (!isSignup) {
-            url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAmhzVv7rmmeaHvUQTugalEmi1W4OSXjzQ';
-        }
+
+           // url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAmhzVv7rmmeaHvUQTugalEmi1W4OSXjzQ';
+
         
          axios.post(url, authData)
             .then(response => {
