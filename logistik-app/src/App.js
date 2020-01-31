@@ -2,11 +2,11 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Layout from './hoc/Layout/Layout';
-import Home from './containers/Home/Home';
-import Services from './containers/Services/Services';
-import Contact from './containers/Contact/Contact';
-import LegalNotice from './containers/LegalNotice/LegalNotice';
-import DataProtection from './containers/DataProtection/DataProtection';
+import Home from './pages/Home/Home';
+import Services from './pages/Services/Services';
+import Contact from './pages/Contact/Contact';
+import LegalNotice from './pages/LegalNotice/LegalNotice';
+import DataProtection from './pages/DataProtection/DataProtection';
 import CompanyAddress from './components/molecules/CompanyAddress/CompanyAddress';
 
 

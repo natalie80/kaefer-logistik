@@ -127,8 +127,7 @@ class ContactForm extends Component {
                     valid: '',
                 }
             },
-            gender: 'Herr',
-            isValid: true
+            gender: 'Herr'
 
         };
         
@@ -176,17 +175,17 @@ class ContactForm extends Component {
             if (rules.isEmail) {
                 console.log(' --Mail-- ');
                 const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-                isValid = value.search(pattern) == 0 ? true : false;
+                isValid = value.search(pattern) === 0 ? true : false;
             }
             if (rules.isNumeric) {
                 console.log(' --isNumeric-- ');
                 const pattern = /^\d+$/;
-                isValid = value.search(pattern) == 0 ? true : false;
+                isValid = value.search(pattern) === 0 ? true : false;
             }
             if (rules.isString) {
                 console.log(' --isString-- ');
                 const pattern = /^[a-zA-Z\s]+$/;
-                isValid = value.search(pattern) == 0 ? true : false;
+                isValid = value.search(pattern) === 0 ? true : false;
 
             }
         } else {
