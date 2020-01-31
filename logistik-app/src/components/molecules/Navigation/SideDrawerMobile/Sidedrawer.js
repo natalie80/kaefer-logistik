@@ -6,7 +6,7 @@ import Backdrop from '../../../atoms/Backdrop/Backdrop';
 import DrawerClose from '../SideDrawerMobile/DrawerClose/DrawerClose';
 import KaeferIcon from "../../../../assets/Icon_Kaefer/Logo_3.jpg";
 
-const sidedrawer = (props) => {
+const Sidedrawer = (props) => {
     let attachedClasses = ['SideDrawer', 'Close'];
     
     if (props.open) {
@@ -31,4 +31,4 @@ const sidedrawer = (props) => {
     );
 };
 
-export default sidedrawer;
+export default Sidedrawer;

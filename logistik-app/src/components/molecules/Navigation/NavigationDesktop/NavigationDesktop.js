@@ -4,7 +4,7 @@ import  './NavigationDesktop.scss';
 import NavigationItems from "../NavigationItems/NavigationItems";
 import DrawerToggle from '../SideDrawerMobile/DrawerToggle/DrawerToggle';
 
-const navigationDesktopm = (props) => (
+const NavigationDesktopm = (props) => (
     <React.Fragment>
         <DrawerToggle clicked={props.toggleHandler}/>
         <nav className="DesktopOnly">
@@ -13,4 +13,4 @@ const navigationDesktopm = (props) => (
     </React.Fragment>
 );
 
-export default navigationDesktopm;
+export default NavigationDesktopm;

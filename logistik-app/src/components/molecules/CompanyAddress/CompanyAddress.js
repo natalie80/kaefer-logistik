@@ -4,7 +4,7 @@ import  './CompanyAddress.scss';
 import OpenStreetMap from '../OpenStreetMap/OpenStreetMap';
 
 
-const companyAddress = () => {
+const CompanyAddress = () => {
     return (
         <div className="CompanyAddress">
             <div>
@@ -27,4 +27,4 @@ const companyAddress = () => {
     )
 };
 
-export default companyAddress;
+export default CompanyAddress;

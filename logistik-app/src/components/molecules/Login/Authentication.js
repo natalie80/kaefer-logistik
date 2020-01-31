@@ -8,7 +8,6 @@ import Button from '../../atoms/Button/Button';
 import config from '../../../store/firebaseConfig';
 
 
-
 const Authentication = ( props) => {
     console.log('auth props', props );
 

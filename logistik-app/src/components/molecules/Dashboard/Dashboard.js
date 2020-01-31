@@ -1,31 +1,25 @@
-import React, {Component} from 'react';
+import React, { useState } from 'react';
 import axios from '../../../store/axios-instance';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import config from '../../../store/firebaseConfig';
 import  './Dashboard.scss';
-import Modal from "../Modal/Modal";
 
 
 
-class Dashboard extends  Component {
-    state = {
-        selectedFile: null,
-        showModal: ''
-    };
-    
-    fileSelectedHandler = (event) => {
+const Dashboard = () => {
+
+    const [ selectedFile, setSelectedFile ] = useState();
+
+    const fileSelectedHandler = (event) => {
         console.log('fileSelectedHandler', event.target.files[0]);
-        this.setState({
-            selectedFile: event.target.files[0]
-        })
+        setSelectedFile(event.target.files[0]);
     };
     
-    fileUploadHandler = () => {
+   const fileUploadHandler = () => {
         console.log('fileUploadHandler');
         const fd = new FormData();
-        const fileName = new Date() + '_' + this.state.selectedFile.name
-        fd.append('image', this.state.selectedFile, fileName);
+        const fileName = new Date() + '_' + selectedFile.name;
+        fd.append('image', selectedFile, fileName);
         axios.post('https://us-central1-kaefer-logistik.cloudfunctions.net/uploadFile', fd, {
             onUploadProgress:  progressEvent => {
                 console.log('Upload Progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) +  '%');
@@ -37,18 +31,12 @@ class Dashboard extends  Component {
     
     };
 
-    logOut = () => {
-        config.auth().signOut();
-        const modalContent = <p> Sie sind ausgeloggt! </p>,
-              displayText= 'Anmelden';
+   const logOut = () => {
+       config.auth().signOut();
+       const displayText= 'Anmelden';
+   };
 
-        const showModal = <Modal buttonText={displayText} awesomeIcon={FontAwesomeIcon} modalContent={modalContent} isVisible='true'/>
-        this.setState({showModal: showModal});
-    };
-    
-    
-    render() {
-        const images = [];
+    const images = [];
         let infos = [];
     
         for (let img in this.props.dashboard_img) {
@@ -104,13 +92,9 @@ class Dashboard extends  Component {
                     <h4> Text </h4>
                     {infoTextOutput}
                 </div>
-                {this.state.showModal}
+
             </React.Fragment>
-    
         )
-    }
-    
-  
 };
 
 

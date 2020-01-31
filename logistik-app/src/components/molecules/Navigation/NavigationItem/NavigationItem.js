@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import  './NavigationItem.scss';
 
-const navigationItem = (props) => (
+const NavigationItem = (props) => (
 
         <li className="NavigationItem" onClick={props.clicked}>
             <NavLink
@@ -15,4 +15,4 @@ const navigationItem = (props) => (
         </li>
 );
 
-export default navigationItem;
+export default NavigationItem;

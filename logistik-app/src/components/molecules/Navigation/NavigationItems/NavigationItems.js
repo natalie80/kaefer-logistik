@@ -3,7 +3,7 @@ import React from 'react';
 import  './NavigationItems.scss';
 import NavigationItem from '../NavigationItem/NavigationItem';
 
-const navigationItems = (props) => (
+const NavigationItems = (props) => (
     <ul className="NavigationItems">
         <NavigationItem link="/" exact clicked={props.clicked}> Home </NavigationItem>
         <NavigationItem link="/services" clicked={props.clicked}> Leistungen </NavigationItem>
@@ -17,4 +17,4 @@ const navigationItems = (props) => (
     </ul>
 );
 
-export default navigationItems;
+export default NavigationItems;
