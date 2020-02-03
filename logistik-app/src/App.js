@@ -18,27 +18,27 @@ import PrivateRoute from './store/PrivateRouter';
 
 
 const App = () => {
-        return (
-            <div className="App">
-                <div>
-                    <Layout>
-                            <Switch>
-                                <AuthProvider>
-                                    <Route path="/" exact component={ Home } />
-                                    <Route path="/services" component={ Services } />
-                                    <Route path="/contact"  component={ Contact } />
-                                    <Route path="/OpenStreetMap"  component={ CompanyAddress } />
-                                    <Route path="/legal" component={ LegalNotice } />
-                                    <Route path="/protection" component={ DataProtection } />
+    return (
+        <div className="App">
+            <div>
+                <Layout>
+                        <Switch>
+                            <AuthProvider>
+                                <Route path="/" exact component={ Home } />
+                                <Route path="/services" component={ Services } />
+                                <Route path="/contact"  component={ Contact } />
+                                <Route path="/OpenStreetMap"  component={ CompanyAddress } />
+                                <Route path="/legal" component={ LegalNotice } />
+                                <Route path="/protection" component={ DataProtection } />
 
-                                    <PrivateRoute path="/dashboard" component={Dashboard} />
+                                <PrivateRoute path="/dashboard" component={Dashboard} />
 
-                                </AuthProvider>
-                            </Switch>
-                    </Layout>
-                </div>
+                            </AuthProvider>
+                        </Switch>
+                </Layout>
             </div>
-        );
+        </div>
+    );
 };
 
 export default App;
