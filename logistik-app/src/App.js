@@ -11,8 +11,8 @@ import CompanyAddress from './components/molecules/CompanyAddress/CompanyAddress
 
 
 import Dashboard from './components/molecules/Dashboard/Dashboard';
-import Login from './Login1/Login';
-import { AuthProvider } from "./Login1/Auth";
+
+import { AuthProvider } from "./store/Auth";
 import PrivateRoute from './store/PrivateRouter';
 
 
@@ -32,7 +32,7 @@ const App = () => {
                                     <Route path="/protection" component={ DataProtection } />
 
                                     <PrivateRoute path="/dashboard" component={Dashboard} />
-                                    <Route path="/login" component={Login} />
+
                                 </AuthProvider>
                             </Switch>
                     </Layout>

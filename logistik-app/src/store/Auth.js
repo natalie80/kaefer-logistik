@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import configfb from '../store/firebaseConfig';
+import configfb from './firebaseConfig';
 
 export const AuthContext = React.createContext();
 
