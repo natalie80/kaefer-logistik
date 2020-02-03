@@ -6,7 +6,7 @@ import  './Dashboard.scss';
 
 
 
-const Dashboard = () => {
+const Dashboard = (props) => {
 
     const [ selectedFile, setSelectedFile ] = useState();
 
@@ -33,26 +33,25 @@ const Dashboard = () => {
 
    const logOut = () => {
        config.auth().signOut();
-       const displayText= 'Anmelden';
    };
 
     const images = [];
         let infos = [];
     
-        for (let img in this.props.dashboard_img) {
+        for (let img in props.dashboard_img) {
             images.push(
                 {
                     key: img,
-                    image: this.props.dashboard_img[img]
+                    image: props.dashboard_img[img]
                 }
             )
         }
     
-        for (let info in this.props.dashboard_text) {
+        for (let info in props.dashboard_text) {
             infos.push(
                 {
                     key: info,
-                    info_text: this.props.dashboard_text[info]
+                    info_text: props.dashboard_text[info]
                 }
             )
         }
@@ -77,12 +76,11 @@ const Dashboard = () => {
     
         return (
             <React.Fragment>
-                <button onClick={ this.logOut }> Logout </button>
+                <button onClick={ logOut }> Logout </button>
                 <div>
                     <h4> Bilder Hochladen</h4>
-                    <input type="file" style={{display: 'none'}} onChange={this.fileSelectedHandler} ref={fileInput => this.fileInput = fileInput}/>
-                    <button onClick={() => this.fileInput.click()}>Pick File</button>
-                    <button onClick={this.fileUploadHandler}>Upload</button>
+                    <input type="file" style={{display: 'none'}} onChange={fileSelectedHandler} ref={fileInput => fileInput = fileInput}/>
+                    <button onClick={fileUploadHandler}>Upload</button>
                 </div>
                 <div>
                     <h4> Bilder</h4>
