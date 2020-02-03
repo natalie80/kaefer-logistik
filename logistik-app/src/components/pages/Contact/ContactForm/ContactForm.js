@@ -4,7 +4,7 @@ import axios from 'axios';
 import Media from "react-media";
 
 import  './ContactForm.scss';
-import Input from '../../../components/atoms/Form/Input/Input'
+import Input from '../../../atoms/Form/Input/Input'
 import {faAngleDoubleRight} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 

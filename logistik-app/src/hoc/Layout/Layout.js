@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 
 import './Layout.scss';
 import Logo from '../../components/molecules/Logo/Logo'
-import Footer from '../../pages/Footer/Footer';
+import Footer from '../../components/pages/Footer/Footer';
 import NavigationDesktop from '../../components/molecules/Navigation/NavigationDesktop/NavigationDesktop';
 import SideDrawer from '../../components/molecules/Navigation/SideDrawerMobile/Sidedrawer';
 

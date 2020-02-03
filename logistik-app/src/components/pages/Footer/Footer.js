@@ -6,9 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons';
 
 import './Footer.scss';
-import Modal from "../../components/molecules/Modal/Modal";
-import Authentication from '../../components/molecules/Login/Authentication'
-import configfb from "../../store/firebaseConfig";
+import Modal from "../../molecules/Modal/Modal";
+import Authentication from '../../molecules/Login/Authentication'
+import configfb from "../../../store/firebaseConfig";
 
 const Footer = () => {
     const [isVisible, setIsVisible] = useState(true);

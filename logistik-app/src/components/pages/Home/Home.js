@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import './Home.scss';
-import MyCarousel from "../../components/molecules/Carousel/MyCarousel";
+import MyCarousel from "../../molecules/Carousel/MyCarousel";
 
 const Home = () => {
 

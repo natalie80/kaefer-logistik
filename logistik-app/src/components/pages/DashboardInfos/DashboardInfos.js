@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import * as actions from '../../store/actions';
-import Spinner from '../../components/atoms/Spinner/Spinner'
-import Dashboard from "../../components/molecules/Dashboard/Dashboard";
-import  "../../components/molecules/Dashboard/Dashboard.scss";
+import * as actions from '../../../store/actions';
+import Spinner from '../../atoms/Spinner/Spinner'
+import Dashboard from "../../molecules/Dashboard/Dashboard";
+import  "../../molecules/Dashboard/Dashboard.scss";
 
 
 const DashboardInfos = () => {

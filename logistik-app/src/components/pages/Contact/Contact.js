@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import axios from '../../store/axios-instance';
+import axios from '../../../store/axios-instance';
 
 import './Contact.scss';
-import Staff from '../../components/molecules/Staff/Staff';
+import Staff from '../../molecules/Staff/Staff';
 import ContactForm  from './ContactForm/ContactForm';
 
 class Contact extends Component {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
-import axios from '../../store/axios-instance';
+import axios from '../../../store/axios-instance';
 import './Services.scss';
 
 const Services = () => {
