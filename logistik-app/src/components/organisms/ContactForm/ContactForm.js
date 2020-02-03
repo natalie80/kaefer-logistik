@@ -4,7 +4,7 @@ import axios from 'axios';
 import Media from "react-media";
 
 import  './ContactForm.scss';
-import Input from '../../../atoms/Form/Input/Input'
+import Input from '../../atoms/Form/Input/Input'
 import {faAngleDoubleRight} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
@@ -238,7 +238,7 @@ class ContactForm extends Component {
         formData['gender'] = this.state.gender;
         console.log('------ formData ------', formData);
 
-        const form = await axios.post('/api/send_email', {
+        await axios.post('/api/send_email', {
             formData
         });
         
@@ -292,11 +292,11 @@ class ContactForm extends Component {
 
                 <div className="CustomerSalutation">
                     <label className="Label" htmlFor="">Frau</label>
-                    <input type='radio' id='salutation_1' className='' name='Gender' value='Frau'
+                    <input type='radio' id='salutation_1'  name='Gender' value='Frau'
                            checked={this.state.gender === 'Frau'} onChange = {(ev) => this.onChangedHandlerRadio(ev)} />
 
                     <label className="Label" htmlFor="">Herr</label>
-                    <input type='radio' id='salutation_2'className=''  name='Gender' value='Herr'
+                    <input type='radio' id='salutation_2'  name='Gender' value='Herr'
                            checked={this.state.gender === 'Herr'} onChange = {(ev) => this.onChangedHandlerRadio(ev)} />
                 </div>
 

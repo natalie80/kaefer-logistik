@@ -3,7 +3,7 @@ import axios from '../../../store/axios-instance';
 
 import './Contact.scss';
 import Staff from '../../molecules/Staff/Staff';
-import ContactForm  from './ContactForm/ContactForm';
+import ContactForm  from '../../organisms/ContactForm/ContactForm';
 
 class Contact extends Component {
     state = {
@@ -18,16 +18,18 @@ class Contact extends Component {
                 console.log('Here is persons: ', res.data);
                 const personsObj = [];
                 for(let key in res.data) {
-                    personsObj.push({
-                        ...res.data[key],
-                        id: key
-                    });
+                    if (res.data.hasOwnProperty(key)) {
+                        personsObj.push({
+                            ...res.data[key],
+                            id: key
+                        });
+                    }
                 }
                 console.log('Here is personsObj:: ', personsObj);
                 this.setState({persons: personsObj});
             })
             .catch(err => {
-                console.log('ERROR');
+                console.log('ERROR', err);
                 this.setState({});
             });
     }
