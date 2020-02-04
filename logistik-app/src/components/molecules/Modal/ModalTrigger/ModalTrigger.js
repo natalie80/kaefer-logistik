@@ -5,7 +5,7 @@ import {faAngleDoubleRight} from '@fortawesome/free-solid-svg-icons'
 import  './ModalTrigger.scss';
 
 const ModalTrigger = (props) => {
-    console.log('modal triger props:: ', props);
+
     return (
         <p className="Margin-Bottom">
             {props.awesomeIcon ? <FontAwesomeIcon icon={faAngleDoubleRight} color="weith"/> : null}

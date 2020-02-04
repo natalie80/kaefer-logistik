@@ -11,6 +11,7 @@ import SideDrawer from '../../components/molecules/Navigation/SideDrawerMobile/S
 
 const Layout = (props) => {
     const [ showMobileNavigation, setShowMobileNavigation ] = useState(false);
+    const [ isAuthenticated, setIsAuthenticated] = useState(false);
 
     const mobileNavigationClosedHandler = () => {
        // this.setState({showMobileNavigation: false})
@@ -23,7 +24,11 @@ const Layout = (props) => {
         })
     };
 
-        const url = props.location.pathname.split('/');
+    const isUserAuth = (loged) => {
+        setIsAuthenticated(loged);
+    };
+
+    const url = props.location.pathname.split('/');
 
     return (
         <React.Fragment>
@@ -44,12 +49,12 @@ const Layout = (props) => {
                     }>
                         <header className="Header">
                             <Logo />
-                            <NavigationDesktop toggleHandler={mobileNavigationToggleHandler}  isAuth={props.isAuthenticated}/>
+                            <NavigationDesktop toggleHandler={mobileNavigationToggleHandler}  isAuth={isAuthenticated}/>
                         </header>
-                        <SideDrawer closed={mobileNavigationClosedHandler}  open={showMobileNavigation} isAuth={props.isAuthenticated} />
+                        <SideDrawer closed={mobileNavigationClosedHandler}  open={showMobileNavigation} isAuth={isAuthenticated} />
                         <main className={matches.large ? "Main" : (matches.medium || matches.small) ?  "Main_Mobile" : null } >{props.children}</main>
                         <footer className="Footer">
-                            <Footer isAuth={props.isAuthenticated}/>
+                            <Footer isAuth={isUserAuth}/>
                         </footer>
                     </div>
                 )}

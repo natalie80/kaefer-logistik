@@ -137,7 +137,6 @@ class ContactForm extends Component {
     
     
     onChangedHandler = (ev, inputIdentifier) => {
-        console.log('onChangedHandler  ->  Field-Name / value/ check ', inputIdentifier, ev.target.value);
 
         const updatedForm = {
            ...this.state.contactForm,
@@ -161,11 +160,9 @@ class ContactForm extends Component {
     };
 
     checkValidation(value, rules) {
-        console.log('checkValidation value/rules', value, rules);
         let isValid = false;
         
         if (!rules) {
-            console.log('--ruels--');
             return true;
         }
 
@@ -173,17 +170,14 @@ class ContactForm extends Component {
             isValid = value.trim() !== '' ? true : false;
 
             if (rules.isEmail) {
-                console.log(' --Mail-- ');
                 const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
                 isValid = value.search(pattern) === 0 ? true : false;
             }
             if (rules.isNumeric) {
-                console.log(' --isNumeric-- ');
                 const pattern = /^\d+$/;
                 isValid = value.search(pattern) === 0 ? true : false;
             }
             if (rules.isString) {
-                console.log(' --isString-- ');
                 const pattern = /^[a-zA-Z\s]+$/;
                 isValid = value.search(pattern) === 0 ? true : false;
 
@@ -191,7 +185,6 @@ class ContactForm extends Component {
         } else {
             isValid = '';
         }
-        console.log('---isValid--- ',isValid);
         
         return isValid;
     }
@@ -220,11 +213,9 @@ class ContactForm extends Component {
                     } else {
                         formInValid = true;
                         this.formInputError(formInput);
-                        console.log('--- Input Feld is InValid--- ERROR SHOW');
                     }
                 } else {
                     formIsValid = true;
-                    console.log('--- NOT  Required --- OK');
                 }
             }
         }

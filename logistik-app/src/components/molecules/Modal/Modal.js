@@ -13,7 +13,6 @@ export class  Modal extends Component {
     }
 
     showModal = () => {
-        console.log('--showModal--');
         this.setState({isShown: true}, () => {
             //this.closeButton.focus();
         });
@@ -21,14 +20,12 @@ export class  Modal extends Component {
     };
     
     closeModal = () => {
-        console.log('--closeModal--');
         this.setState({ isShown: false });
         this.TriggerButton.focus();
         this.toggleScrollLock();
     };
     
     onKeyDown = event => {
-        console.log('--onKeyDown--');
         if (event.key === 'Enter') {
             this.closeModal();
         }
@@ -41,7 +38,6 @@ export class  Modal extends Component {
     };
     
     toggleScrollLock = () => {
-        console.log('--toggleScrollLock--');
         document.querySelector('body').classList.toggle('scroll-lock');
     };
     

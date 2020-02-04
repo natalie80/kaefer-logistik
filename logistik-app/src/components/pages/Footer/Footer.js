@@ -10,28 +10,29 @@ import Modal from "../../molecules/Modal/Modal";
 import Authentication from '../../molecules/Login/Authentication'
 import configfb from "../../../store/firebaseConfig";
 
-const Footer = () => {
+const Footer = (props) => {
     const [isVisible, setIsVisible] = useState(true);
     const [displayText, setDisplayText] = useState('Anmelden');
 
     useEffect(() => {
         configfb.auth().onAuthStateChanged(authUser => {
-            console.log('onAuthStateChanged authUser:', authUser);
 
             if (authUser != null ) {
                 setIsVisible(false);
                 setDisplayText('Logout');
+                props.isAuth(true);
             } else {
                 setIsVisible(true);
                 setDisplayText('Anmelden');
+                props.isAuth(false);
             }
         });
 
      }, []);
 
     const logOut = () => {
-        console.log('== logOut ==:');
         configfb.auth().signOut();
+        props.isAuth(false);
     };
 
     let angleDoubleRight = true,

@@ -9,7 +9,6 @@ import config from '../../../store/firebaseConfig';
 
 
 const Authentication = ( props) => {
-    console.log('auth props', props );
 
     const history = props.history;
 
@@ -77,7 +76,6 @@ const Authentication = ( props) => {
     };
 
     const inputChangedHandler = (ev, formId) => {
-        console.log("inputChangedHandler value - formId", ev.target.value, formId);
 
         //touched, wenn user etwas eingegeben hat
         const updatedControls = {
@@ -89,7 +87,7 @@ const Authentication = ( props) => {
                 touched: true
             }
         };
-        console.log('updatedControls::',updatedControls);
+
         setLoginForm(updatedControls);
     };
 

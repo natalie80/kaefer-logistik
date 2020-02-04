@@ -15,7 +15,6 @@ class Contact extends Component {
 
         axios.get('/persons.json')
             .then(res => {
-                console.log('Here is persons: ', res.data);
                 const personsObj = [];
                 for(let key in res.data) {
                     if (res.data.hasOwnProperty(key)) {
@@ -25,7 +24,6 @@ class Contact extends Component {
                         });
                     }
                 }
-                console.log('Here is personsObj:: ', personsObj);
                 this.setState({persons: personsObj});
             })
             .catch(err => {

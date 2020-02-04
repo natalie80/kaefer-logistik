@@ -11,7 +11,7 @@ const NavigationItems = (props) => (
         <NavigationItem link="/OpenStreetMap" clicked={props.clicked}> So finden Sie uns </NavigationItem>
         
         { props.isAuth
-            ? <NavigationItem link="/dashboard"> Dashboard </NavigationItem>
+            ? <NavigationItem link="/dashboard" clicked={props.clicked}> Dashboard </NavigationItem>
             : null
         }
     </ul>
