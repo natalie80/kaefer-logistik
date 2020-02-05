@@ -9,7 +9,7 @@ const router = express.Router();
 const app = express();
 const PORT =  process.env.PORT || 3001;
 
-app.use(express.static(__dirname));
+app.use(express.static('/logistik-app/build'));
 
 
 // Body Parser Middleware
