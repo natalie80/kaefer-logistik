@@ -1,8 +1,10 @@
 const express = require('express');
+const http = require('http');
 const app = express();
 const PORT =  process.env.PORT || 3001;
 
-app.use(express.static(__dirname));
+app.use(express.static('logistik-app'));
+const server = http.Server(app);
 
 app.get('/api',  (req, res) => {
 
@@ -17,6 +19,6 @@ app.get('/api',  (req, res) => {
 });
 
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });
