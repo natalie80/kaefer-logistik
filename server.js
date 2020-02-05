@@ -19,6 +19,7 @@ app.use(express.static(__dirname));
 //const server = http.createServer(app);
 
 app.get('/api',  (req, res) => {
+
     // res.send(' EXPRESS BACKEND ');
    // res.sendFile(path.join(__dirname, '/index.html'));
 
@@ -32,8 +33,6 @@ app.get('/api',  (req, res) => {
 
     console.log('sent request', res);
 });
-
-//app.use('/',router);
 
 
 /**
