@@ -1,12 +1,14 @@
 {
   "name": "kaefer-logistik",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Logistik App",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "server": "nodemon index.js",
-    "client": "npm  start --prefix logistik-app",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix logistik-app",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "postinstall": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,5 @@
     "nodemailer": "^6.4.2",
     "nodemon": "^1.19.4"
   },
-  "devDependencies": {},
-  "description": "Logistik App"
+  "devDependencies": {}
 }

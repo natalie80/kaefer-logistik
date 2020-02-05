@@ -7,3 +7,12 @@
 h3 {
   color: $primaryColor;
 }
+
+article > div {
+  background: #09d3ac;
+  height: 50px;
+  width: 50px;
+  float: left;
+  cursor: pointer;
+  margin: 5px;
+}

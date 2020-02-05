@@ -1,6 +1,4 @@
 'use strict';
-//const winston = require('winston');
-//const morgan =  require('morgan');
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
@@ -8,18 +6,37 @@ const path = require('path');
 const http = require('http');
 const cors = require('cors');
 const router = express.Router();
-
 const app = express();
-app.use(express.static(path.join(__dirname, '/')));
+const PORT =  process.env.PORT || 3001;
+
+app.use(express.static(__dirname));
+
 
 // Body Parser Middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({extended: false}));
 
-const PORT =  process.env.PORT || 3001;
 //const server = http.createServer(app);
 
+app.get('/api',  (req, res) => {
+    // res.send(' EXPRESS BACKEND ');
+   // res.sendFile(path.join(__dirname, '/index.html'));
 
+    const customers = [
+        {id: 1, firstName: 'Kaefer', lastName: 'Angelika'},
+        {id: 2, firstName: 'Brad', lastName: 'Traversy'},
+        {id: 3, firstName: 'Mary', lastName: 'Swanson'},
+    ];
+
+    res.json(customers);
+
+    console.log('sent request', res);
+});
+
+//app.use('/',router);
+
+
+/**
 let mailConfig;
 if (process.env.NODE_ENV === 'production' ) {
     mailConfig = {
@@ -82,27 +99,18 @@ app.post('/api/send_email', (req, res, next) => {
     });
 
     transporter.sendMail(mailOptions, (error, data) => {
-        if (error) {
-            res.status(400).send(error);
+        console.log('Message sent: %s',data.messageId);
+        console.log('Preview URL: %s',nodemailer.getTestMessageUrl(data));
+         res.render('logistik-app', {msg: 'Email wurde gesendet'});
 
+        res.send('Success');
 
-            return console.log(error);
-
-        } else {
-            console.log('Message sent: %s',data.messageId);
-            console.log('Preview URL: %s',nodemailer.getTestMessageUrl(data));
-             res.render('logistik-app', {msg: 'Email wurde gesendet'});
-
-            res.send('Success');
-        }
     });
 });
+**/
 
 
-//app.listen(PORT, () => {
- //   console.log(`Server listening on port ${PORT}`);
-//});
 
-app.listen(PORT, function(){
-    console.log(`Server listening on port ${PORT}`);
+app.listen(PORT, () => {
+   console.log(`Server listening on port ${PORT}`);
 });
