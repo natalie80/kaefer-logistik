@@ -1,10 +1,10 @@
 {
   "name": "kaefer-logistik",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "server": "nodemon index.js",
+    "start": "node server.js",
+    "server": "nodemon server.js",
     "client": "npm  start --prefix logistik-app",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
@@ -29,6 +29,8 @@
     "nodemailer": "^6.4.2",
     "nodemon": "^1.19.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "firebase": "^7.8.0"
+  },
   "description": "Logistik App"
 }

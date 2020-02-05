@@ -3,6 +3,7 @@ import axios from '../../../store/axios-instance';
 
 import config from '../../../store/firebaseConfig';
 import  './Dashboard.scss';
+import Customers from './customers';
 
 
 
@@ -91,6 +92,7 @@ const Dashboard = (props) => {
                     {infoTextOutput}
                 </div>
 
+                <Customers />
             </React.Fragment>
         )
 };
