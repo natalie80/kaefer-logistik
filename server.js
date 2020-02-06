@@ -3,25 +3,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const path = require('path');
-const http = require('http');
-const cors = require('cors');
-const router = express.Router();
 const app = express();
 const PORT =  process.env.PORT || 3001;
 
 app.use(express.static(path.join(__dirname, 'logistik-app/build')));
 
-
-// Body Parser Middleware
-//app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded({extended: false}));
-
-//const server = http.createServer(app);
-
 app.get('/api',  (req, res) => {
-
-    // res.send(' EXPRESS BACKEND ');
-   // res.sendFile(path.join(__dirname, '/index.html'));
 
     const customers = [
         {id: 1, firstName: 'Kaefer', lastName: 'Angelika'},
@@ -35,50 +22,58 @@ app.get('/api',  (req, res) => {
 });
 
 
-/**
 let mailConfig;
 if (process.env.NODE_ENV === 'production' ) {
     mailConfig = {
-        host: 'smtp-mail.outlook.com',
-        port: 587,
-        secure: false,
+        host: 'ssh.natalie-kaefer.de',
+        port: 465,
+        secure: true,
         auth: {
-            user: 'natalikaefer@hotmail.de',
-            pass: 'adem1301'
+            user: 'natalie-kaefer.de',
+            pass: 'nkl!0407'
+        },
+        tls: {
+            rejectUnauthorized: false
         }
     };
 
-    } else {
-        mailConfig = {
-            host: 'smtp.ethereal.email',
-            port: 587,
-            auth: {
-                user: 'maida.dickinson78@ethereal.email',
-                pass: 'Meb1DryAnccrKQJ6WD'
-            },
-            tls: {
-                rejectUnauthorized: false
-            }
-        };
-    }
+} else {
+    mailConfig = {
+        host: 'smtp.ethereal.email',
+        port: 587,
+        auth: {
+            user: 'annabelle.rutherford@ethereal.email',
+            pass: 'uBxmH9kHHkj8Jna7WW'
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    };
+}
 
-app.get("/", function (req, res) {
-    res.render("index");
-});
-
-
-app.post('/api/send_email', (req, res, next) => {
+app.post('/send_email', (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
 
-    console.log('Mail info:', req.body);
+    console.log('Mail info response:', res);
 
-    const name = req.body.formData.name,
-          email = req.body.formData.email,
-          subject = req.body.formData.subject,
-          phone = req.body.formData.phone,
-          gender = req.body.formData.gender,
-          message = req.body.formData.message,
-          content = ` Geschlecht: ${gender} \n Name: ${name} \n Telefonenummer: ${phone}  \n Email: ${email} \n Message: ${message} `;
+    console.log('Mail info request:', req);
+
+   /** const name = req.body.formData.name,
+        email = req.body.formData.email,
+        subject = req.body.formData.subject,
+        phone = req.body.formData.phone,
+        gender = req.body.formData.gender,
+        message = req.body.formData.message,
+        content = ` Geschlecht: ${gender} \n Name: ${name} \n Telefonenummer: ${phone}  \n Email: ${email} \n Message: ${message} `; **/
+
+
+   const email = 'natalie@web.de',
+       name = 'Natalie',
+       subject = 'Kleine Test',
+       phone = '123456789',
+       message = 'Hallo hier sende ich eine Message',
+       content = ` Name: ${name} \n Telefonenummer: ${phone}  \n Email: ${email} \n Message: ${message} `;
+
 
     const mailOptions = {
         from: email,
@@ -87,7 +82,7 @@ app.post('/api/send_email', (req, res, next) => {
         text: content
     };
 
-    let transporter = nodemailer.createTransport("SMTP", mailConfig);
+    let transporter = nodemailer.createTransport( mailConfig);
 
     transporter.verify((error, success) => {
         if (error) {
@@ -106,7 +101,6 @@ app.post('/api/send_email', (req, res, next) => {
 
     });
 });
-**/
 
 
 

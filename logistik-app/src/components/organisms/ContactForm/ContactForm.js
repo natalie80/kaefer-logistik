@@ -229,7 +229,7 @@ class ContactForm extends Component {
         formData['gender'] = this.state.gender;
         console.log('------ formData ------', formData);
 
-        await axios.post('/api/send_email', {
+        await axios.post('/send_email', {
             formData
         });
         
