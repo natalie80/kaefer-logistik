@@ -93,9 +93,8 @@ app.post('/send_email', (req, res) => {
     });
 
     transporter.sendMail(mailOptions, (error, data) => {
-        console.log('Message sent: %s',data.messageId);
         console.log('Preview URL: %s',nodemailer.getTestMessageUrl(data));
-         res.render('logistik-app', {msg: 'Email wurde gesendet'});
+         res.render('logistik-app mail wurde versendet');
 
         res.send('Success');
 

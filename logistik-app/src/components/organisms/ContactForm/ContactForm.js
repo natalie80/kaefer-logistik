@@ -184,7 +184,7 @@ class ContactForm extends Component {
         return isValid;
     }
     
-    async onSubmitHandler(ev) {
+     onSubmitHandler = async (ev) => {
 
         ev.preventDefault();
 
