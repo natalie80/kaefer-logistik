@@ -52,11 +52,11 @@ if (process.env.NODE_ENV === 'production' ) {
 }
 
 app.post('/send_email', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*");
+    //res.header("Access-Control-Allow-Origin", "*");
 
-    console.log('Mail info response:', res);
+  // console.log('Mail info response:', res);
 
-    console.log('Mail info request:', req);
+    console.log('=== Mail info request ====', req);
 
    /** const name = req.body.formData.name,
         email = req.body.formData.email,

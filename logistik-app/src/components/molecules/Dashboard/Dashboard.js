@@ -105,8 +105,10 @@ const Dashboard = (props) => {
 
         console.log(link);
         console.log(kids);
-        console.log('--------');
+        console.log('===========');
         console.log(people);
+
+
 
         const cars = [
             {brand: 'Audi', door: 2},
