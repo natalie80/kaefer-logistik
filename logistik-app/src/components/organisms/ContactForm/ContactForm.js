@@ -137,7 +137,6 @@ class ContactForm extends Component {
     
     
     onChangedHandler = (ev, inputIdentifier) => {
-
         const updatedForm = {
            ...this.state.contactForm,
            [inputIdentifier]: {
@@ -147,11 +146,7 @@ class ContactForm extends Component {
                touched: true
            }
         };
-        
-        console.log('---- updatedForm ----', updatedForm);
         this.setState({contactForm: updatedForm})
-
-        
     };
 
     onChangedHandlerRadio = (ev) => {
@@ -206,9 +201,7 @@ class ContactForm extends Component {
                 formData[formEl] = formInput.value;
 
                 if(formInput.validation.required) {
-
                     if (formInput.valid) {
-                        console.log('--- Input Feld is Valid--- OK');
                         formIsValid = true;
                     } else {
                         formInValid = true;
@@ -229,12 +222,22 @@ class ContactForm extends Component {
         formData['gender'] = this.state.gender;
         console.log('------ formData ------', formData);
 
-        await axios.post('/send_email', {
-            formData
+        const response = await fetch('/send_email', {
+            method: 'POST',
+            data:  formData,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ post: formData }),
+        }).then((response) => {
+            if (response.data.status === 'success') {
+                console.log("=== Message Sent. ===");
+                // this.resetForm()
+            } else if (response.data.status === 'fail') {
+                console.log("=== Message failed to send. ===");
+            }
         });
-        
-        //this.sendEmail(formData);
-        // http://localhost:3002/send
 
     /**  await  axios({
           method: "POST",
@@ -257,7 +260,7 @@ class ContactForm extends Component {
 
     resetForm(){
         document.getElementById('contact-form').reset();
-    }
+    };
 
     formInputError(inputEl){
         let inputElement = document.getElementsByClassName('InputEl');
