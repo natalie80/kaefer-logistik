@@ -183,8 +183,8 @@ class ContactForm extends Component {
         
         return isValid;
     }
-    
-     onSubmitHandler = async (ev) => {
+
+    async onSubmitHandler(ev) {
 
         ev.preventDefault();
 
@@ -222,26 +222,11 @@ class ContactForm extends Component {
         formData['gender'] = this.state.gender;
         console.log('------ formData ------', formData);
 
-        const response = await fetch('/send_email', {
-            method: 'POST',
-            data:  formData,
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ post: formData }),
-        }).then((response) => {
-            if (response.data.status === 'success') {
-                console.log("=== Message Sent. ===");
-                // this.resetForm()
-            } else if (response.data.status === 'fail') {
-                console.log("=== Message failed to send. ===");
-            }
-        });
+       const formSend = await axios.post('/send_email',  {formData});
 
-    /**  await  axios({
+    /** await  axios({
           method: "POST",
-          url:"/send",
+          url:"/send_email",
           data:  formData,
           headers: {
              'Accept': 'application/json',
@@ -254,7 +239,7 @@ class ContactForm extends Component {
             }else if(response.data.status === 'fail'){
                 alert("=== Message failed to send. ===")
             }
-        }) **/
+        })**/
         
     };
 

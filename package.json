@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
-    "client": "npm start --prefix logistik-app",
+    "client": "npm run start --prefix logistik-app",
     "deploy" : "git push heroku master",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
