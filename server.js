@@ -3,8 +3,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const path = require('path');
-const http = requirs('http');
-const SMTPConnection = require("nodemailer/lib/smtp-connection");
 
 const PORT =  process.env.PORT || 3001;
 const app = express();
