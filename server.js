@@ -3,6 +3,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const path = require('path');
+const http = requirs('http');
+const SMTPConnection = require("nodemailer/lib/smtp-connection");
 
 const PORT =  process.env.PORT || 3001;
 const app = express();
@@ -25,15 +27,12 @@ app.get('/api',  (req, res) => {
 let mailConfig;
 if (process.env.NODE_ENV === 'production' ) {
     mailConfig = {
-        host: 'ssh.natalie-kaefer.de',
-        port: 465,
+        host: 'kaefer-logistik-app.herokuapp.com request_id=9c77fddf-17f4-47b4-8e32-bd3e02913a0a',
+        port: 587,
         secure: false,
         auth: {
-            user: 'natalie-kaefer.de',
-            pass: 'nkl!0407'
-        },
-        tls: {
-            rejectUnauthorized: false
+            user: 'natalikaefer@hotmail.de',
+            pass: 'nkl?1301'
         }
     };
 
@@ -77,7 +76,7 @@ app.post('/send_email', (req, res) => {
 
    const mailOptions = {
         from: email,
-        to: 'natalikaefer@hotmail.de',
+        to: 'info@natalie-kaefer.de',
         subject: `New Message from Contact Form' \n ${subject} `,
         text: content
    };

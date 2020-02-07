@@ -5,9 +5,9 @@ import { withRouter } from "react-router-dom";
 
 import './Layout.scss';
 import Logo from '../../components/molecules/Logo/Logo'
-import Footer from '../../components/pages/Footer/Footer';
-import NavigationDesktop from '../../components/molecules/Navigation/NavigationDesktop/NavigationDesktop';
-import SideDrawer from '../../components/molecules/Navigation/SideDrawerMobile/Sidedrawer';
+import Footer from '../../components/organisms/Footer/Footer';
+import NavigationDesktop from '../../components/organisms/Navigation/NavigationDesktop/NavigationDesktop';
+import SideDrawer from '../../components/organisms/Navigation/SideDrawerMobile/Sidedrawer';
 
 const Layout = (props) => {
     const [ showMobileNavigation, setShowMobileNavigation ] = useState(false);
