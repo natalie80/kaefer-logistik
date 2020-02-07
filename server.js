@@ -22,38 +22,46 @@ app.get('/api',  (req, res) => {
 });
 
 
-let mailConfig;
-if (process.env.NODE_ENV === 'production' ) {
-    mailConfig = {
-        host: 'kaefer-logistik-app.herokuapp.com request_id=9c77fddf-17f4-47b4-8e32-bd3e02913a0a',
-        port: 587,
-        secure: false,
-        auth: {
-            user: 'natalikaefer@hotmail.de',
-            pass: 'nkl?1301'
-        }
-    };
-
-} else {
-    mailConfig = {
-        host: 'smtp.ethereal.email',
-        port: 587,
-        auth: {
-            user: 'annalise.blanda13@ethereal.email',
-            pass: 'grPf1VdUjKBq2TGvGT'
-        },
-        tls: {
-            rejectUnauthorized: false
-        }
-    };
-}
-
 app.post('/send_email', (req, res) => {
+
+
+    let mailConfig;
+    if (process.env.NODE_ENV === 'production' ) {
+        mailConfig = {
+            host: 'smtp-mail.outlook.com',
+            port: 587,
+            secure: false,
+            tls: {
+                ciphers:'SSLv3'
+            },
+            auth: {
+                user: 'natalikaefer@hotmail.de',
+                pass: 'adem1301'
+            }
+        };
+
+    } else {
+        mailConfig = {
+            host: 'smtp.ethereal.email',
+            port: 587,
+            auth: {
+                user: 'annalise.blanda13@ethereal.email',
+                pass: 'grPf1VdUjKBq2TGvGT'
+            },
+            tls: {
+                rejectUnauthorized: false
+            }
+        };
+    }
+
     console.log(req.body);
 
     console.log('=== Mail info request ====', req.body);
     console.log('=== My email:  ', req.body.formData.email);
     console.log('=== My name:  ', req.body.formData.name);
+
+    console.log('=== MailConfig ===  ', mailConfig);
+
 
      const name = req.body.formData.name,
      email = req.body.formData.email,
@@ -74,7 +82,7 @@ app.post('/send_email', (req, res) => {
 
    const mailOptions = {
         from: email,
-        to: 'info@natalie-kaefer.de',
+        to: 'natalikaefer@hotmail.de',
         subject: `New Message from Contact Form' \n ${subject} `,
         text: content
    };
