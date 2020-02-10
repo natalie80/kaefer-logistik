@@ -150,7 +150,6 @@ class ContactForm extends Component {
     };
 
     onChangedHandlerRadio = (ev) => {
-        console.log('radio ev', ev.target.value);
         this.setState({ gender: ev.target.value });
     };
 
@@ -195,7 +194,6 @@ class ContactForm extends Component {
         
         for (let formEl in this.state.contactForm) {
             if (this.state.contactForm.hasOwnProperty(formEl)) {
-                console.log('Name: ', this.state.contactForm[formEl].elConfig.name);
 
                 formInput = this.state.contactForm[formEl];
                 formData[formEl] = formInput.value;

@@ -31,9 +31,6 @@ app.post('/send_email', (req, res) => {
             host: 'smtp-mail.outlook.com',
             port: 587,
             secure: false,
-            tls: {
-                ciphers:'SSLv3'
-            },
             auth: {
                 user: 'natalikaefer@hotmail.de',
                 pass: 'adem1301'
@@ -45,8 +42,8 @@ app.post('/send_email', (req, res) => {
             host: 'smtp.ethereal.email',
             port: 587,
             auth: {
-                user: 'annalise.blanda13@ethereal.email',
-                pass: 'grPf1VdUjKBq2TGvGT'
+                user: 'lon.bednar@ethereal.email',
+                pass: 'AgK7q6XfZUHfyXUrVy'
             },
             tls: {
                 rejectUnauthorized: false
@@ -54,7 +51,7 @@ app.post('/send_email', (req, res) => {
         };
     }
 
-    console.log(req.body);
+    console.log('==Request==',req.body);
 
     console.log('=== Mail info request ====', req.body);
     console.log('=== My email:  ', req.body.formData.email);
@@ -88,12 +85,14 @@ app.post('/send_email', (req, res) => {
    };
 
     let transporter = nodemailer.createTransport( mailConfig);
+    console.log('== mailOptions ==  ',mailOptions);
 
     transporter.sendMail(mailOptions, (error, info) => {
         console.log('Preview URL: %s',nodemailer.getTestMessageUrl(info));
+        console.log('== sendmail ERROR ==  ', error);
         res.render('logistik-app mail wurde versendet');
 
-        res.send('Success');
+        //res.send('Success');
 
     });
 });
