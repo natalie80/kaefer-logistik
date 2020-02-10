@@ -28,9 +28,11 @@ app.post('/send_email', (req, res) => {
     let mailConfig;
     if (process.env.NODE_ENV === 'production' ) {
         mailConfig = {
-            host: 'smtp-mail.outlook.com',
+            host: 'smtp.live.com',
             port: 587,
-            secure: false,
+            secure: true,
+            tls: {ciphers:'SSLv3'},
+            domains: ["hotmail.com", "outlook.com"],
             auth: {
                 user: 'natalikaefer@hotmail.de',
                 pass: 'adem1301'
@@ -84,7 +86,7 @@ app.post('/send_email', (req, res) => {
         text: content
    };
 
-    let transporter = nodemailer.createTransport( mailConfig);
+    let transporter = nodemailer.createTransport( 'SMTP', mailConfig);
     console.log('== mailOptions ==  ',mailOptions);
 
     transporter.sendMail(mailOptions, (error, info) => {
