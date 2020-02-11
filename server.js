@@ -28,7 +28,7 @@ app.post('/send_email', (req, res) => {
     let mailConfig;
     if (process.env.NODE_ENV === 'production' ) {
         mailConfig = {
-            host: "send.one.com",
+            host: "mailout.one.com",
             port: 587,
             auth: {
                 user: 'info@natalie-kaefer.de',
@@ -74,7 +74,7 @@ app.post('/send_email', (req, res) => {
         text: content
    };
 
-    let transporter = nodemailer.createTransport( mailConfig);
+    let transporter = nodemailer.createTransport('SMTP', mailConfig);
     console.log('== mailOptions ==  ',mailOptions);
 
     transporter.sendMail(mailOptions, (error, info) => {
