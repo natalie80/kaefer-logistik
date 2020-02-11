@@ -28,7 +28,8 @@ app.post('/send_email', (req, res) => {
     let mailConfig;
     if (process.env.NODE_ENV === 'production' ) {
         mailConfig = {
-            host: "mailout.one.com",
+            host: "send.one.com",
+            port: 587,
             auth: {
                 user: 'info@natalie-kaefer.de',
                 pass: 'nkl!0407'
