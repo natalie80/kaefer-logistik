@@ -28,10 +28,10 @@ app.post('/send_email', (req, res) => {
     let mailConfig;
     if (process.env.NODE_ENV === 'production' ) {
         mailConfig = {
-            service: "hotmail",
+            host: "mailout.one.com",
             auth: {
-                user: 'natalikaefer@hotmail.de',
-                pass: 'adem1301'
+                user: 'info@natalie-kaefer.de',
+                pass: 'nkl!0407'
             }
         };
 
@@ -49,13 +49,12 @@ app.post('/send_email', (req, res) => {
         };
     }
 
-    console.log('==Request==',req.body);
+    console.log('==Request 222==',req.body);
 
     console.log('=== Mail info request ====', req.body);
-    console.log('=== My email:  ', req.body.formData.email);
-    console.log('=== My name:  ', req.body.formData.name);
+    console.log('=== My name :::  ', req.body.formData.name);
 
-    console.log('=== MailConfig ===  ', mailConfig);
+    console.log('=== MailConfig  222===  ', mailConfig);
 
 
      const name = req.body.formData.name,
@@ -67,17 +66,9 @@ app.post('/send_email', (req, res) => {
      content = ` Geschlecht: ${gender} \n Name: ${name} \n Telefonenummer: ${phone}  \n Email: ${email} \n Message: ${message} `;
 
 
-   /** const email = 'natalie@web.de',
-        name = 'Natalie',
-        subject = 'Kleine Test',
-        phone = '123456789',
-        message = 'Hallo hier sende ich eine Message',
-        content = ` Name: ${name} \n Telefonenummer: ${phone}  \n Email: ${email} \n Message: ${message} `; **/
-
-
    const mailOptions = {
         from: email,
-        to: 'natalikaefer@hotmail.de',
+        to: 'info@natalie-kaefer.de',
         subject: `New Message from Contact Form' \n ${subject} `,
         text: content
    };
