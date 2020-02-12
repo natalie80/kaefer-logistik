@@ -16,3 +16,28 @@ article > div {
   cursor: pointer;
   margin: 5px;
 }
+
+.Images_Container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 10px;
+
+
+  .Image_Content {
+    border: 1px solid gray;
+    padding: 0.5em;
+    margin: 0.85em;
+    flex-grow: 2;
+  }
+
+  .Image {
+    width: 80px;
+  }
+
+  .Image_Info {
+    margin: 3px;
+    font-size: 0.85em;
+  }
+}

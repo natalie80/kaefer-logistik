@@ -134,8 +134,7 @@ class ContactForm extends Component {
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
         this.onChangedHandler = this.onChangedHandler.bind(this);
     }
-    
-    
+
     onChangedHandler = (ev, inputIdentifier) => {
         const updatedForm = {
            ...this.state.contactForm,
@@ -221,23 +220,6 @@ class ContactForm extends Component {
         console.log('------ formData ------', formData);
 
        const formSend = await axios.post('/send_email',  {formData});
-
-    /** await  axios({
-          method: "POST",
-          url:"/send_email",
-          data:  formData,
-          headers: {
-             'Accept': 'application/json',
-             'Content-Type': 'application/json'
-          },
-        }).then((response)=>{
-            if (response.data.status === 'success'){
-                alert("=== Message Sent. ===");
-              // this.resetForm()
-            }else if(response.data.status === 'fail'){
-                alert("=== Message failed to send. ===")
-            }
-        })**/
         
     };
 
