@@ -2,42 +2,90 @@
 
 .Dashboard {
   padding: 20px;
-}
 
-h3 {
-  color: $primaryColor;
-}
-
-article > div {
-  background: #09d3ac;
-  height: 50px;
-  width: 50px;
-  float: left;
-  cursor: pointer;
-  margin: 5px;
-}
-
-.Images_Container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  padding: 10px;
-
-
-  .Image_Content {
-    border: 1px solid gray;
-    padding: 0.5em;
-    margin: 0.85em;
-    flex-grow: 2;
+  h3 {
+    color: $primaryColor;
   }
 
-  .Image {
-    width: 80px;
+  article > div {
+    background: #09d3ac;
+    height: 50px;
+    width: 50px;
+    float: left;
+    cursor: pointer;
+    margin: 5px;
   }
 
-  .Image_Info {
-    margin: 3px;
-    font-size: 0.85em;
+  .Button {
+    background-color: $primaryColor;
+    float: none;
+    margin-top: 20px;
+  }
+
+  .Button:hover {
+    background-color: $primaryColor;
+  }
+
+  .Images_Container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+    grid-template-rows: auto;
+    column-gap: 20px;
+
+
+    .Image_Content {
+      border: 3px solid gray;
+      padding: 0.5em;
+      margin: 0.85em 0;
+      background-color: #cccccc;
+      background-image: linear-gradient(45deg, transparent 50%, rgba(255,255,255,.5) 40%);
+      background-size: 30px 30px;
+      transition: transform 0.7s;
+      filter: grayscale(100%);
+      //filter: brightness(8%);
+    }
+
+    .Image_Content_OnClick {
+      border: 3px solid gray;
+      padding: 0.5em;
+      margin: 0.85em 0;
+      background: #cce5f8;
+      filter: grayscale(0%);
+
+      .Image,
+      .Image_Info {
+        opacity: 1;
+      }
+    }
+
+    .Image {
+      width: 8em;
+      opacity: 0;
+    }
+
+    .Image_Content:hover {
+      cursor: pointer;
+      transform: scaleX(-1);
+      background: #cce5f8;
+      filter: grayscale(0%);
+      //filter: brightness(80%);
+    }
+
+    .Image_Content:hover .Image,
+    .Image_Content:hover .Image_Info {
+      opacity: 1;
+    }
+
+    .Image_Info {
+      opacity: 0;
+    }
+
+    .Image_Info {
+      margin: 3px;
+      font-size: 0.85em;
+    }
+  }
+  form {
+    margin: 10px 0;
   }
 }

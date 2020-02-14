@@ -43,14 +43,17 @@
      // height: 50px;
       position: relative;
       animation-name: example;
-      animation-duration: 4s;
+      animation-duration: 6s;
+     animation-iteration-count: 2;
+     animation-direction: alternate-reverse;
+     // animation-iteration-count: infinite;
   }
   @keyframes example {
-    0%   {left:55px; top:170px;}
-    25%  {left:75px; top:150px;}
-    50%  {left:95px; top:130px;}
-    75%  {left:100px; top:110px;}
-    100% {left:95px; top:100px;}
+    0%   { top:170px;}
+    20%  { top:120px;}
+    50%  { top:100px; }
+    70%  { top:90px;}
+    100% { top:120px;}
   }
 }
 

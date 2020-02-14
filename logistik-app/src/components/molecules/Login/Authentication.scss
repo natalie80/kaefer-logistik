@@ -10,8 +10,10 @@
       font-size: 1.5em;
   }
   .ErrorMsg {
-    color: red;
-    font-size: 0.85em;
+    .MuiAlert-root {
+      font-size: 0.745rem;
+      padding: 0 15px;
+    }
   }
 
   .Button:hover {
@@ -35,5 +37,9 @@
   .AuthForm div:nth-child(2) {
      margin-top: 20px;
   }
+  .AuthForm {
+    margin-bottom: 10px;
+  }
+
 }
 

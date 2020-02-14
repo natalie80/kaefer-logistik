@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import Button from "@material-ui/core/Button";
 import axios from 'axios';
 import Media from "react-media";
+import RadioGroup from '@material-ui/core/RadioGroup';
+import Radio from '@material-ui/core/Radio';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { Alert } from '@material-ui/lab';
 
 import  './ContactForm.scss';
 import Input from '../../atoms/Form/Input/Input'
@@ -15,32 +19,6 @@ class ContactForm extends Component {
         
         this.state = {
             contactForm: {
-                  /**  salutation_1: {
-                        elType: 'radio',
-                        elConfig: {
-                            type: 'radio',
-                            name: 'Frau'
-                        },
-                        value: 'Frau',
-                        validation: {
-                            required: false
-                        },
-                        valid: '',
-                        label: 'Frau'
-                    },
-                    salutation_2: {
-                        elType: 'radio',
-                        elConfig: {
-                            type: 'radio',
-                            name: 'Herr'
-                        },
-                        value: 'Herr',
-                        validation: {
-                            required: false
-                        },
-                        valid: '',
-                        label: 'Herr'
-                    },**/
                 name: {
                     elType: 'input',
                     elConfig: {
@@ -128,7 +106,6 @@ class ContactForm extends Component {
                 }
             },
             gender: 'Herr'
-
         };
         
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
@@ -213,7 +190,7 @@ class ContactForm extends Component {
         if(!formInValid) {
             console.log('--- FORM SEND ---');
         } else {
-            console.log('--- FORM NOT SEND  show error---');
+            console.log('--- FORM NOT SEND ---');
         }
 
         formData['gender'] = this.state.gender;
@@ -250,13 +227,10 @@ class ContactForm extends Component {
             <form>
 
                 <div className="CustomerSalutation">
-                    <label className="Label" htmlFor="">Frau</label>
-                    <input type='radio' id='salutation_1'  name='Gender' value='Frau'
-                           checked={this.state.gender === 'Frau'} onChange = {(ev) => this.onChangedHandlerRadio(ev)} />
-
-                    <label className="Label" htmlFor="">Herr</label>
-                    <input type='radio' id='salutation_2'  name='Gender' value='Herr'
-                           checked={this.state.gender === 'Herr'} onChange = {(ev) => this.onChangedHandlerRadio(ev)} />
+                    <RadioGroup aria-label="gender" className="Salutation" name="Gender" value={this.state.gender}  onChange={(ev) => this.onChangedHandlerRadio(ev)}>
+                        <FormControlLabel className="Label"  value="Frau" control={<Radio color="primary"/>} label="Frau" />
+                        <FormControlLabel className="Label" value="Herr" control={<Radio color="primary" />} label="Herr" />
+                    </RadioGroup>
                 </div>
 
                 {
@@ -276,7 +250,7 @@ class ContactForm extends Component {
                     ))
                 }
                 <div>
-                    <p className="Hint"> * Markierte Pflichtfelder bitte unbedingt ausfüllen </p>
+                    <Alert severity="info" color='info' variant='standard' className='Hint'>* Markierte Pflichtfelder bitte unbedingt ausfüllen </Alert>
                     <Button
                         variant="contained"
                         color="primary"
@@ -298,7 +272,8 @@ class ContactForm extends Component {
                 { matches => (
                     <div className={ matches.large ? "ContactForm" : (matches.medium || matches.small) ? "ContactForm_Mobile" : null }>
                        <h2 className="Subheadline">Kontaktformular</h2>
-                        <p>Haben Sie eine Frage oder möchten Sie aus einem Grund Kontakt mit uns aufnehmen. Dann hinterlassen Sie uns einfach eine Nachricht. Wir freuen uns auf Sie und werden schnellstmöglich einen Antwort geben.</p>
+                        <p>Haben Sie eine Frage oder möchten Sie aus einem Grund Kontakt mit uns aufnehmen.
+                            Dann hinterlassen Sie uns einfach eine Nachricht. Wir freuen uns auf Sie und werden schnellstmöglich einen Antwort geben.</p>
                         <div className="Form">
                             {form}
                         </div>

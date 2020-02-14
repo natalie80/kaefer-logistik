@@ -1,16 +1,26 @@
 import React, { useCallback, useState } from 'react';
 import { withRouter } from 'react-router';
-import {connect} from "react-redux";
+import { Alert } from '@material-ui/lab';
+import { makeStyles } from '@material-ui/core/styles';
 
 import  './Authentication.scss';
 import Input from '../../atoms/Form/Input/Input'
 import Button from '../../atoms/Button/Button';
 import config from '../../../store/firebaseConfig';
 
+const useStyles = makeStyles(theme => ({
+    root: {
+        width: '100%',
+        '& > * + *': {
+            marginTop: theme.spacing(2),
+        },
+    },
+}));
 
 const Authentication = ( props) => {
 
     const history = props.history;
+    const classes = useStyles();
 
     const [loginForm, setLoginForm] = useState({
         email: {
@@ -48,28 +58,25 @@ const Authentication = ( props) => {
     const [errorMessage, setErrorMessage] = useState(null);
 
     const checkValidation = (value, rules) => {
-        let isValid = true;
+        let isValid = false;
 
         if (!rules) {
             return true;
         }
 
         if (rules.required) {
-            isValid = value.trim() !== '' && isValid;
-        }
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid
-        }
-        if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid
-        }
-        if (rules.isEmail) {
-            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-            isValid = pattern.test(value) && isValid
-        }
-        if (rules.isNumeric) {
-            const pattern = /^\d+$/;
-            isValid = pattern.test(value) && isValid
+            isValid = value.trim() !=='' ? true : false;
+
+            if (rules.minLength) {
+                isValid = value.length >= rules.minLength && isValid
+            }
+            if (rules.isEmail) {
+                const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+                isValid = value.search(pattern) === 0 ? true : false;
+            }
+
+        } else {
+            isValid = false;
         }
 
         return isValid;
@@ -128,13 +135,13 @@ const Authentication = ( props) => {
 
     let form = loginFormEl.map(formEl => (
         <Input
-            elType={formEl.config.elType}
             key={formEl.id}
+            elKey={formEl.id}
+            elType={formEl.config.elType}
             elConfig={formEl.config.elConfig}
             value={formEl.config.value}
-            invalid={!formEl.config.valid}
+            invalid={formEl.config.valid}
             shouldValidate={formEl.config.validation}
-            touched={formEl.config.touched}
             label={formEl.config.elConfig.placeholder}
             changed={(ev) => inputChangedHandler(ev, formEl.id)}
         />)
@@ -151,28 +158,16 @@ const Authentication = ( props) => {
 
                 >Anmelden </Button>
             </form>
-           <div className="ErrorMsg"><p>{errorMessage}</p></div>
+
+            { errorMessage != null ?
+                <div className={classes.root + ' ErrorMsg'}>
+                    <Alert severity="error" color='error' variant='standard'>{errorMessage}</Alert>
+                </div>
+                : null
+            }
         </div>
     );
 };
 
-/**
-const mapStateToProps = state => {
-    return {
-        loading: state.auth.loading,
-        error: state.auth.error,
-        isSignIn: state.auth.isSignIn,
-        isAuthenticated: state.auth.tokenId !== null
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onAuth: (email, password) => dispatch(actions.auth(email, password))
-    };
-};
-**/
-
-//export default connect(mapStateToProps, mapDispatchToProps)(Authentication);
 
 export default withRouter(Authentication);

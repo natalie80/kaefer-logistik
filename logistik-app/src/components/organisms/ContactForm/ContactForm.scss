@@ -17,8 +17,9 @@
 
   .Hint {
     font-size: 0.75em;
-    margin-left: 0;
     text-align: initial;
+    margin: 10px 0;
+
   }
 
   .Input {
@@ -63,6 +64,7 @@
   .Hint {
     font-style: italic;
     font-size: 0.75em;
+    margin: 10px 0;
   }
 
   .Button {
@@ -83,11 +85,14 @@
 }
 
 .CustomerSalutation {
-  display: inline;
   margin-right: 40px;
   position: relative;
-}
 
+  .Salutation {
+    display: inline;
+
+  }
+}
 .CustomerSalutation input[type="radio"]{
   margin-right: 30px;
   margin-left: 10px;
